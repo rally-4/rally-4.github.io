@@ -23,13 +23,11 @@ _**`when the bold is mistrustful`**_
 
 
 ‏Help me, I have fallen, and I can't get up
-&nbsp;
+&nbsp;  
+
 No Mario, you're just moving on the ground, moving on the ground.  
 &nbsp;
 
-
-
-> # _**`ignore this`**_  
 &nbsp;
 
 
