@@ -1,18 +1,15 @@
-<?php
-$bg = array('techgoo.png', 'spacemeat.png', 'anomalocaris.png', 'cursedkeke.png');
-
-$i = rand(0, count($bg)-1);
-$selectedBg = "$bg[$i]";
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Rally's Vapor Pod</title>
+        <title>Rally's Vapor pod</title>
         <link rel="icon" href="icon.png">
         
-        <style type="text/css">
+        <style>
+            
+            :root{
+                --str: "";
+            }
             
             body{
                 background-color: grey;
@@ -32,7 +29,7 @@ $selectedBg = "$bg[$i]";
                 padding: 30px;
                 animation: spin2 4s ease-out infinite;
                 background-size: cover;
-                background-image: url(https://rally-4.github.io/<?php echo $selectedBg; ?>) no-repeat;
+                background-image: url(var(--str));
                 color: white;
             }
             
@@ -84,6 +81,20 @@ $selectedBg = "$bg[$i]";
         
         <script>
             
+            var root = document.getQuerySelector(':root');
+            var rootStyles = getComputedStyle(root);
+            var str = rootStyles.getPropertyValue('--str');
+            
+            var i = Math.random();
+            if(i >= 2/3){
+                root.style.setProperty('--str', '"techgoo.png"');
+            }else if(i >= 1/3){
+                root.style.setProperty('--str', '"spacemeat.png"');
+            }else if(i >= 0.01){
+                root.style.setProperty('--str', '"anomalocaris.png"');
+            }else{
+                root.style.setProperty('--str', '"cursedkeke.png"');
+            }
             
         </script>
     </head>
