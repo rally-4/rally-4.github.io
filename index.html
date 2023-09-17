@@ -1,15 +1,15 @@
 <?php
 $bg = array('techgoo.png', 'spacemeat.png', 'anomalocaris.png', 'cursedkeke.png');
 
-$i = rand(0, count($bg)-1); // generate random number size of the array
-$selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
+$i = rand(0, count($bg)-1);
+$selectedBg = "$bg[$i]";
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Rally s Vapor pod</title>
+        <title>Rally's Vapor Pod</title>
         <link rel="icon" href="icon.png">
         
         <style type="text/css">
@@ -32,7 +32,7 @@ $selectedBg = "$bg[$i]"; // set variable equal to which random filename was chos
                 padding: 30px;
                 animation: spin2 4s ease-out infinite;
                 background-size: cover;
-                background-image: url(images/<?php echo $selectedBg;?>) no-repeat;
+                background-image: url(<?php echo $selectedBg;?>) no-repeat;
                 color: white;
             }
             
