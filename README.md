@@ -1,9 +1,10 @@
 # Under Construction
 This repository is currently unfinished and mostly used for testing purposes.  
-\   
-\   
-\   
-_**`when the bold is sus`**_  
+&nbsp;
+&nbsp;
+&nbsp;
+
+_**`when the bold is mistrustful`**_  
 
 1. Perhaps we should consider:
     * Purchasing reality n°37.
@@ -13,12 +14,14 @@ _**`when the bold is sus`**_
     * Working for Big Oxygen.
     * Help Sisyphus puch the rock.
     * Meta think.  
+&nbsp;
+
 
 
 ‏Help me, I have fallen, and I can't get up
-\   
+&nbsp;
 No Mario, you're just moving on the ground, moving on the ground.  
-\   
+&nbsp;
 
 
 
