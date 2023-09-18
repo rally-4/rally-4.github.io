@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Rally's Vapor pod</title>
+        <title>Rally's Vapor Pod</title>
         <link rel="icon" href="icon.png">
         
         <style>
@@ -81,8 +81,8 @@
         
         <script>
             
-            var root = document.getQuerySelector(':root');
-            var rootStyles = getComputedStyle(root);
+            var root = document.querySelector(':root');
+            var rootStyles = window.getComputedStyle(root);
             var str = rootStyles.getPropertyValue('--str');
             
             var i = Math.random();
