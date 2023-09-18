@@ -20,7 +20,8 @@
             }
             
             div{
-                height: 512px;
+                height: 256px;
+                width: 256px;
                 background-color: rgba(0, 0, 0, 0);
                 display: inline-block;
                 padding: 30px;
@@ -84,10 +85,15 @@
                 var i = Math.random();
                 if(i >= 2/3){
                     div.style.backgroundImage = 'url(techgoo.png)';
+                    div.style.width = div.style.height = 128;
                 }else if(i >= 1/3){
                     div.style.backgroundImage = 'url(spacemeat.png)';
+                    div.style.width = 464;
+                    div.style.height = 500;
                 }else{
                     div.style.backgroundImage = 'url(cursedkeke.png)';
+                    div.style.width = 337;
+                    div.style.height = 433;
                 }
             });
             
