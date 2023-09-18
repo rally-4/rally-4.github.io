@@ -82,7 +82,7 @@
         <script>
             
             var root = document.querySelector(':root');
-            var rootStyles = window.getComputedStyle(root);
+            var rootStyles = getComputedStyle(root);
             var str = rootStyles.getPropertyValue('--str');
             
             var i = Math.random();
