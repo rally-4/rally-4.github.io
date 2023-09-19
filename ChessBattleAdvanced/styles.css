@@ -3,7 +3,7 @@
   src: url("HeinseiMinchoW9.woff2") format("woff2"),
        url("HeinseiMinchoW9.woff") format("woff"),
        url("HeinseiMinchoW9.ttf") format("truetype");
-}
+} /* Well, that was a disappointment */
 
 body{
   margin: 0px;
@@ -18,5 +18,5 @@ h1{
   align-items: center;
   font-size: 4em;
   top: 16px;
-  font-family: "Heinsei Mincho W9";
+  font-family: serif;
 }
