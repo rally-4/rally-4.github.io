@@ -9,6 +9,6 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32px;
-  top: 12px;
+  font-size: 4em;
+  top: 16px;
 }
