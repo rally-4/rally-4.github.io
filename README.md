@@ -1,24 +1,29 @@
 # Under Construction
 This repository is currently unfinished and mostly used for testing purposes.  
-&nbsp;
+&nbsp;  
 
-&nbsp;
+&nbsp;  
 
-&nbsp;
+&nbsp;  
 
-&nbsp;
+&nbsp;  
 
-&nbsp;
+&nbsp;  
 
-_**`when the bold is mistrustful`**_  
+&nbsp;  
 
-1. Perhaps we should consider:
-    * Helping Ganon sieze the island of Koridai.
-    * Producing more antimatter.
-2. Perhaps we shouldn't consider:
-    * Working for Big Oxygen.
-    * Helping Sisyphus puch the rock.  
-&nbsp;
+&nbsp;  
+
+&nbsp;  
+
+1. Lore Ipsum Dolor Sit Amet
+    * True...
+    * False...
+2. temA tiS roloD muslI eroL
+    * True...
+    * * This is illegal, you know?
+      * False...  
+&nbsp;  
 
 
 
@@ -26,8 +31,6 @@ _**`when the bold is mistrustful`**_
 &nbsp;  
 
 No Mario, you're just moving on the ground, moving on the ground.  
-&nbsp;
-
 &nbsp;
 
 &nbsp;
