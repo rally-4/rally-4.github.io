@@ -3,13 +3,6 @@
   src: url("/assets/fonts/times.ttf");
 }
 
-@font-face{
-  font-family: "Heinsei Mincho W9";
-  src: url("HeinseiMinchoW9.woff2") format("woff2"),
-       url("HeinseiMinchoW9.woff") format("woff"),
-       url("HeinseiMinchoW9.ttf") format("truetype");
-} /* Well, that was a disappointment */
-
 body{
   margin: 0px;
   padding: 0px;
@@ -23,6 +16,6 @@ p{
   justify-content: center;
   align-items: center;
   font-size: 6em;
-  top: 16px;
+  top: 12px;
   font-family: "Times New Roman";
 }
