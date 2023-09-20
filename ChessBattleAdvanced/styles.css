@@ -22,7 +22,8 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4em;
+  font-size: 6em;
   top: 16px;
   font-family: "Times New Roman";
+  font-weight: normal;
 }
