@@ -1,6 +1,6 @@
 @font-face{
   font-family: "Times New Roman";
-  src: url("Crimson-Roman.ttf");
+  src: url("times.ttf");
 }
 
 @font-face{
@@ -25,5 +25,4 @@ h1{
   font-size: 6em;
   top: 32px;
   font-family: "Times New Roman";
-  font-weight: lighter;
 }
