@@ -1,4 +1,9 @@
 @font-face{
+  font-family: "Times New Roman";
+  src: url("times.ttf");
+}
+
+@font-face{
   font-family: "Heinsei Mincho W9";
   src: url("HeinseiMinchoW9.woff2") format("woff2"),
        url("HeinseiMinchoW9.woff") format("woff"),
@@ -19,5 +24,5 @@ h1{
   align-items: center;
   font-size: 4em;
   top: 16px;
-  font-family: serif;
+  font-family: "Times New Roman";
 }
