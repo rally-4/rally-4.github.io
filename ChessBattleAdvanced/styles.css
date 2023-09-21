@@ -26,6 +26,9 @@ p{
 
 /* made in RPG Maker 2003 text */
 
-/* line image */
+#RedLine{
+  transform: translateY(-32px);
+  width: 100%;
+}
 
 /* demonstration image */
