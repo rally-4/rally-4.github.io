@@ -15,8 +15,8 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 6em;
-  transform: translateY(-64px);
+  font-size: 5em;
+  transform: translateY(-48px);
   font-family: "Times New Roman";
 
   position: relative;
@@ -30,7 +30,7 @@ p{
 /* made in RPG Maker 2003 text */
 
 #RedLine{
-  transform: translateY(-256px);
+  transform: translateY(-128px);
   width: 100%;
 }
 
