@@ -18,6 +18,9 @@ p{
   font-size: 6em;
   transform: translateY(-64px);
   font-family: "Times New Roman";
+
+  position: relative;
+  z-index: 2;
 }
 
 /* secondary text */
