@@ -15,7 +15,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5.5em;
+  font-size: 6em;
   transform: translateY(-32px);
   font-family: "Times New Roman";
 
@@ -32,6 +32,7 @@ body{
 #RedLine{
   transform: translateY(-192px);
   width: 100%;
+  filter: saturate(200%);
 }
 
 /* demonstration image */
