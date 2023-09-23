@@ -7,10 +7,12 @@
     <link href="styles.css" rel="stylesheet" type="text/css">
     <script>
       window.onload=()=>{
+        window.addEventListener("click", ()=>{
           document.querySelector("audio").play();
-      };
+        })
+      }
     </script>
-    <audio src="assets/music/CBA-TitleScreen.mp3" autoplay muted></audio>
+    <audio src="assets/music/CBA-TitleScreen.mp3" autoplay></audio>
   </head>
   <body>
     <p id="CBA">Chess Battle Advanced</p>
