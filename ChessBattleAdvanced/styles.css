@@ -26,8 +26,10 @@ body{
 #Menu{
   position: fixed;
   width: 50%;
+  transform: translateX(20%);
+  transform: translateY(-50%);
   
-  font-size: 2em;
+  font-size: 3em;
   white-space: pre-line;
   line-height: 1.5;
 }
