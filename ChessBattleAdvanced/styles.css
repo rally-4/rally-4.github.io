@@ -23,7 +23,14 @@ body{
   z-index: 2;
 }
 
-/* secondary text */
+#Menu{
+  position: fixed;
+  width: 50%;
+  
+  font-size: 2em;
+  white-space: pre-line;
+  line-height: 1.5;
+}
 
 /* ternary text */
 
