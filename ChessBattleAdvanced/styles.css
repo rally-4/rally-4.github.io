@@ -25,10 +25,11 @@ body{
 
 #Menu{
   position: relative;
-  transform: translateX(-5em);
-  transform: translateY(5em);
+  transform: translateX(0%);
+  transform: translateY(0%);
   
   font-size: 3em;
+  color: white;
 }
 
 /* ternary text */
