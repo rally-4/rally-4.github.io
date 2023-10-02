@@ -16,7 +16,7 @@ body{
   justify-content: center;
   align-items: center;
   font-size: 6em;
-  transform: translateY(-50px); /* -32px */
+  transform: translateY(-32px); /* -50px */
   font-family: "Times New Roman";
 
   position: relative;
@@ -25,8 +25,7 @@ body{
 
 #Menu{
   position: fixed;
-  transform: translateX(0%);
-  transform: translateY(0%);
+  align: center;
   
   font-size: 3em;
   color: white;
@@ -37,7 +36,7 @@ body{
 /* made in RPG Maker 2003 text */
 
 #RedLine{
-  transform: translateY(-230px); /* -192px */
+  transform: translateY(-192px); /* -230px */
   width: 100%;
   filter: saturate(150%);
 }
