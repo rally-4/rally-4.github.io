@@ -24,10 +24,9 @@ body{
 }
 
 #Menu{
-  position: fixed;
-  width: 50%;
-  left: 20%;
-  bottom: -50%;
+  position: relative;
+  transform: translateX(-5em);
+  transform: translateY(5em);
   
   font-size: 3em;
 }
