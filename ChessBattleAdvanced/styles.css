@@ -26,6 +26,8 @@ body{
 #Menu{
   position: fixed;
   align: center;
+  transform: translateX(50px);
+  transform: translateY(-50px);
   
   font-size: 3em;
   color: white;
@@ -36,7 +38,7 @@ body{
 /* made in RPG Maker 2003 text */
 
 #RedLine{
-  transform: translateY(-192px); /* -230px */
+  transform: translateY(-210px); /* -192px, -230px */
   width: 100%;
   filter: saturate(150%);
 }
