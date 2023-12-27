@@ -2,10 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="">
         <title>Rally's Vapor Pod</title>
         <link rel="icon" href="icon.png">
         <style>
             body{
+                margin: 0px; padding: 0px;
+                width: 100%; height: 100%;
+                
                 background-color: black;
                 background-image: url("abstract1.gif");
                 background-repeat: repeat;
@@ -19,13 +23,13 @@
                 animation: spin 4s linear infinite;
             }
             
-            div{
+            #box{
                 background-color: rgba(0, 0, 0, 0);
                 display: inline-block;
                 padding: 30px;
                 animation: spin2 4s ease-out infinite;
                 background-size: cover;
-                background-image: "";
+                background-image: '';
                 color: white;
             }
             
@@ -72,24 +76,21 @@
                 display: inline-block;
                 text-align: left;
             }
-            
         </style>
         
         <script>
-            
             window.addEventListener('DOMContentLoaded', function(){
-                var div = document.getElementById("box");
+                var div = document.getElementById('box');
                 var i = Math.random();
                 if(i > 0.5){
-                    div.style.width = div.style.height = "256px";
+                    div.style.width = div.style.height = '256px';
                     div.style.backgroundImage = 'url(spacemeat.png)';
                 }else{
-                    div.style.width = "192px";
-                    div.style.height = "256px";
+                    div.style.width = '192px';
+                    div.style.height = '256px';
                     div.style.backgroundImage = 'url(cursedkeke.png)';
                 }
             });
-            
         </script>
     </head>
     <body>
@@ -100,7 +101,7 @@
                 <ul>
                     <li><a href="https://github.com/rally-4/">My Github</a></li>
                     <li><a href="/ChessBattleAdvanced">Chess Battle Advanced</a></li>
-                    <br>
+                    <li><a href="/Writings">My Writings (WIP)</a></li>
                     <br>
                     <br>
                     <li><a href="https://youtu.be/ubhyj3JHzOM?si=B0eZmuisqitlTFNg">Random Video</a></li>
