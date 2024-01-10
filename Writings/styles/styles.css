@@ -8,7 +8,6 @@ body{
 }
 
 img{
-  display: block;
   position: fixed;
   z-index: 1;
   top: 0px;
@@ -18,6 +17,8 @@ img{
 h1{
   position: fixed;
   z-index: 2;
+  text-align: center;
+  margin: 0 auto;
   
   color: white;
 }
