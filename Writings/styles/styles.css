@@ -8,9 +8,6 @@ body{
 }
 
 img{
-  display: flex;
-  justify-content: center;
-  
   position: fixed;
   z-index: 1;
   top: 0px;
@@ -18,6 +15,9 @@ img{
 }
 
 h1{
+  display: flex;
+  justify-content: center;
+  
   position: fixed;
   z-index: 2;
   text-align: center;
