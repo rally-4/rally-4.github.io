@@ -19,6 +19,11 @@ div{
   color: white;
 }
 
+img{
+  top: 0px;
+  width: 100%;
+}
+
 a{
   color: rgb(0, 102, 204);
 }
