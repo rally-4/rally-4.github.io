@@ -10,6 +10,15 @@ body{
 img{
   top: 0px;
   width: 100vw;
+
+  position: fixed;
+  z-index: 1;
+}
+
+
+h1{
+  position: fixed;
+  z-index: 2;
 }
 
 div{
