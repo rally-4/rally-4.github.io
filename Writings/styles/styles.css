@@ -21,12 +21,18 @@ h1{
   position: fixed;
   z-index: 2;
   font-size: 64px;
-  left: 32px;
+  left: 48px;
   top: 128px;
   
   color: white;
 }
 
+table, tr{
+  position: fixed;
+  padding: 0px;
+  border: 0px;
+  top: 256px;
+}
 a{
   color: rgb(0, 102, 204);
 }
