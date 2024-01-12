@@ -10,8 +10,7 @@ body{
 img{
   top: 0px;
   width: 100vw;
-
-  position: fixed;
+  
   z-index: 1;
 }
 
