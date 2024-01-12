@@ -10,13 +10,15 @@ body{
 img{
   position: fixed;
   z-index: 1;
+  width: 100%;
   top: 0px;
-  width: 100vw;
 }
 
 
 span{
-  position: fixed;
+  display: flex;
+  text-align: center;
+  position: relative;
   z-index: 2;
   
   color: white;
@@ -28,6 +30,7 @@ div{
   position: fixed;
   width: 100%;
   top: 0px;
+  left: 0px;
   
   color: white;
 }
