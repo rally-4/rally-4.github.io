@@ -14,16 +14,6 @@ img{
   top: 0px;
 }
 
-
-span{
-  display: flex;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  
-  color: white;
-}
-
 div{
   display: flex;
   align-items: center;
@@ -31,6 +21,14 @@ div{
   width: 100%;
   top: 0px;
   left: 0px;
+  
+  color: white;
+}
+
+h1{
+  display: flex;
+  text-align: center;
+  z-index: 2;
   
   color: white;
 }
