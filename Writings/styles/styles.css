@@ -15,11 +15,19 @@ img{
 }
 
 
-h1{
+span{
   position: fixed;
   z-index: 2;
-  top: 64px;
-  left: 32px;
+  
+  color: white;
+}
+
+div{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0px;
   
   color: white;
 }
