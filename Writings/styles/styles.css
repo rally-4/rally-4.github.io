@@ -40,5 +40,6 @@ a{
   color: rgb(0, 102, 204);
 }
 p{
+  display: inline;
   color: rgb(128, 128, 128);
 }
