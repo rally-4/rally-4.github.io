@@ -14,7 +14,6 @@ img{
   height: 50%;
   top: 0px;
 }
-
 h1{
   display: flex;
   text-align: center;
@@ -27,16 +26,13 @@ h1{
   color: white;
 }
 
-table{
+div{
   position: fixed;
   z-index: 3;
   padding: 0px;
   border: 0px;
-  left: 50vw;
+  left: 25vw;
   top: 256px;
-}
-tr{
-  border: 0px;
 }
 a{
   color: rgb(0, 102, 204);
