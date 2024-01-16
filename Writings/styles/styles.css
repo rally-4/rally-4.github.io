@@ -20,7 +20,7 @@ h1{
   position: fixed;
   z-index: 2;
   font-size: 64px;
-  left: 64px;
+  left: 20vw;
   top: 128px;
   
   color: white;
@@ -37,9 +37,11 @@ div{
   font-size: 16px;
 }
 a{
+  font-size: inherit;
   color: rgb(0, 102, 204);
 }
 p{
   display: inline;
+  font-size: inherit;
   color: rgb(128, 128, 128);
 }
