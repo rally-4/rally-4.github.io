@@ -20,7 +20,7 @@ h1{
   position: fixed;
   z-index: 2;
   font-size: 64px;
-  left: 20vw;
+  left: 18vw;
   top: 160px;
   
   font-weight: normal;
@@ -32,10 +32,10 @@ div{
   z-index: 3;
   padding: 0px;
   border: 0px;
-  left: 25vw;
+  left: 20vw;
   top: 384px;
 
-  font-size: 16px;
+  font-size: 32px;
 }
 a{
   font-size: inherit;
