@@ -21,8 +21,9 @@ h1{
   z-index: 2;
   font-size: 64px;
   left: 20vw;
-  top: 128px;
+  top: 160px;
   
+  font-weight: normal;
   color: white;
 }
 
