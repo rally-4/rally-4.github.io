@@ -38,13 +38,20 @@ div{
 
   font-size: 22px;
 }
+
 a{
   font-size: inherit;
   text-decoration: none;
   color: rgb(0, 102, 204);
 }
-p{
+
+.date{
   display: inline;
   font-size: 80%;
   color: rgb(128, 128, 128);
+}
+
+p{
+  font-size: 18px;
+  color: black;
 }
