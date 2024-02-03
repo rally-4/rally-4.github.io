@@ -34,7 +34,7 @@ div{
   padding: 0px;
   border: 0px;
   left: 20vw;
-  right: 10vw;
+  right: 20vw;
   top: 384px;
 
   font-size: 22px;
@@ -58,6 +58,6 @@ p{
 }
 
 span{
-  font-size: 11px;
+  font-size: 16px;
   color: rgb(128, 128, 128);
 }
