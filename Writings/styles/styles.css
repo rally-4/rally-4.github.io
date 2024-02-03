@@ -56,3 +56,8 @@ p{
   font-size: 18px;
   color: black;
 }
+
+span{
+  font-size: 11px;
+  color: rgb(128, 128, 128);
+}
