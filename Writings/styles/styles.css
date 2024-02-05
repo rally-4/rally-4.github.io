@@ -52,7 +52,7 @@ a{
 }
 
 .blackText{
-  color: black;
+  color: black !important;
 }
 
 p{
