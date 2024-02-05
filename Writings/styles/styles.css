@@ -52,6 +52,10 @@ a{
   color: rgb(128, 128, 128);
 }
 
+.blackText{
+  color: black;
+}
+
 p{
   font-size: 18px;
   color: black;
