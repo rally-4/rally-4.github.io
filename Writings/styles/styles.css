@@ -73,3 +73,8 @@ span + p::first-line{
   font-variant: small-caps;
   text-transform: lowercase;
 }
+
+code{
+  font-family: monospace;
+  font-size: 18px;
+}
