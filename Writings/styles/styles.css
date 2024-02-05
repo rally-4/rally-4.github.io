@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
 body{
   margin: 0px;
   padding: 0px;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 
   background-color: white;
 }
@@ -64,4 +67,9 @@ p{
 span{
   font-size: 16px;
   color: rgb(128, 128, 128);
+}
+
+span + p::first-line{
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
