@@ -4,7 +4,7 @@ body{
   margin: 0px;
   padding: 0px;
   width: 100%;
-  height: auto;
+  height: fit-content;
   overflow: scroll;
 
   background-color: white;
@@ -42,7 +42,6 @@ div{
   
   overflow-y: scroll;
   font-size: 22px;
-  background-color: red;
 }
 
 a{
