@@ -39,8 +39,10 @@ div{
   height: fit-content;
   left: 20vw; right: 20vw;
   top: 384px;
-
+  
+  overflow-y: scroll;
   font-size: 22px;
+  background-color: red;
 }
 
 a{
