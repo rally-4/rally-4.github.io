@@ -281,7 +281,7 @@ window.onload=()=>{
                 if(CPS > MaxPS){CPS = MaxPS}
                 display();
                 
-                if(COH <= 0 && c){
+                if(COH <= 0 || CPH <= 0 && c){
                     for(i=0; i < ALL.length; i++){
                         ALL[i].style.animation = 'none';
                         ALL[i].style.transition = 'none';
