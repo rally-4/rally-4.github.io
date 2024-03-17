@@ -1,0 +1,361 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    
+    color: white;
+    font-family: monospace;
+    background-color: black;
+}
+#BlackScreen{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    z-index: 9;
+    
+    background-color: black;
+}
+#Enemy{
+    position: fixed;
+    left: -15%;
+    top: 5%;
+    font-size: 48px;
+    color: yellow;
+    
+    animation: 0.2s ease forwards slide;
+}
+@keyframes slide{
+    to{
+        transform: translateX(40%);
+    }
+}
+#BlackScreen p{
+    position: fixed;
+    top: 35%;
+    font-size: 64px;
+    
+    animation: 0.75s linear infinite fade;
+}
+@keyframes fade{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+#EnemyName{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 15%;
+    left: 0px;
+    top: 0px;
+    
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    z-index: 2;
+    
+    border-bottom: 4px solid rgb(45, 45, 45);
+    box-sizing: border-box;
+    font-size: 64px;
+    background-color: rgb(30, 30, 30);
+}
+#EnemyInfo{
+    position: fixed;
+    width: 100%;
+    height: 28%;
+    left: 0px;
+    top: 15%;
+    
+    z-index: 1;
+    
+    border-bottom: 4px solid rgb(60, 60, 60);
+    background-color: rgb(30, 30, 30);
+}
+#EnemyAttack{
+    position: fixed;
+    display: flex;
+    width: 80%;
+    height: 6%;
+    left: 10%;
+    top: 16%;
+    
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    z-index: 3;
+    
+    border: 4px solid black;
+    font-size: 32px;
+    background-color: rgb(45, 45, 45);
+}
+#AttackBar{
+    position: fixed;
+    display: flex;
+    width: 0%;
+    height: 6%;
+    left: 50%; right: 50%;
+    top: calc(16% + 4px);
+    transform: translateX(-50%);
+    
+    justify-content: center;
+    text-align: center;
+    z-index: -1;
+    
+    background-color: rgb(96, 53, 185);
+}
+.bar{
+    position: fixed;
+    display: flex;
+    width: 80%;
+    height: 8%;
+    
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+    
+    color: black;
+    font-size: 28px;
+    background-color: white;
+}
+.bar p:first-child{
+    position: fixed;
+    width: 50%;
+    left: 11%;
+    text-align: left;
+}
+.bar p:nth-child(2){
+    position: fixed;
+    width: 50%;
+    right: 11%;
+    text-align: right;
+}
+#OH{
+    top: 25%;
+    left: 10%;
+    
+    border: 4px solid black;
+}
+#OS{
+    top: 33%;
+    left: 10%;
+    
+    border: 4px solid black;
+}
+
+.box{
+    position: fixed;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    
+    border: 4px solid rgb(45, 45, 45);
+    background-color: rgb(180, 180, 180);
+}
+#PlayerStats{
+    width: 84%;
+    height: 20%;
+    top: 45%;
+    left: 8%;
+}
+#PH{
+    top: 47%;
+    left: 10%;
+    
+    border: 4px solid rgb(45, 45, 45);
+}
+#PS{
+    top: 55%;
+    left: 10%;
+    
+    border: 4px solid rgb(45, 45, 45);
+}
+#Attacks{
+    width: 84%;
+    height: 32%;
+    top: 65%;
+    left: 8%;
+}
+.whiteBox{
+    position: fixed;
+    display: flex;
+    width: 14%;
+    height: 20%;
+    
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+    
+    color: black;
+    font-size: 48px;
+    border: 4px solid rgb(45, 45, 45);
+    background-color: white;
+}
+#S1{
+    left: 10%;
+    top: 67%;
+}
+#S2{
+    align-self: center;
+    top: 67%;
+}
+#S3{
+    right: 10%;
+    top: 67%;
+}
+#S4{
+    left: 26.5%;
+    top: 75%;
+}
+#S5{
+    right: 26.5%;
+    top: 75%;
+}
+
+#OH p{z-index: 5;}
+#OS p{z-index: 5;}
+#PH p{z-index: 5;}
+#PS p{z-index: 5;}
+
+.invert{
+    position: fixed;
+    width: 0%; height: 8%;
+    z-index: 4;
+    
+    opacity: .5;
+    mix-blend-mode: difference;
+    background-color: white;
+}
+#OHS{
+    right: calc(10% - 4px); top: calc(25% + 4px);
+}
+#OSS{
+    right: calc(10% - 4px); top: calc(33% + 4px);
+}
+#PHS{
+    right: calc(10% - 4px); top: calc(47% + 4px);
+}
+#PSS{
+    right: calc(10% - 4px); top: calc(55% + 4px);
+}
+
+.chargeBox{
+    position: fixed;
+    display: flex;
+    width: calc(14% + 8px);
+    height: calc(20% + 8px);
+}
+#S1C{
+    left: 10%; top: 67%;
+    z-index: 5;
+    
+    opacity: 0;
+    border: none;
+    background-color: rgb(105, 120, 150);
+    
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-play-state: paused;
+}
+#S2C{
+    align-self: center; top: 67%;
+    z-index: 5;
+    
+    opacity: 0;
+    border: none;
+    background-color: rgb(105, 120, 150);
+    
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-play-state: paused;
+}
+#S3C{
+    right: 10%; top: 67%;
+    z-index: 5;
+}
+#S4C{
+    left: 26.5%; top: 75%;
+    z-index: 5;
+}
+#S5C{
+    right: 26.5%; top: 75%;
+    z-index: 5;
+}
+@keyframes rotate{
+    0%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%, 50% 0%);
+        opacity: 0;
+    }
+    0.1%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%, 50% 0%);
+        opacity: .5;
+    }
+    12.5%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%, 100% 0%);
+        opacity: .45;
+    }
+    37.5%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 100%, 100% 100%);
+        opacity: .35;
+    }
+    62.5%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 0% 100%, 0% 100%, 0% 100%);
+        opacity: .25;
+    }
+    87.5%{
+        clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+        opacity: .15;
+    }
+    100%{
+        clip-path: polygon(50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+        opacity: .1;
+    }
+}
+
+.locked{
+    position: fixed;
+    display: flex;
+    width: calc(14% + 8px);
+    height: calc(20% + 8px);
+    z-index: 5;
+    
+    opacity: .5;
+    background-color: rgb(0, 0, 0);
+}
+
+#inv{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    mix-blend-mode: difference;
+    background-color: white;
+}
+#dar{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    opacity: 0;
+    mix-blend-mode: darken;
+    background-color: black;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta lang="en">
+        <meta charset="UTF-8">
+        <meta nane="author" content="rally4">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+        <title>A&M Fight</title>
+        <link rel="stylesheet" type="text/css" href="A&M.css">
+        <script src="Fight.js"></script>
+    </head>
+    <body id="body">
+        <div id="BlackScreen">
+            <span id="Enemy">Incoming: Basic Slime!</span>
+            <p id="Countdown">3...</p>
+        </div>
+        
+        <div id="EnemyName">Basic Slime</div>
+        <div id="EnemyInfo">
+            <div id="EnemyAttack"><div id="AttackBar"></div></div>
+            <div class="bar" id="OH">
+                <p>Opponent Health</p>
+                <p id="OHT">400 / 400</p>
+                <div class="invert" id="OHS"></div>
+            </div>
+            <div class="bar" id="OS">
+                <p>Opponent Shield</p>
+                <p id="OST">180 / 180</p>
+                <div class="invert" id="OSS"></div>
+            </div>
+        </div>
+        
+        <div class="box" id="PlayerStats">
+            <div class="bar" id="PH">
+                <p>Player Health</p>
+                <p id="PHT">1000 / 1000</p>
+                <div class="invert" id="PHS" style="opacity: .5 !important;"></div>
+            </div>
+            <div class="bar" id="PS">
+                <p>Player Shield</p>
+                <p id="PST">100 / 100</p>
+                <div class="invert" id="PSS" style="opacity: .5 !important;"></div>
+            </div>
+        </div>
+        
+        <div class="box" id="Attacks">
+            <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div></div> <!-- L2 is BLAST -->
+            <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div></div>
+            <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
+            
+            <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
+            <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div></div>
+        </div>
+        
+        <div id="inv"></div>
+        <div id="dar"></div>
+    </body>
+</html>
