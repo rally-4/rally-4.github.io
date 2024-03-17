@@ -144,10 +144,14 @@ window.onload=()=>{
     let PenetratingDamage = function(d, pA){
         if(pA){
             COH -= d; R(pA);
-            OSD = ODowntime;
+            if(COS <= 0){
+                OSD = ODowntime;
+            }
         }else{
             CPH -= d; R(pA);
-            PSD = PDowntime;
+            if(CPS <= 0){
+                PSD = PDowntime;
+            }
         }
     }
     let ShieldDamage = function(d, pA){
@@ -264,7 +268,6 @@ window.onload=()=>{
                 // Opponent's Shield
                 if(COS <= 0){
                     COS = 0;if(OSD == 0){OSD = ODowntime}
-                    
                 }if(OSD <= 0){
                     COS += OSR;OSD = 0;
                 }else{OSD -= 0.01}
