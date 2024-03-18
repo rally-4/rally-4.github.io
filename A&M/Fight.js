@@ -7,8 +7,8 @@ window.onload=()=>{
     let CD = document.getElementById('Countdown');
     setTimeout(()=>{CD.textContent = '2...';}, 750);
     setTimeout(()=>{CD.textContent = '1...';}, 1500);
-    setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none';}, 2250);
-    setTimeout(()=>{BS.style.display = 'none';BEGIN();}, 3000);
+    setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'}, 2250);
+    setTimeout(()=>{BS.style.display = 'none';BEGIN()}, 3000);
     
     const ALL = document.querySelectorAll('*');
     
