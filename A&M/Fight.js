@@ -5,8 +5,8 @@ window.onload=()=>{
     let dar = document.getElementById('dar');
     let BS = document.getElementById('BlackScreen');
     let CD = document.getElementById('Countdown');
-    setTimeout(()=>{CD.textContent = '2...';}, 750);
-    setTimeout(()=>{CD.textContent = '1...';}, 1500);
+    setTimeout(()=>{CD.textContent = '2...'}, 750);
+    setTimeout(()=>{CD.textContent = '1...'}, 1500);
     setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'}, 2250);
     setTimeout(()=>{BS.style.display = 'none';BEGIN()}, 3000);
     
@@ -205,22 +205,18 @@ window.onload=()=>{
         let S2C = document.getElementById('S2C');
         
         // Smack
-        S1.addEventListener('click', ()=>{
-            // animate cooldown
+        S1.addEventListener('pointerdown', ()=>{
             if(this.S1A){S1A = this.S1A}
             if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
             S1A[0].play(); S1.style.pointerEvents = 'none';
-            // damage opponent
             Damage(60, true);
         }); S1C.addEventListener('animationend', ()=>{S1.style.pointerEvents = 'auto'});
         
         // Charge
-        S2.addEventListener('click', ()=>{
-            // animate cooldown
+        S2.addEventListener('pointerdown', ()=>{
             if(this.S2A){S2A = this.S2A}
             if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
             S2A[0].play(); S2.style.pointerEvents = 'none';
-            // damage opponent
             ShieldDamage(80, true);
             Damage(40, true);
         }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
