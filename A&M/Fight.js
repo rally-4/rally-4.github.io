@@ -1,15 +1,13 @@
-/* document.addEventListener('DOMContentLoaded', ()=>{ */
 window.onload=()=>{
     let body = document.getElementById('body');
     let inv = document.getElementById('inv');
     let dar = document.getElementById('dar');
     let BS = document.getElementById('BlackScreen');
     let CD = document.getElementById('Countdown');
-    setTimeout(()=>{CD.textContent = '2...'}, 750);
-    setTimeout(()=>{CD.textContent = '1...'}, 1500);
-    setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'}, 2250);
-    setTimeout(()=>{BS.style.display = 'none';BEGIN()}, 3000);
-    
+    setTimeout(()=>{CD.textContent = '2...'},750);
+    setTimeout(()=>{CD.textContent = '1...'},1500);
+    setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'},2250);
+    setTimeout(()=>{BS.style.display = 'none';BEGIN()},3000);
     const ALL = document.querySelectorAll('*');
     
     let OH = document.getElementById('OH'); // Opponent's Health Bar
@@ -44,9 +42,9 @@ window.onload=()=>{
             this.shieldheal = shieldheal;
         }
     }
-    let SLIDE = new EnemyAttack('SLIDE', 40, 3);
-    let ABSORB = new EnemyAttack('ABSORB', 75, 4, 0, 0, 0, 100);
-    let ENGULF = new EnemyAttack('ENGULF', 100, 5, 75, 0, 0, 50);
+    let SLIDE = new EnemyAttack('SLIDE', 40, 2);
+    let ABSORB = new EnemyAttack('ABSORB', 75, 4, 25, 0, 0, 50);
+    let ENGULF = new EnemyAttack('ENGULF', 100, 4, 50, 0, 0, 25);
     let OpponentAttacks = [SLIDE, ABSORB, ENGULF];
     
     // Health or Shield bar color change
