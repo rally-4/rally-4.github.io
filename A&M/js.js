@@ -105,10 +105,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let C1C = document.getElementById('C1C');
     
     // Wins -> Number of battles won | BossWins -> Wins required for bossfight.
-    var A1Wins = 0; const A1BossWins = 5;
+    var A1Wins = 0; const A1BossWins = 4;
     
     // E -> Enemy, O -> Opponent, U -> User, P -> Player, H -> Health, S -> Shield
-    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi){
+    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area){
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
         let body = document.getElementById('body'); body.style.display = 'flex';
@@ -376,6 +376,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     if(COH <= 0){
                         obj.res.materials += mi;
                         C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+                        
+                        if(area == 'A1'){A1Wins++}
+                        if(area == 'A1B'){A1Wins = 0}
                     }
                     if(COH <= 0 || CPH <= 0 && c){
                         for(i=0; i < ALL.length; i++){
@@ -409,7 +412,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     let E1 = document.getElementById('E1');
     E1.addEventListener('click', ()=>{
-        if(A1Wins < A1BossWins){
+        if(A1Wins <= A1BossWins){
             if(Math.random() < .5){
                 LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1');
             }else{
