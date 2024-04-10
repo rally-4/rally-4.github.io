@@ -1,12 +1,5 @@
 window.addEventListener('DOMContentLoaded', ()=>{
-    let ip1 = '78.155.43.8';
-    const socket = io('http://' + ip1 + ':3000');
-    var obj = {name: '', res: {materials: 0}}
-    try{
-        obj = JSON.parse(sessionStorage.getItem('user'));
-    }catch(err){
-        console.log(err);
-    }
+    var obj = {name: '', uid: -1, res: {materials: 0}}
     let GKT = document.getElementById('GKT');
     if(obj.name != ''){
         GKT.innerHTML = obj.name + ', the compelled one...';
