@@ -293,22 +293,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
             // Smack
             S1.addEventListener('pointerdown', ()=>{
                 if(this.S1A){S1A = this.S1A}
-                if(S1A != '[object CSSAnimation]'){
-                    var S1A = S1C.getAnimations(); this.S1A = S1A;
-                    S1.style.pointerEvents = 'none';
-                }
-                S1A[0].play();
+                if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
+                S1A[0].play(); S1.style.pointerEvents = 'none';
                 Damage(60, true);
             }); S1C.addEventListener('animationend', ()=>{S1.style.pointerEvents = 'auto'});
             
             // Charge
             S2.addEventListener('pointerdown', ()=>{
                 if(this.S2A){S2A = this.S2A}
-                if(S2A != '[object CSSAnimation]'){
-                    var S2A = S2C.getAnimations(); this.S2A = S2A;
-                    S2.style.pointerEvents = 'none';
-                }
-                S2A[0].play();
+                if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
+                S2A[0].play(); S2.style.pointerEvents = 'none';
                 ShieldDamage(80, true);
                 Damage(40, true);
             }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
