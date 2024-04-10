@@ -1,57 +1,102 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta lang="en">
-        <meta charset="UTF-8">
-        <meta nane="author" content="rally4">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
-        <title>A&M Fight</title>
-        <link rel="stylesheet" type="text/css" href="A&M.css">
-        <script src="Fight.js"></script>
+        <meta name="author" content="rally4">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <title>???</title>
+        <link rel="icon" href="Anoxic.png">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="functions.js"></script>
+        <script src="js.js"></script>
     </head>
-    <body id="body">
-        <div id="BlackScreen">
-            <span id="Enemy">Incoming: Basic Slime!</span>
-            <p id="Countdown">3...</p>
+    <body>
+        <div id="Tabs">
+            <div class="tab" id="T1">CHAMBER</div>
+            <div class="tab" id="T2">CRAFT</div>
+            <div class="tab" id="T3">TELEPORT</div>
+            <div class="tab" id="T4">???</div>
         </div>
         
-        <div id="EnemyName">Basic Slime</div>
-        <div id="EnemyInfo">
-            <div id="EnemyAttack"><div id="AttackBar"></div></div>
-            <div class="bar" id="OH">
-                <p>Opponent Health</p>
-                <p id="OHT">400 / 400</p>
-                <div class="invert" id="OHS"></div>
+        <div class="tabscreen" id="TS1">
+            <h1>The Gatekeeper</h1>
+            <p id="GKT">Lore Ipsum dolor sit amet.</p>
+            <div id="InputDiv">
+                <input type="text" autocapitalize="off" autocomplete="off" maxlength="20" oninput="Limit(this, 20)" enterkeyhint="done" id="input">
             </div>
-            <div class="bar" id="OS">
-                <p>Opponent Shield</p>
-                <p id="OST">180 / 180</p>
-                <div class="invert" id="OSS"></div>
+            <div id="ImgDiv">
+                
             </div>
         </div>
         
-        <div class="box" id="PlayerStats">
-            <div class="bar" id="PH">
-                <p>Player Health</p>
-                <p id="PHT">1000 / 1000</p>
-                <div class="invert" id="PHS" style="opacity: .5;"></div>
-            </div>
-            <div class="bar" id="PS">
-                <p>Player Shield</p>
-                <p id="PST">100 / 100</p>
-                <div class="invert" id="PSS" style="opacity: .5;"></div>
+        <div class="tabscreen" id="TS2">
+            <div class="crafts" id="C1">
+                <div style="background-color: rgb(127, 0, 255)"></div>
+                <p>Materials</p>
+                <p id="C1C">Quantity: 0</p>
             </div>
         </div>
         
-        <div class="box" id="Attacks">
-            <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div></div>
-            <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div></div>
-            <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
-            <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
-            <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div></div>
+        <div class="tabscreen "id="TS3">
+            <div id="Top">
+                <p>AREAS</p>
+            </div>
+            <div class="row" id="A1">
+                <div class="col" id="c1"></div>
+                <p class="areaname">SUBURBAN</p>
+                <p class="adetails" id="AD1">Difficulty: 1/8<br>Drops: materials, slime, slime key</p>
+                <div class="details" id="D1">Details</div>
+                <div class="enter" id="E1">Enter</div>
+            </div>
         </div>
         
-        <div id="inv"></div>
-        <div id="dar"></div>
+        <div class="tabscreen" id="TS4">
+            
+        </div>
+        
+        
+        <div id="body">
+            <div id="BlackScreen">
+                <span id="Enemy"></span>
+                <p id="Countdown">3...</p>
+            </div>
+            <div id="EnemyName"></div>
+            <div id="EnemyInfo">
+                <div id="EnemyAttack"><div id="AttackBar"></div></div>
+                <div class="bar" id="OH">
+                    <p>Opponent Health</p>
+                    <p id="OHT">400 / 400</p>
+                    <div class="invert" id="OHS"></div>
+                </div>
+                <div class="bar" id="OS">
+                    <p>Opponent Shield</p>
+                    <p id="OST">180 / 180</p>
+                    <div class="invert" id="OSS"></div>
+                </div>
+            </div>
+            
+            <div class="box" id="PlayerStats">
+                <div class="bar" id="PH">
+                    <p>Player Health</p>
+                    <p id="PHT">1000 / 1000</p>
+                    <div class="invert" id="PHS" style="opacity: .5;"></div>
+                </div>
+                <div class="bar" id="PS">
+                    <p>Player Shield</p>
+                    <p id="PST">100 / 100</p>
+                    <div class="invert" id="PSS" style="opacity: .5;"></div>
+                </div>
+            </div>
+            <div class="box" id="Attacks">
+                <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div></div>
+                <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div></div>
+                <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
+                <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
+                <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div></div>
+            </div>
+            <div id="inv"></div>
+            <div id="dar"></div>
+        </div>
     </body>
 </html>

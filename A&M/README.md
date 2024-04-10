@@ -1,2 +1,2 @@
-**This is a recreation of Armory & Machine's fight system with HTML and JS to be used in Anoxic.**  
-**WARNING! Dark mode/theme is not supported.**  
+**This is an offline version of Anoxic made for testing purposes.**  
+**Dark mode is not supported.**  
