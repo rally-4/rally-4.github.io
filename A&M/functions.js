@@ -58,3 +58,13 @@ let setSchedule=(func, i, n, d=0)=>{
         }
     }, d);
 }
+
+// OTHER
+let setRotateAnimation(e){
+    e.style.animationName = 'rotate';
+    e.style.animationDuration = '2s';
+    e.style.animationIterationCount = '1';
+    e.style.animationTimingFunction = 'linear';
+    e.style.animationFillMode = 'none';
+    e.style.animationPlayState = 'paused';
+}
