@@ -50,7 +50,7 @@ Bool.nonimply = function(p, q){
 }
 
 // TIMER FUNCTIONS
-// it's possible to add d into the j * i to achieve the same delay effect, but it is less efficient
+// it's also possible to add d into j*i to achieve the same delay effect
 let setSchedule=(func, i, n, d=0)=>{
     setTimeout(()=>{
         for(let j=0; j < n; j++){
