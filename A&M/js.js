@@ -110,6 +110,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // E -> Enemy, O -> Opponent, U -> User, P -> Player, H -> Health, S -> Shield
     let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area){
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!';
+        Enemy.style.animation = '0.2s ease forwards slide';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
         let body = document.getElementById('body'); body.style.display = 'flex';
         let inv = document.getElementById('inv');
@@ -382,8 +383,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     }
                     if(COH <= 0 || CPH <= 0 && c){
                         for(i=0; i < ALL.length; i++){
-                            // ALL[i].style.animation = 'none';
-                            ALL[i].style.transition = 'none';
+                            ALL[i].style.animation = 'none';
+                            // ALL[i].style.transition = 'none';
                         }
                         S1.style.pointerEvents = 'none';
                         S2.style.pointerEvents = 'none';
