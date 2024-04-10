@@ -390,7 +390,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                             dar.style.opacity = op + '';
                         }, 10, 50, 500);
                         
-                        setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none';}, 1000);
+                        setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'}, 1000);
                         c = 0;
                     }
                 }
