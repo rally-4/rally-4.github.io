@@ -60,7 +60,7 @@ let setSchedule=(func, i, n, d=0)=>{
 }
 
 // OTHER
-let setRotateAnimation(e){
+let setRotateAnimation = function(e){
     e.style.animationName = 'rotate';
     e.style.animationDuration = '2s';
     e.style.animationIterationCount = '1';
