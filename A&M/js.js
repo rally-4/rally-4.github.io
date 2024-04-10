@@ -295,10 +295,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
             // Player attacks
             let S1 = document.getElementById('S1'); S1.style.pointerEvents = 'auto';
             let S1C = document.getElementById('S1C');
-            // setRotateAnimation(S1C);
+            setRotateAnimation(S1C);
             let S2 = document.getElementById('S2'); S2.style.pointerEvents = 'auto';
             let S2C = document.getElementById('S2C');
-            // setRotateAnimation(S2C);
+            setRotateAnimation(S2C);
             
             // Smack
             S1.addEventListener('pointerdown', ()=>{
