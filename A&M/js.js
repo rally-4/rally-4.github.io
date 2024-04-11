@@ -7,6 +7,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }catch(err){
         console.log(err);
     }
+    let obj.res.add = function(n, a){
+        for(i=0; i<n.length; i++){
+            if(obj.res[n[i]] == undefined){
+                obj.res[n[i]] = 0;
+                // add new resource bar in HTML
+            }
+            obj.res[n[i]] += a[i];
+        }
+    }
+    
     let GKT = document.getElementById('GKT');
     if(obj.name != ''){
         GKT.innerHTML = obj.name + ', the compelled one...';
