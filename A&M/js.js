@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     var A1Wins = 0; const A1BossWins = 4;
     
     // E -> Enemy, O -> Opponent, U -> User, P -> Player, H -> Health, S -> Shield
-    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area){
+    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resadd=0){
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!';
         Enemy.style.animation = '0.2s ease forwards slide';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
@@ -380,8 +380,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
                         obj.res.materials += mi;
                         C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                         
-                        if(area == 'A1'){A1Wins++}
-                        if(area == 'A1B'){A1Wins = 0}
+                        if(area == 'A1'){
+                            A1Wins++;
+                            // obj.res.add('slime', Math.round(2*Math.random())+1);
+                        }
+                        if(area == 'A1B'){
+                            A1Wins = 0;
+                            // obj.res.add('slime', Math.round(3*Math.random())+3);
+                        }
                     }
                     if(COH <= 0 || CPH <= 0 && c){
                         for(i=0; i < ALL.length; i++){
