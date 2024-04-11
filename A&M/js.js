@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }catch(err){
         console.log(err);
     }
-    let obj.res.add = function(n, a){
+    obj.res.add = function(n, a){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
