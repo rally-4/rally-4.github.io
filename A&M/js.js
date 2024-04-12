@@ -399,8 +399,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
                             ALL[i].style.animation = 'none';
                             // ALL[i].style.transition = 'none';
                         }
-                        S1.style.pointerEvents = 'none';
-                        S2.style.pointerEvents = 'none';
+                        S1.style.pointerEvents = 'none'; S1A=''; this.S1A='';
+                        S2.style.pointerEvents = 'none'; S2A=''; this.S2A='';
                         var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
                         var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
                         inv.style.display = 'flex';
