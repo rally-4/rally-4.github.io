@@ -401,10 +401,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
                         }
                         S1.style.pointerEvents = 'none';
                         S2.style.pointerEvents = 'none';
-                        S1C.style.animationDelay = '0s';
-                        S2C.style.animationDelay = '0s';
-                        var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
-                        var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
+                        // var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
+                        // var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
                         S1A=''; this.S1A='';
                         S2A=''; this.S2A='';
                         inv.style.display = 'flex';
