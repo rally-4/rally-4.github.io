@@ -34,11 +34,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 newDiv.style.backgroundColor = col[i];
                 newDiv.style.border = '2px solid ' + col[i];
                 
-                p1 = document.createElement('p');
+                var p1 = document.createElement('p');
                 newCraft.appendChild(p1);
                 p1.innerHTML = n[i];
                 
-                p2 = document.createElement('p');
+                var p2 = document.createElement('p');
                 newCraft.appendChild(p2);
                 p2.id = 'C' + id[i] + 'C';
                 p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
@@ -222,22 +222,22 @@ window.addEventListener('DOMContentLoaded', ()=>{
         // Constants and variables
         const width = 80;
         
-        var MaxOH = MaxEH; // Max Opponent Health
-        var COH = MaxOH; // Current Oponent Health
-        var MaxOS = MaxES; // Max Opponent Shield
-        var COS = MaxOS; // Current Oponent Shield
+        MaxOH = MaxEH; // Max Opponent Health
+        COH = MaxOH; // Current Oponent Health
+        MaxOS = MaxES; // Max Opponent Shield
+        COS = MaxOS; // Current Oponent Shield
        
-        var MaxPH = MaxUH; // Max Player Health
-        var CPH = MaxPH; // Current Player Heath
-        var MaxPS = MaxUS; // Max Player Shield
-        var CPS = MaxPS; // Current Player Shield
+        MaxPH = MaxUH; // Max Player Health
+        CPH = MaxPH; // Current Player Heath
+        MaxPS = MaxUS; // Max Player Shield
+        CPS = MaxPS; // Current Player Shield
         
-        const ODowntime = EDowntime; // Opponent's Shield Downtime
-        const PDowntime = UDowntime; // Player's Shield Downtime
-        var OSD = 0; // variable for the Opponent's Shield Downtime
-        var PSD = 0; // variable for the Player's Shield Downtime
-        let OSR = ESR; // Oppoent's Shield Regeneration
-        let PSR = USR; // Player's Shield Regeneration
+        ODowntime = EDowntime; // Opponent's Shield Downtime
+        PDowntime = UDowntime; // Player's Shield Downtime
+        OSD = 0; // variable for the Opponent's Shield Downtime
+        PSD = 0; // variable for the Player's Shield Downtime
+        OSR = ESR; // Oppoent's Shield Regeneration
+        PSR = USR; // Player's Shield Regeneration
         
         // Attack and heal functions
         let Damage = function(d, pA){
@@ -347,96 +347,93 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 Damage(40, true);
             }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
             
-            var c = 1;
             var t = 0;
             var CurrentAttack = false;
-            setInterval(()=>{
-                if(c){
-                    if(CurrentAttack != false){
-                        if(t <= CurrentAttack.casting){
-                            ABwidth += (0.01*80/CurrentAttack.casting);
-                            t += 0.01;
-                        }else{
-                            ABwidth = 0;
-                            if(CurrentAttack.damage != 0){
-                                Damage(CurrentAttack.damage, false);
-                            }
-                            if(CurrentAttack.penetratingdamage != 0){
-                                PenetratingDamage(CurrentAttack.penetratingdamage, false);
-                            }
-                            if(CurrentAttack.shielddamage != 0){
-                                ShieldDamage(CurrentAttack.shielddamage, false);
-                            }
-                            if(CurrentAttack.heal != 0){
-                                Heal(CurrentAttack.heal, true);
-                            }
-                            if(CurrentAttack.shieldheal != 0){
-                                ShieldHeal(CurrentAttack.shieldheal, true);
-                            }
-                            CurrentAttack = false;
-                        }
+            let intervalId = setInterval(()=>{
+                if(CurrentAttack != false){
+                    if(t <= CurrentAttack.casting){
+                        ABwidth += (0.01*80/CurrentAttack.casting);
+                        t += 0.01;
                     }else{
-                        var r = Math.random()*100;
-                        for(i=0; i < OpponentAttacks.length; i++){
-                            if(r <= OpponentAttacks[i].chance){
-                                CurrentAttack = OpponentAttacks[i];
-                                AB.textContent = CurrentAttack.name;
-                                t = 0;
-                                break;
-                            }
+                        ABwidth = 0;
+                        if(CurrentAttack.damage != 0){
+                            Damage(CurrentAttack.damage, false);
+                        }
+                        if(CurrentAttack.penetratingdamage != 0){
+                            PenetratingDamage(CurrentAttack.penetratingdamage, false);
+                        }
+                        if(CurrentAttack.shielddamage != 0){
+                            ShieldDamage(CurrentAttack.shielddamage, false);
+                        }
+                        if(CurrentAttack.heal != 0){
+                            Heal(CurrentAttack.heal, true);
+                        }
+                        if(CurrentAttack.shieldheal != 0){
+                            ShieldHeal(CurrentAttack.shieldheal, true);
+                        }
+                        CurrentAttack = false;
+                    }
+                }else{
+                    var r = Math.random()*100;
+                    for(i=0; i < OpponentAttacks.length; i++){
+                        if(r <= OpponentAttacks[i].chance){
+                            CurrentAttack = OpponentAttacks[i];
+                            AB.textContent = CurrentAttack.name;
+                            t = 0;
+                            break;
                         }
                     }
+                }
+                
+                // Opponent's Shield
+                if(COS <= 0){
+                    COS = 0;if(OSD == 0){OSD = ODowntime}
+                }if(OSD <= 0){
+                    COS += OSR;OSD = 0;
+                }else{OSD -= 0.01}
+                // Player's Shield
+                if(CPS <= 0){
+                    CPS = 0;if(PSD == 0){PSD = PDowntime}
+                }if(PSD <= 0){
+                    CPS += PSR;PSD = 0;
+                }else{PSD -= 0.01}
+                
+                if(COH > MaxOH){COH = MaxOH}if(COH < 0){COH = 0}
+                if(COS > MaxOS){COS = MaxOS}
+                if(CPH > MaxPH){CPH = MaxPH}if(CPH < 0){CPH = 0}
+                if(CPS > MaxPS){CPS = MaxPS}
+                display();
+                
+                if(COH <= 0){
+                    obj.res.materials += mi;
+                    obj.res.add(resnarr, resarr, idarr, colarr);
+                    C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                     
-                    // Opponent's Shield
-                    if(COS <= 0){
-                        COS = 0;if(OSD == 0){OSD = ODowntime}
-                    }if(OSD <= 0){
-                        COS += OSR;OSD = 0;
-                    }else{OSD -= 0.01}
-                    // Player's Shield
-                    if(CPS <= 0){
-                        CPS = 0;if(PSD == 0){PSD = PDowntime}
-                    }if(PSD <= 0){
-                        CPS += PSR;PSD = 0;
-                    }else{PSD -= 0.01}
-                    
-                    if(COH > MaxOH){COH = MaxOH}if(COH < 0){COH = 0}
-                    if(COS > MaxOS){COS = MaxOS}
-                    if(CPH > MaxPH){CPH = MaxPH}if(CPH < 0){CPH = 0}
-                    if(CPS > MaxPS){CPS = MaxPS}
-                    display();
-
-                    if(COH <= 0){
-                        obj.res.materials += mi;
-                        obj.res.add(resnarr, resarr, idarr, colarr);
-                        C1C.innerHTML = 'Quantity: ' + obj.res.materials;
-                        
-                        if(area == 'A1'){A1Wins++}
-                        if(area == 'A1B'){A1Wins = 0}
+                    if(area == 'A1'){A1Wins++}
+                    if(area == 'A1B'){A1Wins = 0}
+                }
+                if(COH <= 0 || CPH <= 0 && c){
+                    for(i=0; i < ALL.length; i++){
+                        ALL[i].style.animation = 'none';
+                        // ALL[i].style.transition = 'none';
                     }
-                    if(COH <= 0 || CPH <= 0 && c){
-                        for(i=0; i < ALL.length; i++){
-                            ALL[i].style.animation = 'none';
-                            // ALL[i].style.transition = 'none';
-                        }
-                        S1.style.pointerEvents = 'none';
-                        S2.style.pointerEvents = 'none';
-                        // var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
-                        // var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
-                        S1A=''; this.S1A='';
-                        S2A=''; this.S2A='';
-                        inv.style.display = 'flex';
-                        var op = 0;
-                        setTimeout(()=>{inv.style.display = 'none'}, 200);
-                        setTimeout(()=>{dar.style.display = 'flex'}, 500);
-                        setSchedule(()=>{
-                            op += 0.02;
-                            dar.style.opacity = op + '';
-                        }, 10, 50, 500);
-                        setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none';}, 1000);
-                        // setTimeout(()=>{window.close()}, 1000);
-                        c = 0;
-                    }
+                    S1.style.pointerEvents = 'none';
+                    S2.style.pointerEvents = 'none';
+                    // var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
+                    // var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
+                    S1A=''; this.S1A='';
+                    S2A=''; this.S2A='';
+                    inv.style.display = 'flex';
+                    var op = 0;
+                    setTimeout(()=>{inv.style.display = 'none'}, 200);
+                    setTimeout(()=>{dar.style.display = 'flex'}, 500);
+                    setSchedule(()=>{
+                        op += 0.02;
+                        dar.style.opacity = op + '';
+                    }, 10, 50, 500);
+                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'}, 1000);
+                    // setTimeout(()=>{window.close()}, 1000);
+                    clearInterval(intervalId);
                 }
             }, 10);
         }
