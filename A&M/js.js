@@ -18,35 +18,30 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const T4 = document.getElementById('T4');
     let TSArr = [TS1, TS2, TS3, TS4];
     let TArr = [T1, T2, T3, T4];
-    const newCraft = [];
-    const newDiv = [];
-    const p1 = [];
-    const p2 = [];
     obj.res.add = function(n, a, id, col){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
-                obj.res[n[i]] += a[i];
                 
-                newCraft[n[i]] = document.createElement('div');
-                TS2.appendChild(newCraft[n[i]]);
-                newCraft[n[i]].id = 'C' + id[i];
-                newCraft[n[i]].classList.add('crafts');
-                newCraft[n[i]].style.top = 'calc(16px + ' + (id[i]-1)*8 + '%)';
+                var newCraft = document.createElement('div');
+                TS2.appendChild(newCraft);
+                newCraft.id = 'C' + id[i];
+                newCraft.classList.add('crafts');
+                newCraft.style.top = 'calc(16px + ' + (id[i]-1)*8 + '%)';
                 
-                newDiv[n[i]] = document.createElement('div');
-                newCraft[n[i]].appendChild(newDiv[n[i]]);
-                newDiv[n[i]].style.backgroundColor = col[i];
-                newDiv[n[i]].style.border = '2px solid ' + col[i];
+                var newDiv = document.createElement('div');
+                newCraft.appendChild(newDiv);
+                newDiv.style.backgroundColor = col[i];
+                newDiv.style.border = '2px solid ' + col[i];
                 
-                p1[n[i]] = document.createElement('p');
-                newCraft[n[i]].appendChild(p1[n[i]]);
-                p1[n[i]].innerHTML = n[i];
+                p1 = document.createElement('p');
+                newCraft.appendChild(p1);
+                p1.innerHTML = n[i];
                 
-                p2[n[i]] = document.createElement('p');
-                newCraft[n[i]].appendChild(p2[n[i]]);
-                p2[n[i]].id = 'C' + id[i] + 'C';
-                p2[n[i]].innerHTML = 'Quantity: ' + obj.res[n[i]];
+                p2 = document.createElement('p');
+                newCraft.appendChild(p2);
+                p2.id = 'C' + id[i] + 'C';
+                p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
             }
             obj.res[n[i]] += a[i];
             document.getElementById('C' + id[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
