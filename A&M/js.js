@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 TS2.appendChild(newCraft[n[i]]);
                 newCraft[n[i]].id = 'C' + id[i];
                 newCraft[n[i]].classList.add('crafts');
-                newCraft[n[i]].style.top = 'calc(16px + 8%)';
+                newCraft[n[i]].style.top = 'calc(16px + ' + (id[i]-1)*8 + '%)';
                 
                 newDiv[n[i]] = document.createElement('div');
                 newCraft[n[i]].appendChild(newDiv[n[i]]);
