@@ -448,7 +448,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     let E1 = document.getElementById('E1');
     E1.addEventListener('click', ()=>{
-        if(A1Wins <= A1BossWins){
+        if(A1Wins < A1BossWins){
             if(Math.random() < .5){
                 LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+1], [2], ['rgb(0, 127, 255)']);
             }else{
