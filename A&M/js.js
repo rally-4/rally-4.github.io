@@ -7,7 +7,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }catch(err){
         console.log(err);
     }
+    
+    const TS1 = document.getElementById('TS1');
+    const T1 = document.getElementById('T1');
     const TS2 = document.getElementById('TS2');
+    const T2 = document.getElementById('T2');
+    const TS3 = document.getElementById('TS3');
+    const T3 = document.getElementById('T3');
+    const TS4 = document.getElementById('TS4');
+    const T4 = document.getElementById('T4');
+    let TSArr = [TS1, TS2, TS3, TS4];
+    let TArr = [T1, T2, T3, T4];
     obj.res.add = function(n, a, id){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
@@ -33,17 +43,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
         GKT.style.color = 'red';
         GKT.innerHTML = 'You should not be here...';
     }
-    
-    const TS1 = document.getElementById('TS1');
-    const T1 = document.getElementById('T1');
-    const TS2 = document.getElementById('TS2');
-    const T2 = document.getElementById('T2');
-    const TS3 = document.getElementById('TS3');
-    const T3 = document.getElementById('T3');
-    const TS4 = document.getElementById('TS4');
-    const T4 = document.getElementById('T4');
-    let TSArr = [TS1, TS2, TS3, TS4];
-    let TArr = [T1, T2, T3, T4];
     
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
