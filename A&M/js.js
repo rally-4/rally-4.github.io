@@ -7,11 +7,20 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }catch(err){
         console.log(err);
     }
-    obj.res.add = function(n, a){
+    const TS2 = document.getElementById('TS2');
+    obj.res.add = function(n, a, C){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
-                // add new resource bar in HTML
+                var newCraft = document.createElement('div');
+                TS2.appendChild(newCraft);
+                newCraft.id = 'C' + C[i];
+                newCraft.classList.add('crafts');
+                newCraft.style.top = 'calc(16px + 8%)';
+                
+                var newDiv = document.createElement('div');
+                newCraft.appendChild(newDiv);
+                newDiv.style.backgroundColor = 'rgb(0, 127, 255)';
             }
             obj.res[n[i]] += a[i];
         }
@@ -118,7 +127,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     var A1Wins = 0; const A1BossWins = 4;
     
     // E -> Enemy, O -> Opponent, U -> User, P -> Player, H -> Health, S -> Shield
-    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[]){
+    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[], idarr=[]){
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!';
         Enemy.style.animation = '0.2s ease forwards slide';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
@@ -388,7 +397,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
                     if(COH <= 0){
                         obj.res.materials += mi;
-                        obj.res.add(resnarr, resarr);
+                        obj.res.add(resnarr, resarr, idarr);
                         C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                         
                         if(area == 'A1'){A1Wins++}
@@ -425,12 +434,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
     E1.addEventListener('click', ()=>{
         if(A1Wins <= A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['slime'], [Math.round(2*Math.random())+1]);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['slime'], [Math.round(2*Math.random())+1], [2]);
             }else{
-                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 2, 'A1', ['slime'], [Math.round(2*Math.random())+1]);
+                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 2, 'A1', ['slime'], [Math.round(2*Math.random())+1], [2]);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['slime', 'slime key'], [Math.round(3*Math.random())+3, 1]);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['slime', 'slime key'], [Math.round(3*Math.random())+3, 1], [2, 3]);
         }
     });
 });
