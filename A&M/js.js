@@ -8,13 +8,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
         console.log(err);
     }
     const TS2 = document.getElementById('TS2');
-    obj.res.add = function(n, a, C){
+    obj.res.add = function(n, a, id){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
                 var newCraft = document.createElement('div');
                 TS2.appendChild(newCraft);
-                newCraft.id = 'C' + C[i];
+                newCraft.id = 'C' + id[i];
                 newCraft.classList.add('crafts');
                 newCraft.style.top = 'calc(16px + 8%)';
                 
