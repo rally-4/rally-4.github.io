@@ -61,17 +61,18 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let DI = 0;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
-        if(e.key == 'Enter' || e.keyCode == 13){
-            input.value = '';
-            GKT.style.color = 'red';
-            GKT.innerHTML = 'You should not be here...';
-        }
+    input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
-            if(DI >= 6){DI = 0}
+            if(DI > 6){DI = 0}
             GKT.innerHTML = DialogText[DI];
             if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
             DI++;
+        }
+        if(e.key == 'Enter' || e.keyCode == 13 && input.value != ''){
+            input.value = '';
+            GKT.style.color = 'red';
+            GKT.innerHTML = 'You should not be here...';
         }
     });
     
