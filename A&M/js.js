@@ -57,10 +57,21 @@ window.addEventListener('DOMContentLoaded', ()=>{
         GKT.innerHTML = 'You should not be here...';
     }
     
+    let DialogText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs mine."];
+    let DI = 0;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
         if(e.key == 'Enter' || e.keyCode == 13){
             input.value = '';
+            GKT.style.color = 'red';
+            GKT.innerHTML = 'You should not be here...';
+        }
+        if(input.value == ''){
+            GKT.style.color = 'white';
+            if(DI >= 6){DI = 0}
+            GKT.innerHTML = DialogText[DI];
+            if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
+            DI++;
         }
     });
     
