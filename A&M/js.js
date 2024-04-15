@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
             DI++;
         }
-        if(e.key == 'Enter' || e.keyCode == 13 && input.value != ''){
+        if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
             input.value = '';
             GKT.style.color = 'red';
             GKT.innerHTML = 'You should not be here...';
