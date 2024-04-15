@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', ()=>{
+    var o = true;
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
     var obj = {name: '', uid: -1, res: {materials: 0}}
@@ -331,21 +332,23 @@ window.addEventListener('DOMContentLoaded', ()=>{
             setRotateAnimation(S2C);
             
             // Smack
-            S1.addEventListener('pointerdown', ()=>{
-                if(this.S1A){S1A = this.S1A}
-                if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
-                S1A[0].play(); S1.style.pointerEvents = 'none';
-                Damage(60, true);
-            }); S1C.addEventListener('animationend', ()=>{S1.style.pointerEvents = 'auto'});
-            
-            // Charge
-            S2.addEventListener('pointerdown', ()=>{
-                if(this.S2A){S2A = this.S2A}
-                if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
-                S2A[0].play(); S2.style.pointerEvents = 'none';
-                ShieldDamage(80, true);
-                Damage(40, true);
-            }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
+            if(o){
+                S1.addEventListener('pointerdown', ()=>{
+                    if(this.S1A){S1A = this.S1A}
+                    if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
+                    S1A[0].play(); S1.style.pointerEvents = 'none';
+                    Damage(60, true);
+                }); S1C.addEventListener('animationend', ()=>{S1.style.pointerEvents = 'auto'});
+                
+                // Charge
+                S2.addEventListener('pointerdown', ()=>{
+                    if(this.S2A){S2A = this.S2A}
+                    if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
+                    S2A[0].play(); S2.style.pointerEvents = 'none';
+                    ShieldDamage(80, true);
+                    Damage(40, true);
+                }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
+            }
             
             var t = 0;
             var CurrentAttack = false;
@@ -431,7 +434,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                         op += 0.02;
                         dar.style.opacity = op + '';
                     }, 10, 50, 500);
-                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'}, 1000);
+                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false}, 1000);
                     // setTimeout(()=>{window.close()}, 1000);
                     clearInterval(intervalId);
                 }
@@ -442,9 +445,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     E1.addEventListener('click', ()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+1], [2], ['rgb(0, 127, 255)']);
             }else{
-                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 2, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
+                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+1], [2], ['rgb(0, 127, 255)']);
             }
         }else{
             LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], [2, 3], ['rgb(0, 127, 255)', 'rgb(0, 90, 210)']);
