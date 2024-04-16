@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 CurrentRow++;
             }
             obj.res[n[i]] += a[i];
-            document.getElementById('C' + id[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+            document.getElementById('C' + CurrentRow + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
     }
     
