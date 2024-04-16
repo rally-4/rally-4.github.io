@@ -19,7 +19,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const T4 = document.getElementById('T4');
     let TSArr = [TS1, TS2, TS3, TS4];
     let TArr = [T1, T2, T3, T4];
-    
     obj.res.add = function(n, a, id, col){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
@@ -58,20 +57,20 @@ window.addEventListener('DOMContentLoaded', ()=>{
         GKT.innerHTML = 'You should not be here...';
     }
     
-    let DialogText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs mine."];
+    let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs mine."];
     let DI = 0;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
             if(DI > 6){DI = 0}
-            GKT.innerHTML = DialogText[DI];
+            GKT.innerHTML = WhiteText[DI];
             if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
             DI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
             input.value = '';
-            GKT.style.color = 'red';
+            GKT.style.color = 'orange';
             GKT.innerHTML = 'You should not be here...';
         }
     });
