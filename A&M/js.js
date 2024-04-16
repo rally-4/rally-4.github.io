@@ -456,9 +456,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     E1.addEventListener('click', ()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+1], [2], ['rgb(0, 127, 255)']);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
             }else{
-                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+1], [2], ['rgb(0, 127, 255)']);
+                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
             }
         }else{
             LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], [2, 3], ['rgb(0, 127, 255)', 'rgb(0, 90, 210)']);
