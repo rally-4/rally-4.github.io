@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     if(obj.name != ''){
         GKT.innerHTML = obj.name + ', the compelled one...';
     }else{
-        GKT.style.color = 'red';
+        GKT.style.color = 'orange';
         GKT.innerHTML = 'You should not be here...';
     }
     
