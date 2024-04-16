@@ -57,21 +57,25 @@ window.addEventListener('DOMContentLoaded', ()=>{
         GKT.innerHTML = 'You should not be here...';
     }
     
-    let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs mine."];
-    let DI = 0;
+    let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?"];
+    let OrangeText = ["You should not be here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
+    let WTI = 0;
+    let OTI = 0;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
-            if(DI > 6){DI = 0}
-            GKT.innerHTML = WhiteText[DI];
+            if(WTUI > 7){WTI = 0}
+            GKT.innerHTML = WhiteText[WTI];
             if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
-            DI++;
+            WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
             input.value = '';
             GKT.style.color = 'orange';
-            GKT.innerHTML = 'You should not be here...';
+            if(OTI > 4){OTI = 0}
+            GKT.innerHTML = [OTI];
+            OTI++;
         }
     });
     
