@@ -65,16 +65,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
     input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
-            if(WTUI > 7){WTI = 0}
+            if(WTI > 7){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
-            if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."}
+            if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
             input.value = '';
             GKT.style.color = 'orange';
             if(OTI > 4){OTI = 0}
-            GKT.innerHTML = [OTI];
+            GKT.innerHTML = OrangeText[OTI];
             OTI++;
         }
     });
