@@ -20,17 +20,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let TSArr = [TS1, TS2, TS3, TS4];
     let TArr = [T1, T2, T3, T4];
     
-    var CurrentRow = 2;
-    obj.res.add = function(n, a, col){
+    obj.res.add = function(n, a, id, col){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
                 
                 var newCraft = document.createElement('div');
                 TS2.appendChild(newCraft);
-                newCraft.id = 'C' + CurrentRow;
+                newCraft.id = 'C' + id[i];
                 newCraft.classList.add('crafts');
-                newCraft.style.top = 'calc(16px + ' + (CurrentRow-1)*8 + '%)';
+                newCraft.style.top = 'calc(16px + ' + (id[i]-1)*8 + '%)';
                 
                 var newDiv = document.createElement('div');
                 newCraft.appendChild(newDiv);
@@ -43,13 +42,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 
                 var p2 = document.createElement('p');
                 newCraft.appendChild(p2);
-                p2.id = 'C' + CurrentRow + 'C';
+                p2.id = 'C' + id[i] + 'C';
                 p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
-                
-                CurrentRow++;
             }
             obj.res[n[i]] += a[i];
-            document.getElementById('C' + CurrentRow + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+            document.getElementById('C' + id[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
     }
     
@@ -460,12 +457,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
     E1.addEventListener('click', ()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0, 127, 255)']);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
             }else{
-                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0, 127, 255)']);
+                LoadFight('Scrap Slime', 350, 570, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], [2], ['rgb(0, 127, 255)']);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0, 127, 255)', 'rgb(0, 90, 210)']);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], [2, 3], ['rgb(0, 127, 255)', 'rgb(0, 90, 210)']);
         }
     });
 });
