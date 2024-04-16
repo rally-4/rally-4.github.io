@@ -61,7 +61,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let DI = 0;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
-    input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
             if(DI > 6){DI = 0}
