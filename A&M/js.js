@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?"];
     let OrangeText = ["You should not be here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
     let WTI = 0;
-    let OTI = 0;
+    let OTI = 1;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
         if(input.value == ''){
