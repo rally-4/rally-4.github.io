@@ -1,4 +1,4 @@
-# Missing tracks 
-1. Aira Oxide
-2. A track "Suburban" and "SuburbanBoss"
-3. Tracks for all future areas (with the exception of The Facility's boss, this being BattleMuz.mp3)
+# Missing tracks
+- Aira Oxide
+- A track for "Suburban" and "SuburbanBoss"
+- Tracks for all future areas (with the exception of `The Facility`'s boss, this being BattleMuz.mp3)
