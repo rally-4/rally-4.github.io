@@ -3,10 +3,11 @@
     <head>
         <meta name="author" content="rally4">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
         <title>???</title>
-        <link rel="icon" href="assets/images/Anoxic.png">
+        <link rel="icon" href="Anoxic.png">
+        <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css">
         <script src="functions.js"></script>
         <script src="js.js"></script>
@@ -20,7 +21,7 @@
         </div>
         
         <div class="tabscreen" id="TS1">
-            <h1>The Gatekeeper</h1>
+            <h1>C0 — The Gatekeeper</h1>
             <p id="GKT">Lore Ipsum dolor sit amet.</p>
             <div id="InputDiv">
                 <input type="text" autocapitalize="off" autocomplete="off" maxlength="20" oninput="Limit(this, 20)" enterkeyhint="done" id="input">
@@ -97,6 +98,19 @@
             </div>
             <div id="inv"></div>
             <div id="dar"></div>
+        </div>
+        
+        <!-- TEXTBOX -->
+        <div id="trunk">
+            <div class="inGrad" id="col">
+                <img src="assets/images/c03.png" id="img">
+                <p id="name">???</p>
+            </div>
+            <div id="arrowBorder"></div>
+            <div id="arrow"></div>
+            <div class="inGrad" id="invis">
+                <p id="txt"></p>
+            </div>
         </div>
     </body>
 </html>

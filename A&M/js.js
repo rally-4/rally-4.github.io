@@ -9,6 +9,40 @@ window.addEventListener('DOMContentLoaded', ()=>{
         console.log(err);
     }
     
+    const trunk = document.getElementById('trunk');
+    const name = document.getElementById('name');
+    const img = document.getElementById('img');
+    const txt = document.getElementById('txt');
+    const div = document.getElementById('col');
+    div.style.pointerEvents = 'none';
+    var tutorial = true;
+    let displayText = function(txtarr, imgarr, namarr){
+        trunk.style.display = 'flex';
+        count = 0;
+        
+        this.txtarr = txtarr;
+        this.imgarr = imgarr;
+        this.namarr = namarr;
+        next();
+    }
+    let next=()=>{
+        if(count >= txtarr.length){
+            trunk.style.display = 'none';
+            div.style.pointerEvents = 'none';
+            if((count >= txtarr.length) && tutorial){
+                LoadFight('C0', 8500, 1500, 2, 0.05, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
+                tutorial = false;
+            }
+        }else{
+            txt.innerHTML = "&gt; " + txtarr[count];
+            img.setAttribute('src', "assets/images/" + imgarr[count]);
+            name.innerHTML = "&nbsp;" + namarr[count] + "&nbsp;";
+            count++;
+        }
+    }
+    trunk.addEventListener('click', next);
+    displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate how we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"]);
+    
     const TS1 = document.getElementById('TS1');
     const T1 = document.getElementById('T1');
     const TS2 = document.getElementById('TS2');
@@ -67,7 +101,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             GKT.style.color = 'white';
             if(WTI > 7){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
-            if(Math.random() >= 0.99){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
+            if(Math.random() >= 0.995){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -143,8 +177,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let RECOVER = new EnemyAttack('RECOVER', 100, 5, 0, 0, 0, 250, 200);
     let ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
+    let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
+    let C0Attacks = [ATTACK];
+    
     let UserHealth = 1000;
-    let UserShield = 100;
+    let UserShield = 200;
     let ShieldDowntime = 20;
     let ShieldRegen = .02;
     
@@ -430,7 +467,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     if(area == 'A1'){A1Wins++}
                     if(area == 'A1B'){A1Wins = 0}
                 }
-                if(COH <= 0 || CPH <= 0 && c){
+                if(COH <= 0 || CPH <= 0){
                     for(i=0; i < ALL.length; i++){
                         ALL[i].style.animation = 'none';
                         // ALL[i].style.transition = 'none';
@@ -450,6 +487,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                         dar.style.opacity = op + '';
                     }, 10, 50, 500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false}, 1000);
+                    if(area == 'Tutorial'){setTimeout(()=>{displayText(["I evidently won, but at least you stroke some good hits...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     // setTimeout(()=>{window.close()}, 1000);
                     clearInterval(intervalId);
                 }
