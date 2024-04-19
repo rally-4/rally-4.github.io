@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     }
     trunk.addEventListener('click', next);
-    if(obj.tutorial == false){
+    if(obj.tutorial){
         displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate how we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"]);
     }
     
