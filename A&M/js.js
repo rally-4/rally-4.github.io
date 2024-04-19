@@ -2,11 +2,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
     var o = true;
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
-    var obj = {name: '', uid: -1, res: {materials: 0}}
-    try{
-        // obj = JSON.parse(sessionStorage.getItem('user'));
-    }catch(err){
-        console.log(err);
+    if(sessionStorage.getItem('user') != undefined){
+        obj = JSON.parse(sessionStorage.getItem('user'));
+    }else{
+        obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
     }
     
     const trunk = document.getElementById('trunk');
@@ -15,7 +14,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const txt = document.getElementById('txt');
     const div = document.getElementById('col');
     div.style.pointerEvents = 'none';
-    var tutorial = true;
     let displayText = function(txtarr, imgarr, namarr){
         trunk.style.display = 'flex';
         count = 0;
@@ -29,9 +27,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
         if(count >= txtarr.length){
             trunk.style.display = 'none';
             div.style.pointerEvents = 'none';
-            if((count >= txtarr.length) && tutorial){
+            if((count >= txtarr.length) && obj.tutorial){
                 LoadFight('C0', 8500, 1500, 2, 0.05, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
-                tutorial = false;
+                obj.tutorial = false;
             }
         }else{
             txt.innerHTML = "&gt; " + txtarr[count];
