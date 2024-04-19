@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 TS2.appendChild(newCraft);
                 newCraft.id = 'C' + n[i];
                 newCraft.classList.add('crafts');
-                newCraft.style.top = 'calc(16px + ' + (obj.res.length-1)*8 + '%)';
+                newCraft.style.top = 'calc(16px + ' + (obj.res.keys(obj.res).length-1)*8 + '%)';
                 
                 var newDiv = document.createElement('div');
                 newCraft.appendChild(newDiv);
