@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // const socket = io('http://' + ip1 + ':3000');
     
     var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
+    if(sessionStorage.getItem('user') != undefined){
+        obj = JSON.parse(sessionStorage.getItem('user'));
+    }
     obj.res.add = function(n, a, col){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
@@ -32,13 +35,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             obj.res[n[i]] += a[i];
             document.getElementById('C' + n[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
-    }
-    if(sessionStorage.getItem('user') != undefined){
-        obj = JSON.parse(sessionStorage.getItem('user'));
-        for(n=1; n < Object.keys(obj.res).length; n++){
-            obj.res.add(obj.res[n]);
-        }
-    }
+     }
     
     const trunk = document.getElementById('trunk');
     const name = document.getElementById('name');
