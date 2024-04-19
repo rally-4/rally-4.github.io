@@ -2,11 +2,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
     var o = true;
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
-    if(sessionStorage.getItem('user') != undefined){
-        obj = JSON.parse(sessionStorage.getItem('user'));
-    }else{
+    // if(sessionStorage.getItem('user') != undefined){
+    //     obj = JSON.parse(sessionStorage.getItem('user'));
+    // }else{
         obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
-    }
+    // }
     
     const trunk = document.getElementById('trunk');
     const name = document.getElementById('name');
