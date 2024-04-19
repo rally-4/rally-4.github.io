@@ -487,6 +487,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["I evidently won, but at least you stroke some good hits...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     // setTimeout(()=>{window.close()}, 1000);
+                    sessionStorage.setItem('user', obj);
                     clearInterval(intervalId);
                 }
             }, 10);
