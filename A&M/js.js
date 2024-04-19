@@ -2,11 +2,43 @@ window.addEventListener('DOMContentLoaded', ()=>{
     var o = true;
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
-    // if(sessionStorage.getItem('user') != undefined){
-    //     obj = JSON.parse(sessionStorage.getItem('user'));
-    // }else{
-        obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
-    // }
+    
+    var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
+    obj.res.add = function(n, a, col){
+        for(i=0; i<n.length; i++){
+            if(obj.res[n[i]] == undefined){
+                obj.res[n[i]] = 0;
+                
+                var newCraft = document.createElement('div');
+                TS2.appendChild(newCraft);
+                newCraft.id = 'C' + n[i];
+                newCraft.classList.add('crafts');
+                newCraft.style.top = 'calc(16px + ' + (Object.keys(obj.res).length-2)*8 + '%)';
+                
+                var newDiv = document.createElement('div');
+                newCraft.appendChild(newDiv);
+                newDiv.style.backgroundColor = col[i];
+                newDiv.style.border = '2px solid ' + col[i];
+                
+                var p1 = document.createElement('p');
+                newCraft.appendChild(p1);
+                p1.innerHTML = n[i];
+                
+                var p2 = document.createElement('p');
+                newCraft.appendChild(p2);
+                p2.id = 'C' + n[i] + 'C';
+                p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
+            }
+            obj.res[n[i]] += a[i];
+            document.getElementById('C' + n[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+        }
+    }
+    if(sessionStorage.getItem('user') != undefined){
+        obj = JSON.parse(sessionStorage.getItem('user'));
+        for(n=1; n < Object.keys(obj.res).length; n++){
+            obj.res.add(obj.res[n]);
+        }
+    }
     
     const trunk = document.getElementById('trunk');
     const name = document.getElementById('name');
@@ -51,35 +83,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const T4 = document.getElementById('T4');
     let TSArr = [TS1, TS2, TS3, TS4];
     let TArr = [T1, T2, T3, T4];
-    obj.res.add = function(n, a, col){
-        for(i=0; i<n.length; i++){
-            if(obj.res[n[i]] == undefined){
-                obj.res[n[i]] = 0;
-                
-                var newCraft = document.createElement('div');
-                TS2.appendChild(newCraft);
-                newCraft.id = 'C' + n[i];
-                newCraft.classList.add('crafts');
-                newCraft.style.top = 'calc(16px + ' + (obj.res.keys(obj.res).length-1)*8 + '%)';
-                
-                var newDiv = document.createElement('div');
-                newCraft.appendChild(newDiv);
-                newDiv.style.backgroundColor = col[i];
-                newDiv.style.border = '2px solid ' + col[i];
-                
-                var p1 = document.createElement('p');
-                newCraft.appendChild(p1);
-                p1.innerHTML = n[i];
-                
-                var p2 = document.createElement('p');
-                newCraft.appendChild(p2);
-                p2.id = 'C' + n[i] + 'C';
-                p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
-            }
-            obj.res[n[i]] += a[i];
-            document.getElementById('C' + n[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
-        }
-    }
     
     let GKT = document.getElementById('GKT');
     if(obj.name != ''){
@@ -172,7 +175,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const ScrapSlimeAttacks = [CRAWL, CUT, ENGULF];
     let ADVANCE = new EnemyAttack('ADVANCE', 25, 3, 50);
     let DELUGE = new EnemyAttack('DELUGE', 50, 3, 0, 0, 75, 75);
-    let RECOVER = new EnemyAttack('RECOVER', 100, 5, 0, 0, 0, 250, 200);
+    let RECOVER = new EnemyAttack('RECOVER', 100, 6, 0, 0, 0, 250, 200);
     let ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
