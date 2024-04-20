@@ -3,6 +3,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
     
+    const TS1 = document.getElementById('TS1');
+    const T1 = document.getElementById('T1');
+    const TS2 = document.getElementById('TS2');
+    const T2 = document.getElementById('T2');
+    const TS3 = document.getElementById('TS3');
+    const T3 = document.getElementById('T3');
+    const TS4 = document.getElementById('TS4');
+    const T4 = document.getElementById('T4');
+    let TSArr = [TS1, TS2, TS3, TS4];
+    let TArr = [T1, T2, T3, T4];
+    
     var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true}
     if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
@@ -58,7 +69,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             div.style.pointerEvents = 'none';
             if((count >= txtarr.length) && obj.tutorial){
                 LoadFight('C0', 8500, 1500, 2, 0.05, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
-                obj.tutorial = false;
+                setTimeout(()=>{obj.tutorial = false}, 4000);
             }
         }else{
             txt.innerHTML = "&gt; " + txtarr[count];
@@ -69,19 +80,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     trunk.addEventListener('click', next);
     if(obj.tutorial){
-        displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate how we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"]);
+        displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"]);
     }
-    
-    const TS1 = document.getElementById('TS1');
-    const T1 = document.getElementById('T1');
-    const TS2 = document.getElementById('TS2');
-    const T2 = document.getElementById('T2');
-    const TS3 = document.getElementById('TS3');
-    const T3 = document.getElementById('T3');
-    const TS4 = document.getElementById('TS4');
-    const T4 = document.getElementById('T4');
-    let TSArr = [TS1, TS2, TS3, TS4];
-    let TArr = [T1, T2, T3, T4];
     
     let GKT = document.getElementById('GKT');
     if(obj.name != ''){
@@ -90,7 +90,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
         GKT.style.color = 'orange';
         GKT.innerHTML = 'You should not be here...';
     }
-    
     let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?"];
     let OrangeText = ["You should not be here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
     let WTI = 0;
@@ -205,7 +204,42 @@ window.addEventListener('DOMContentLoaded', ()=>{
         setTimeout(()=>{CD.textContent = '2...'},750);
         setTimeout(()=>{CD.textContent = '1...'},1500);
         setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'},2250);
-        setTimeout(()=>{BS.style.display = 'none'; CD.textContent = '3...'; BEGIN()},3000);
+        setTimeout(()=>{
+            BS.style.display = 'none';
+            CD.textContent = '3...';
+            if(!obj.tutorial){
+                BEGIN();
+            }else{
+                const EnemyInfo = document.getElementById('EnemyInfo');
+                const PlayerStats = document.getElementById('PlayerStats');
+                const Attacks = document.getElementById('Attacks');
+                PlayerStats.style.opacity = Attacks.style.opacity = '.2';
+                let tutorialtext = document.createElement('p');
+                document.body.appendChild(tutorialtext);
+                tutorialtext.id = 'TTXT';
+                tutorialtext.innerHTML = "This is your opponent. Here you can see its name, the next incoming attack, and both its health and shield.";
+                
+                document.body.addEventListener('click', ()=>{
+                    EnemyInfo.style.opacity = '.2';
+                    PlayerStats.style.opacity = '1';
+                    tutorialtext.style.top = '21%';
+                    tutorialtext.innerHTML = "These are your stats. The shield will take incoming damage and regenerate until depleted, then damage will be taken by the health bar. If your HP reaches 0 before defeating the opponent, you will lose.";
+                    
+                    document.body.addEventListener('click', ()=>{
+                        PlayerStats.style.opacity = '.2';
+                        Attacks.style.opacity = '1';
+                        tutorialtext.style.top = '40%';
+                        tutorialtext.innerHTML = "These are the abilities you have to inflict damage upon your opponent. After using them you must wait for a cooldown time which may vary depending on the ability.";
+                        
+                        document.body.addEventListener('click', ()=>{
+                            tutorialtext.remove();
+                            EnemyInfo.style.opacity = PlayerStats.style.opacity = '1';
+                            BEGIN();
+                        }, {once: true});
+                    }, {once: true});
+                }, {once: true});
+            }
+        },3000);
         const ALL = body.querySelectorAll('*');
         
         let OH = document.getElementById('OH'); // Opponent's Health Bar
