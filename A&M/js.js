@@ -241,7 +241,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const Cost2 = document.getElementById('Cost2');
     const U2 = document.getElementById('U2'); let uu2 = false;
     U2.addEventListener('click', ()=>{
-        if(obj.res.materials >= 0){
+        if(obj.res.materials >= 9){
             obj.res.materials -= 9;
             Cost2.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
