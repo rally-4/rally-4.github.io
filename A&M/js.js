@@ -241,7 +241,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const Cost2 = document.getElementById('Cost2');
     const U2 = document.getElementById('U2'); let uu2 = false;
     U2.addEventListener('click', ()=>{
-        if(obj.res.materials >= 9){
+        if(obj.res.materials >= 0){
             obj.res.materials -= 9;
             Cost2.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
@@ -391,7 +391,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     
     // PLAYER ATTACKS
-    const SMACK=()=>{Damage(60,true)}
+    const SMACK=()=>{Damage(6000,true)}
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
     let AA1 = [SMACK]; var AA1v = 0;
@@ -595,13 +595,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     for(i=0; i < ALL.length; i++){ALL[i].style.animation = 'none'}
                     S1.style.pointerEvents = 'none';
                     S2.style.pointerEvents = 'none';
+                    S3.style.pointerEvents = 'none';
                     // var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
-                    // var S2A = S2C.getAnimations();if(S2A[0]){S2A[0].pause()}
                     S1A=''; this.S1A='';
                     S2A=''; this.S2A='';
+                    S3A=''; this.S3A='';
                     inv.style.display = 'flex';
                     var op = 0;
-                    setTimeout(()=>{inv.style.display = 'none'}, 200);
+                    setTimeout(()=>{inv.style.display = 'none'}, 250);
                     setTimeout(()=>{dar.style.display = 'flex'}, 500);
                     setSchedule(()=>{
                         op += 0.02;
