@@ -391,7 +391,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
     
     // PLAYER ATTACKS
-    const SMACK=()=>{Damage(6000,true)}
+    const SMACK=()=>{Damage(60,true)}
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
     let AA1 = [SMACK]; var AA1v = 0;
