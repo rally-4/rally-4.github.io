@@ -200,7 +200,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const ScrapSlimeAttacks = [CRAWL, CUT, ENGULF];
     let ADVANCE = new EnemyAttack('ADVANCE', 25, 3, 50);
     let DELUGE = new EnemyAttack('DELUGE', 50, 3, 0, 0, 75, 75);
-    let RECOVER = new EnemyAttack('RECOVER', 100, 7, 0, 0, 0, 250, 100);
+    let RECOVER = new EnemyAttack('RECOVER', 100, 7, 0, 0, 0, 250, 150);
     let ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
