@@ -10,44 +10,12 @@ const Bool = {
     true: true,
     false: false
 }
-Bool.not = function(p){
-    return !p;
-}
-Bool.and = function(p, q){
-    if(p && q){
-        return true;
-    }else{
-        return false;
-    }
-}
-Bool.or = function(p, q){
-    if(p || q){
-        return true;
-    }else{
-        return false;
-    }
-}
-Bool.xor = function(p, q){
-    if(p ^ q){
-        return true;
-    }else{
-        return false;
-    }
-}
-Bool.imply = function(p, q){
-    if(p == true && q == false){
-        return false;
-    }else{
-        return true;
-    }
-}
-Bool.nonimply = function(p, q){
-    if(p == true && q == false){
-        return true;
-    }else{
-        return false;
-    }
-}
+Bool.not=p=>!p;
+Bool.and=(p,q)=>!(!p||!q);
+Bool.or=(p,q)=>!(!p&&!q);
+Bool.xor=(p,q)=>!!(p^q);
+Bool.imply=(p,q)=>1!=p||0!=q;
+Bool.nonimply=(p,q)=>1==p&&0==q;
 
 // TIMER FUNCTIONS
 // it's also possible to add d into j*i to achieve the same delay effect
