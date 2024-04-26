@@ -9,8 +9,8 @@
 4.1. ~~Rework the 4th tab's UI.~~
 5. ~~Implement unlocks, upgrades, and multipliers.~~  
 5.1. ~~Add the interrupt mechanic and STUN ability.~~
-6. Add information about enemies.
-7. Fix ability cooldown. (if necessary)
+6. Fix ability cooldown.
+7. Add information about enemies.
 8. Add music and sfx.
 9. Create the Badlands area.
 10. Implement ammo (limit uses of an ability per fight) and casting (time until ability use, interrupted by enemy attack and use of another ability).
