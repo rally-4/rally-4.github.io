@@ -5,9 +5,9 @@
 1. ~~Implement several lines for the vault when there is text input.~~
 2. ~~Add textbox dialog and a function to display it.~~
 3. ~~...as well as a tutorial for the fight system.~~
-4. ~~Make an UI for the 4th tab.~~
+4. ~~Make an UI for the 4th tab.~~  
 4.1. Rework the 4th tab's UI.
-5. ~~Implement unlocks, upgrades, and multipliers.~~
+5. ~~Implement unlocks, upgrades, and multipliers.~~  
 5.1. Add the interrupt mechanic and STUN ability.
 6. Add information about enemies.
 7. Fix ability cooldown. (if necessary)
