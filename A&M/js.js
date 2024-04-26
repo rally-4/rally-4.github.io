@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', ()=>{
+window.addEventListener('DOMContentLoaded',()=>{
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
     
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     swap(0);subswap(0);
     
     // OBJ AND RESOURCES
-    var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
+    var obj = {name: '', uid: -1, res: {materials: 100}, tutorial: false, A1C: true}
     /* if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
     } */
@@ -215,9 +215,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     
     // UPGRADES
     const Cost1 = document.getElementById('Cost1'); let cc1 = 8;
-    const DT1 = document.getElementById('DT1');
-    const I1 = document.getElementById('I1');
-    DT1.addEventListener('click', ()=>{
+    const DT1 = document.getElementById('DT1'); const I1 = document.getElementById('I1');
+    DT1.addEventListener('click',()=>{
         if(I1.style.display == 'flex'){
             I1.style.display = 'none';
         }else{
@@ -225,7 +224,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     });
     const U1 = document.getElementById('U1');
-    U1.addEventListener('click', ()=>{
+    U1.addEventListener('click',()=>{
         if(obj.res.Slime >= cc1){
             obj.res.Slime -= cc1; cc1 += 2;
             Cost1.innerHTML = 'Cost: ' + cc1 + ' Slime';
@@ -235,13 +234,22 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
         if(cc1 >= 40){
             U1.innerHTML = 'MAX';
-            U1.removeEventListener('click', this);
+            U1.removeEventListener('click',this);
         }
     });
+    
     const Cost2 = document.getElementById('Cost2');
+    const DT2 = document.getElementById('DT2'); const I2 = document.getElementById('I2');
+    DT2.addEventListener('click',()=>{
+        if(I2.style.display == 'flex'){
+            I2.style.display = 'none';
+        }else{
+            I2.style.display = 'flex';
+        }
+    });
     const U2 = document.getElementById('U2'); let uu2 = false;
-    U2.addEventListener('click', ()=>{
-        if(obj.res.materials >= 0){
+    U2.addEventListener('click',()=>{
+        if(obj.res.materials >= 9){
             obj.res.materials -= 9;
             Cost2.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
@@ -249,22 +257,52 @@ window.addEventListener('DOMContentLoaded', ()=>{
             S3C.classList.remove('locked'); S3C.classList.add('chargeBox');
             S3C.style.backgroundColor = 'rgb(105,120,150)';
             S3C.style.opacity = '0';
-            
-            S3.addEventListener('pointerdown', ()=>{
+            S3.addEventListener('pointerdown',()=>{
                 if(this.S3A){S3A = this.S3A}
                 if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations(); this.S3A = S3A}
                 S3A[0].play(); S3.style.pointerEvents = 'none';
                 AA3[AA3v]();
-            }); S3C.addEventListener('animationend', ()=>{S3.style.pointerEvents = 'auto'});
+            }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
         }
         if(uu2){
-            U2.innerHTML = 'SELECTED';
-            AA3v = 0;
+            U2.innerHTML = 'SELECTED'; AA3v = 0;
+        }
+    });
+    
+    const Cost3 = document.getElementById('Cost3');
+    const DT3 = document.getElementById('DT3'); const I3 = document.getElementById('I3');
+    DT3.addEventListener('click',()=>{
+        if(I3.style.display == 'flex'){
+            I3.style.display = 'none';
+        }else{
+            I3.style.display = 'flex';
+        }
+    });
+    const U3 = document.getElementById('U3'); let uu3 = false;
+    U3.addEventListener('click',()=>{
+        if(obj.res.materials >= 15){
+            obj.res.materials -= 15;
+            Cost3.innerHTML = '';
+            C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+            U3.innerHTML = 'SELECTED'; uu3 = true;
+            S4C.classList.remove('locked'); S4C.classList.add('chargeBox');
+            S4C.style.backgroundColor = 'rgb(105,120,150)';
+            S4C.style.opacity = '0';
+            S4.addEventListener('pointerdown',()=>{
+                if(this.S4A){S4A = this.S4A}
+                if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations(); this.S4A = S4A}
+                S4A[0].play(); S4.style.pointerEvents = 'none';
+                AA4[AA4v]();
+            }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
+        }
+        if(uu3){
+            U3.innerHTML = 'SELECTED'; AA4v = 0;
         }
     });
     
     // FIGHT SYSTEM BARS
     const ALL = body.querySelectorAll('*');
+    const IB = document.getElementById('InterruptBar');
     let OH = document.getElementById('OH'); // Opponent's Health Bar
     let OS = document.getElementById('OS'); // Opponent's Shield Bar
     let PH = document.getElementById('PH'); // Player's Health Bar
@@ -389,14 +427,24 @@ window.addEventListener('DOMContentLoaded', ()=>{
             CPS += h; SH(pA);
         }
     }
+    let Interrupt = function(CA){
+        CA.damage = 0;
+        CA.penetratingdamage = 0;
+        CA.shielddamage = 0;
+        CA.heal = 0;
+        CA.shieldheal = 0;
+        IB.style.display = 'flex';
+    }
     
     // PLAYER ATTACKS
-    const SMACK=()=>{Damage(60,true)}
+    const SMACK=()=>{Damage(6000,true)}
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
+    const STUN=()=>{Interrupt(CurrentAttack)}
     let AA1 = [SMACK]; var AA1v = 0;
     let AA2 = [CHARGE]; var AA2v = 0;
     let AA3 = [SLASH]; var AA3v = 0;
+    let AA4 = [STUN]; var AA4v = 0;
     
     let S1 = document.getElementById('S1');
     let S1C = document.getElementById('S1C');
@@ -404,18 +452,18 @@ window.addEventListener('DOMContentLoaded', ()=>{
     let S2C = document.getElementById('S2C');
     let S3 = document.getElementById('S3');
     let S3C = document.getElementById('S3C');
-    S1.addEventListener('pointerdown', ()=>{
+    S1.addEventListener('pointerdown',()=>{
         if(this.S1A){S1A = this.S1A}
         if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
         S1A[0].play(); S1.style.pointerEvents = 'none';
         AA1[AA1v]();
-    }); S1C.addEventListener('animationend', ()=>{S1.style.pointerEvents = 'auto'});
-    S2.addEventListener('pointerdown', ()=>{
+    }); S1C.addEventListener('animationend',()=>{S1.style.pointerEvents = 'auto'});
+    S2.addEventListener('pointerdown',()=>{
         if(this.S2A){S2A = this.S2A}
         if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
         S2A[0].play(); S2.style.pointerEvents = 'none';
         AA2[AA2v]();
-    }); S2C.addEventListener('animationend', ()=>{S2.style.pointerEvents = 'auto'});
+    }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
     
     // Wins -> Number of battles won | BossWins -> Wins required for bossfight.
     var A1Wins = 0; const A1BossWins = 4;
@@ -514,16 +562,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
         
         let BEGIN = function(){
             S1.style.pointerEvents = 'auto';
-            setRotateAnimation(S1C);
+            setRotateAnimation(S1C,2);
             S2.style.pointerEvents = 'auto';
-            setRotateAnimation(S2C);
-            if(uu2){
-                S3.style.pointerEvents = 'auto';
-                setRotateAnimation(S3C);
-            }
+            setRotateAnimation(S2C,2);
+            if(uu2){S3.style.pointerEvents = 'auto';setRotateAnimation(S3C,2)}
+            if(uu3){S4.style.pointerEvents = 'auto';setRotateAnimation(S4C,20)}
             
             var t = 0;
-            var CurrentAttack = false;
+            CurrentAttack = false;
             let intervalId = setInterval(()=>{
                 if(CurrentAttack != false){
                     if(t <= CurrentAttack.casting){
@@ -554,6 +600,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                         if(r <= OpponentAttacks[i].chance){
                             CurrentAttack = OpponentAttacks[i];
                             AB.textContent = CurrentAttack.name;
+                            IB.style.display = 'none';
                             t = 0;
                             break;
                         }
@@ -596,10 +643,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     S1.style.pointerEvents = 'none';
                     S2.style.pointerEvents = 'none';
                     S3.style.pointerEvents = 'none';
+                    S4.style.pointerEvents = 'none';
                     // var S1A = S1C.getAnimations();if(S1A[0]){S1A[0].pause()}
                     S1A=''; this.S1A='';
                     S2A=''; this.S2A='';
                     S3A=''; this.S3A='';
+                    S4A=''; this.S4A='';
                     inv.style.display = 'flex';
                     var op = 0;
                     setTimeout(()=>{inv.style.display = 'none'}, 250);
@@ -611,7 +660,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["I evidently won, but at least you stroke some good hits...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     // setTimeout(()=>{window.close()}, 1000);
-                    sessionStorage.setItem('user', JSON.stringify(obj));
+                    sessionStorage.setItem('user',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
             }, 10);

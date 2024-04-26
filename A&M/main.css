@@ -266,47 +266,46 @@ input{
     background-color: rgb(30, 30, 30);
 }
 #EnemyAttack{
-    position: fixed;
-    display: flex;
-    width: 80%;
-    height: 6%;
-    left: 10%;
-    top: 16%;
-    
+    position: fixed; display: flex;
+    width: 80%; height: 6%;
+    left: 10%; top: 16%;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     z-index: 3;
-    
     border: 4px solid black;
     font-size: 32px;
     background-color: rgb(45, 45, 45);
 }
 #AttackBar{
-    position: fixed;
-    display: flex;
-    width: 0%;
-    height: 6%;
+    position: fixed; display: flex;
+    width: 0%; height: 6%;
     left: 50%; right: 50%;
     top: calc(16% + 4px);
     transform: translateX(-50%);
-    
     justify-content: center;
     text-align: center;
     z-index: -1;
-    
     background-color: rgb(96, 53, 185);
+}
+#InterruptBar{
+    position: fixed; display: none;
+    width: 80%; height: 6%;
+    left: calc(10% + 4px);
+    top: calc(16% + 4px);
+    z-index: 4;
+    border: none;
+    mix-blend-mode: multiply;
+    background-color: rgb(255,0,0);
 }
 .bar{
     position: fixed;
     display: flex;
     width: 80%;
     height: 8%;
-    
     flex-direction: column;
     justify-content: center;
     z-index: 3;
-    
     color: black;
     font-size: 28px;
     background-color: white;
@@ -326,24 +325,20 @@ input{
 #OH{
     top: 25%;
     left: 10%;
-    
     border: 4px solid black;
 }
 #OS{
     top: 33%;
     left: 10%;
-    
     border: 4px solid black;
 }
 
 .box{
     position: fixed;
     display: flex;
-    
     flex-direction: column;
     justify-content: center;
     z-index: 2;
-    
     border: 4px solid rgb(45, 45, 45);
     background-color: rgb(180, 180, 180);
 }
@@ -356,13 +351,11 @@ input{
 #PH{
     top: 47%;
     left: 10%;
-    
     border: 4px solid rgb(45, 45, 45);
 }
 #PS{
     top: 55%;
     left: 10%;
-    
     border: 4px solid rgb(45, 45, 45);
 }
 #Attacks{
@@ -372,16 +365,12 @@ input{
     left: 8%;
 }
 .whiteBox{
-    position: fixed;
-    display: flex;
-    width: 14%;
-    height: 20%;
-    
+    position: fixed; display: flex;
+    width: 14%; height: 20%;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     z-index: 3;
-    
     color: black;
     font-size: 48px;
     border: 4px solid rgb(45, 45, 45);
@@ -417,7 +406,6 @@ input{
     position: fixed;
     width: 0%; height: 8%;
     z-index: 4;
-    
     opacity: .5;
     mix-blend-mode: difference;
     background-color: white;
@@ -444,7 +432,6 @@ input{
 #S1C{
     left: 10%; top: 67%;
     z-index: 5;
-    
     opacity: 0;
     border: none;
     background-color: rgb(105,120,150);
@@ -459,7 +446,6 @@ input{
 #S2C{
     align-self: center; top: 67%;
     z-index: 5;
-    
     opacity: 0;
     border: none;
     background-color: rgb(105,120,150);
@@ -474,12 +460,24 @@ input{
 #S3C{
     right: 10%; top: 67%;
     z-index: 5;
-    
     border: none;
+    
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-play-state: paused;
 }
 #S4C{
     left: 26.5%; top: 75%;
     z-index: 5;
+    border: none;
+    
+    animation-duration: 20s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-play-state: paused;
 }
 #S5C{
     right: 26.5%; top: 75%;
@@ -656,7 +654,7 @@ input{
 }
 .uppertab{
     position: absolute; display: flex;
-    width: 6%; height: 60%;
+    width: 80px; height: 60%;
     bottom: -2px;
     flex-direction: column;
     text-align: center;
@@ -680,6 +678,7 @@ input{
 }
 #UG1{top: 12%;}
 #UG2{top: 24%;}
+#UG3{top: 36%;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
@@ -690,7 +689,7 @@ input{
 }
 .details2{
     position: fixed; display: flex;
-    width: 8%; height: 80%; right: 160px;
+    width: 96px; height: 80%; right: 160px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -711,9 +710,11 @@ input{
     background-color: black;
 }
 #I1{top: calc(22% - 16px);}
+#I2{top: 32%;}
+#I3{top: calc(42% + 16px);}
 .upg{
     position: fixed; display: flex;
-    width: 12%; height: 80%; right: 4px;
+    width: 144px; height: 80%; right: 4px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
