@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     swap(0);subswap(0);
     
     // OBJ AND RESOURCES
-    var obj = {name: '', uid: -1, res: {materials: 100}, tutorial: false, A1C: true}
+    var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
     /* if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
     } */
@@ -437,7 +437,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     }
     
     // PLAYER ATTACKS
-    const SMACK=()=>{Damage(6000,true)}
+    const SMACK=()=>{Damage(60,true)}
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
     const STUN=()=>{Interrupt(CurrentAttack)}
