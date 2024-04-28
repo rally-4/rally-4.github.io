@@ -9,7 +9,7 @@
 4.1. ~~Rework the 4th tab's UI.~~
 5. ~~Implement unlocks, upgrades, and multipliers.~~  
 5.1. ~~Add the interrupt mechanic and STUN ability.~~
-6. Fix ability cooldown.
+6. ~~Fix ability cooldown.~~
 7. Add information about enemies.
 8. Add music and sfx.
 9. Create the Badlands area.
