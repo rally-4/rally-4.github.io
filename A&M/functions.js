@@ -19,10 +19,10 @@ Bool.nonimply=(p,q)=>1==p&&0==q;
 
 // TIMER FUNCTIONS
 // it's also possible to add d into j*i to achieve the same delay effect
-let setSchedule=(func, i, n, d=0)=>{
+let setSchedule=(func,i,n,d=0)=>{
     setTimeout(()=>{
-        for(let j=0; j < n; j++){
-            setTimeout(func, j*i);
+        for(let j=0;j<n;j++){
+            setTimeout(func,j*i);
         }
     }, d)
 }
