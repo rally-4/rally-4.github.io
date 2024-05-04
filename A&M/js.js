@@ -23,10 +23,10 @@ window.addEventListener('DOMContentLoaded',()=>{
         for(i=0; i < TSArr.length; i++){
             if(i != tab){
                 TSArr[i].style.display = 'none';
-                TArr[i].style.backgroundColor = 'rgb(60, 60, 60)';
+                TArr[i].style.backgroundColor = 'rgb(60,60,60)';
             }else{
                 TSArr[i].style.display = 'flex';
-                TArr[i].style.backgroundColor = 'rgb(30, 30, 30)';
+                TArr[i].style.backgroundColor = 'rgb(30,30,30)';
             }
         }
     }
@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
             }
             obj.res[n[i]] += a[i];
-            document.getElementById('C' + n[i] + 'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+            document.getElementById('C'+n[i]+'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
      }
     
@@ -98,8 +98,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const div = document.getElementById('col');
     div.style.pointerEvents = 'none';
     let displayText = function(txtarr, imgarr, namarr){
-        trunk.style.display = 'flex';
-        count = 0;
+        trunk.style.display = 'flex'; count = 0;
         this.txtarr = txtarr;
         this.imgarr = imgarr;
         this.namarr = namarr;
@@ -147,8 +146,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
-            input.value = '';
-            GKT.style.color = 'orange';
+            input.value = ''; GKT.style.color = 'orange';
             if(OTI > 4){OTI = 0}
             GKT.innerHTML = OrangeText[OTI];
             OTI++;
@@ -156,26 +154,30 @@ window.addEventListener('DOMContentLoaded',()=>{
     });
     
     // SUBURBAN DETAILS
-    let e = false;
+    let e1 = false;
     let D1 = document.getElementById('D1');
     let AD1 = document.getElementById('AD1');
-    D1.addEventListener('click', ()=>{
-        D1.style.borderColor = 'rgb(105, 105, 105)';
-        D1.style.backgroundColor = 'rgb(45, 45, 45)';
+    D1.addEventListener('click',()=>{
+        D1.style.borderColor = 'rgb(105,105,105)';
+        D1.style.backgroundColor = 'rgb(45,45,45)';
         D1.style.color = 'white';
         setTimeout(()=>{
-            D1.style.borderColor = 'rgb(150, 150, 150)';
-            D1.style.backgroundColor = 'rgb(210, 210, 210)';
+            D1.style.borderColor = 'rgb(150,150,150)';
+            D1.style.backgroundColor = 'rgb(210,210,210)';
             D1.style.color = 'black';
         }, 100);
-        if(e){
+        if(e1){
             AD1.style.display = 'none';
-            e = false;
+            e1 = false;
         }else{
             AD1.style.display = 'flex';
-            e = true;
+            e1 = true;
         }
     });
+    const IB1 = document.getElementById('IB1');
+    const AI1 = document.getElementById('AI1');
+    IB1.addEventListener('click',()=>{AI1.style.display = 'flex'});
+    AI1.addEventListener('click',()=>{AI1.style.display = 'none'});
     
     // ENEMY ATTACKS
     class EnemyAttack{
@@ -259,7 +261,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             S3C.style.opacity = '0';
             S3.addEventListener('pointerdown',()=>{
                 if(this.S3A){S3A = this.S3A}
-                if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations(); this.S3A = S3A}
+                if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
                 S3A[0].play(); S3.style.pointerEvents = 'none';
                 AA3[AA3v]();
             }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
@@ -290,7 +292,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             S4C.style.opacity = '0';
             S4.addEventListener('pointerdown',()=>{
                 if(this.S4A){S4A = this.S4A}
-                if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations(); this.S4A = S4A}
+                if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
                 S4A[0].play(); S4.style.pointerEvents = 'none';
                 AA4[AA4v]();
             }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
@@ -325,45 +327,45 @@ window.addEventListener('DOMContentLoaded',()=>{
     let R=(pA)=>{
         if(pA){
             OH.style.backgroundColor = 'red';
-            setTimeout(()=>{OH.style.backgroundColor = 'rgb(255, 127, 127)'}, 50);
-            setTimeout(()=>{OH.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{OH.style.backgroundColor = 'rgb(255,127,127)'},50);
+            setTimeout(()=>{OH.style.backgroundColor = 'white'},100);
         }else{
             PH.style.backgroundColor = 'red';
-            setTimeout(()=>{PH.style.backgroundColor = 'rgb(255, 127, 127)'}, 50);
-            setTimeout(()=>{PH.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{PH.style.backgroundColor = 'rgb(255,127,127)'},50);
+            setTimeout(()=>{PH.style.backgroundColor = 'white'},100);
         }
     }
     let P=(pA)=>{
         if(pA){
-            OS.style.backgroundColor = 'rgb(255, 0, 255)';
-            setTimeout(()=>{OS.style.backgroundColor = 'rgb(255, 127, 255)'}, 50);
-            setTimeout(()=>{OS.style.backgroundColor = 'white'}, 100);
+            OS.style.backgroundColor = 'rgb(255,0,255)';
+            setTimeout(()=>{OS.style.backgroundColor = 'rgb(255,127,255)'},50);
+            setTimeout(()=>{OS.style.backgroundColor = 'white'},100);
         }else{
-            PS.style.backgroundColor = 'rgb(255, 0, 255)';
-            setTimeout(()=>{PS.style.backgroundColor = 'rgb(255, 127, 255)'}, 50);
-            setTimeout(()=>{PS.style.backgroundColor = 'white'}, 100);
+            PS.style.backgroundColor = 'rgb(255,0,255)';
+            setTimeout(()=>{PS.style.backgroundColor = 'rgb(255,127,255)'},50);
+            setTimeout(()=>{PS.style.backgroundColor = 'white'},100);
         }
     }
     let H=(pA)=>{
         if(pA){
             OH.style.backgroundColor = 'lime';
-            setTimeout(()=>{OH.style.backgroundColor = 'rgb(127, 255, 127)'}, 50);
-            setTimeout(()=>{OH.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{OH.style.backgroundColor = 'rgb(127,255,127)'},50);
+            setTimeout(()=>{OH.style.backgroundColor = 'white'},100);
         }else{
             PH.style.backgroundColor = 'lime';
-            setTimeout(()=>{PH.style.backgroundColor = 'rgb(127, 255, 127)'}, 50);
-            setTimeout(()=>{PH.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{PH.style.backgroundColor = 'rgb(127,255,127)'},50);
+            setTimeout(()=>{PH.style.backgroundColor = 'white'},100);
         }
     }
     let SH=(pA)=>{
         if(pA){
             OS.style.backgroundColor = 'lime';
-            setTimeout(()=>{OS.style.backgroundColor = 'rgb(127, 255, 127)'}, 50);
-            setTimeout(()=>{OS.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{OS.style.backgroundColor = 'rgb(127,255,127)'},50);
+            setTimeout(()=>{OS.style.backgroundColor = 'white'},100);
         }else{
             PS.style.backgroundColor = 'lime';
-            setTimeout(()=>{PS.style.backgroundColor = 'rgb(127, 255, 127)'}, 50);
-            setTimeout(()=>{PS.style.backgroundColor = 'white'}, 100);
+            setTimeout(()=>{PS.style.backgroundColor = 'rgb(127,255,127)'},50);
+            setTimeout(()=>{PS.style.backgroundColor = 'white'},100);
         }
     }
     
@@ -454,13 +456,13 @@ window.addEventListener('DOMContentLoaded',()=>{
     let S3C = document.getElementById('S3C');
     S1.addEventListener('pointerdown',()=>{
         if(this.S1A){S1A = this.S1A}
-        if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations(); this.S1A = S1A}
+        if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
         S1A[0].play(); S1.style.pointerEvents = 'none';
         AA1[AA1v]();
     }); S1C.addEventListener('animationend',()=>{S1.style.pointerEvents = 'auto'});
     S2.addEventListener('pointerdown',()=>{
         if(this.S2A){S2A = this.S2A}
-        if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations(); this.S2A = S2A}
+        if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations();this.S2A = S2A}
         S2A[0].play(); S2.style.pointerEvents = 'none';
         AA2[AA2v]();
     }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
@@ -631,9 +633,9 @@ window.addEventListener('DOMContentLoaded',()=>{
                     obj.res.add(resnarr, resarr, colarr);
                     C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                     
-                    if(area == 'A1'){A1Wins++}
+                    if(area == 'A1'){A1Wins++; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4'}
                     if(area == 'A1B'){
-                        A1Wins = 0;
+                        A1Wins = 0; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.A1C = true;
                     }
@@ -665,19 +667,19 @@ window.addEventListener('DOMContentLoaded',()=>{
                     sessionStorage.setItem('user',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
-            }, 10);
+            },10);
         }
     }
     let E1 = document.getElementById('E1');
-    E1.addEventListener('click', ()=>{
+    E1.addEventListener('click',()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0, 127, 255)']);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)']);
             }else{
-                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0, 127, 255)']);
+                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)']);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0, 127, 255)', 'rgb(0, 90, 210)']);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0,127,255)', 'rgb(0,90,210)']);
         }
     });
 });

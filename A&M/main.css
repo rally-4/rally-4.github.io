@@ -242,16 +242,15 @@ input{
     height: 15%;
     left: 0px;
     top: 0px;
-    
     flex-direction: column;
     text-align: center;
     justify-content: center;
     z-index: 2;
     
-    border-bottom: 4px solid rgb(45, 45, 45);
+    border-bottom: 4px solid rgb(45,45,45);
     box-sizing: border-box;
     font-size: 64px;
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(30,30,30);
 }
 #EnemyInfo{
     position: fixed;
@@ -259,11 +258,10 @@ input{
     height: 28%;
     left: 0px;
     top: 15%;
-    
     z-index: 1;
     
-    border-bottom: 4px solid rgb(60, 60, 60);
-    background-color: rgb(30, 30, 30);
+    border-bottom: 4px solid rgb(60,60,60);
+    background-color: rgb(30,30,30);
 }
 #EnemyAttack{
     position: fixed; display: flex;
@@ -275,7 +273,7 @@ input{
     z-index: 3;
     border: 4px solid black;
     font-size: 32px;
-    background-color: rgb(45, 45, 45);
+    background-color: rgb(45,45,45);
 }
 #AttackBar{
     position: fixed; display: flex;
@@ -286,7 +284,7 @@ input{
     justify-content: center;
     text-align: center;
     z-index: -1;
-    background-color: rgb(96, 53, 185);
+    background-color: rgb(96,53,185);
 }
 #InterruptBar{
     position: fixed; display: none;
@@ -339,8 +337,8 @@ input{
     flex-direction: column;
     justify-content: center;
     z-index: 2;
-    border: 4px solid rgb(45, 45, 45);
-    background-color: rgb(180, 180, 180);
+    border: 4px solid rgb(45,45,45);
+    background-color: rgb(180,180,180);
 }
 #PlayerStats{
     width: 84%;
@@ -351,12 +349,12 @@ input{
 #PH{
     top: 47%;
     left: 10%;
-    border: 4px solid rgb(45, 45, 45);
+    border: 4px solid rgb(45,45,45);
 }
 #PS{
     top: 55%;
     left: 10%;
-    border: 4px solid rgb(45, 45, 45);
+    border: 4px solid rgb(45,45,45);
 }
 #Attacks{
     width: 84%;
@@ -373,7 +371,7 @@ input{
     z-index: 3;
     color: black;
     font-size: 48px;
-    border: 4px solid rgb(45, 45, 45);
+    border: 4px solid rgb(45,45,45);
     background-color: white;
 }
 #S1{
@@ -550,7 +548,7 @@ input{
     z-index: 3;
     margin: 0px; padding: 0px;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0,0,0,0.8);
 }
 .inGrad{
     position: fixed;
@@ -566,14 +564,14 @@ input{
 #col{
     display: inherit;
     border: 0px solid;
-    box-shadow: 0 0 8px 8px rgb(73, 51, 84), inset 0 0 8px 8px rgb(73, 51, 84);
-    background-image: linear-gradient(to right, rgb(73, 51, 84) 0%, rgb(60, 60, 60) 50%, rgb(73, 51, 84) 100%);
+    box-shadow: 0 0 8px 8px rgb(73,51,84), inset 0 0 8px 8px rgb(73,51,84);
+    background-image: linear-gradient(to right, rgb(73,51,84) 0%, rgb(60,60,60) 50%, rgb(73,51,84) 100%);
 }
 #img{
     margin: 16px;
     opacity: 0.8;
     border: 4px solid black;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0,0,0,0.5);
 }
 #arrowBorder{
     position: fixed;
@@ -585,7 +583,7 @@ input{
     z-index: 5;
     
     border: solid 48px;
-    border-color: rgb(30, 0, 60) transparent transparent transparent;
+    border-color: rgb(30,0,60) transparent transparent transparent;
 }
 #arrow{
     position: fixed;
@@ -597,21 +595,20 @@ input{
     z-index: 5;
     
     border: solid 32px;
-    border-color: rgb(45, 0, 90) transparent transparent transparent;
+    border-color: rgb(45,0,90) transparent transparent transparent;
 }
 #name{
     position: relative;
     height: 32px;
     top: -8px;
-    
     border: 4px solid black;
     font-size: 24px;
-    color: rgb(180, 180, 210);
-    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(180,180,210);
+    background-color: rgba(0,0,0,0.5);
 }
 #invis{
     position: fixed; display: inherit;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0,0,0,0);
 }
 #txt{
     position: relative;
@@ -624,7 +621,7 @@ input{
     font-size: 18px;
     font-family: monospace;
     color: white;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0,0,0,0);
 }
 
 #TTXT{
@@ -634,8 +631,8 @@ input{
     
     font-size: 24px;
     color: white;
-    border: 4px solid rgba(120, 120, 120, .5);
-    background-color: rgba(105, 105, 105, .5);
+    border: 4px solid rgba(120,120,120,.5);
+    background-color: rgba(105,105,105,.5);
 }
 
 .stabscreen{
@@ -722,4 +719,52 @@ input{
     font-size: 24px; font-weight: bold;
     background-color: black;
     color: white;
+}
+.infoBox{
+    position: fixed; display: flex;
+    width: 16%; height: 18%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    border: 6px solid rgb(30,30,30);
+    background-color: black;
+}
+#IB1{
+    left: 2%; top: 12%;
+}
+.areaInfo{
+    position: fixed; display: none;
+    width: calc(96% - 12px); height: 68%;
+    left: 2%; top: 12%;
+    flex-direction: column;
+    color: white;
+    font-size: 24px;
+    border: 6px solid rgb(30,30,30);
+    background-color: black;
+}
+.areaInfoP{
+    transform: translateX(8px);
+}
+.enemyInfoP{
+    position: fixed; display: flex;
+    width: calc(31% + 6px); height: calc(70% - 168px);
+    top: calc(10% + 144px);
+    color: white;
+    font-size: 24px;
+    text-indent: 8px;
+    border: 6px solid rgb(30,30,30);
+    background-color: black;
+}
+#EIP1{left: 2%;}
+#EIP2{align-self: center;}
+#EIP3{right: 2%;}
+.enemyInfoL{
+    position: fixed;
+    top: calc(16% + 144px);
+    z-index: 4;
+    color: white;
+    font-size: 24px;
+    text-indent: 8px;
 }

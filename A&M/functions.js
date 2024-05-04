@@ -18,7 +18,7 @@ Bool.imply=(p,q)=>1!=p||0!=q;
 Bool.nonimply=(p,q)=>1==p&&0==q;
 
 // TIMER FUNCTIONS
-// also possible to add d into j*i to achieve the same delay effect
+// it's also possible to add d into j*i to achieve the same delay effect
 let setSchedule=(func,i,n,d=0)=>{
     setTimeout(()=>{
         for(let j=0;j<n;j++){
