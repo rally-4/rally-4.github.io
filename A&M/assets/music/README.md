@@ -36,7 +36,7 @@ Marble Mountains Boss -
 &ensp;  
 The Cave (Phobos) -   
 The Cave (Deimos) -   
-The Cave (Anoxic) -   
+The Cave (Anoxis) -   
 &ensp;  
 All Stars (Slagel Slime) \[SU\] - Cosmic Disgust  
 All Stars (Rat Empreror) \[BL\] -   
