@@ -6,7 +6,7 @@ Suburban Boss - Vandrande Pinnar
 &ensp;  
 Badlands ee -   
 Badlands Boss -   
-&ensp;
+&ensp;  
 Cliffs ee -   
 Cliffs Boss -   
 &ensp;  
