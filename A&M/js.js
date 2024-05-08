@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     swap(0);subswap(0);
     
     // OBJ AND RESOURCES
-    var obj = {name: '', uid: -1, res: {materials: 1000}, tutorial: false, A1C: true}
+    var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
     /* if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
     } */
