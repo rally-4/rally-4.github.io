@@ -51,7 +51,7 @@ All Stars (Astral Machine) \[TF\] -
 All Stars (**MM Boss Counterpart**) \[MM\] -   
 All Stars (Anitris) \[TC\] -   
 All Stars (**Final Boss**) \[AASS\] -   
-&ensp; 
+&ensp;  
 Tetronimos - Tetris 99 (50 players remaining)  
 Rilaz - Deduce of a Row  
 Aure - Eclipsed  
