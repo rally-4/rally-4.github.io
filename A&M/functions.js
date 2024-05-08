@@ -5,6 +5,14 @@ const Limit = function(e,l){
     }
 }
 
+// AUDIO FUNCTIONS
+const play=m=>m.play();
+const stop=m=>{m.pause();m.currentTime=0}
+const stopAll=()=>{
+    var allAudios=document.getElementsByTagName('audio');
+    for(i=0;i<allAudios.length;i++){allAudios[i].pause();allAudios[i].currentTime=0}
+}
+
 // BOOLEAN MANIPULATIONS
 const Bool = {
     true: true,

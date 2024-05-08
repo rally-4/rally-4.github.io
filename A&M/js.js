@@ -2,6 +2,32 @@ window.addEventListener('DOMContentLoaded',()=>{
     // let ip1 = '78.155.43.8';
     // const socket = io('http://' + ip1 + ':3000');
     
+    // AUDIO
+    const November = document.getElementById('November');
+    const SUEM = document.getElementById('SUEM');
+    const SUBM = document.getElementById('SUBM');
+    const T99 = document.getElementById('T99'); T99.volume = 0.5;
+    
+    const SSel = document.getElementById('SSel');
+    const FSt = document.getElementById('FSt');
+    const TCr = document.getElementById('TCr');
+    const CCh = document.getElementById('CCh');
+    const Sl = document.getElementById('Sl');
+    const BE = document.getElementById('BE');
+    const Upg = document.getElementById('Upg');
+    const CS = document.getElementById('CS');
+    
+    const AIHD = document.getElementById('AIHD');
+    const AISD = document.getElementById('AISD');
+    const PHDA = document.getElementById('PHDA');
+    const PSDA = document.getElementById('PSDA');
+    const IR = document.getElementById('IR');
+    const EH = document.getElementById('EH');
+    const He = document.getElementById('He');
+    
+    const loudSFX = [SSel, FSt, TCr, CCh, Sl, BE, Upg, CS, AIHD, AISD, PHDA, PSDA, IR, EH, He];
+    for(l=0;l<loudSFX.length;l++){loudSFX[l].volume=.4}
+    
     // TABS
     const TS1 = document.getElementById('TS1');
     const T1 = document.getElementById('T1');
@@ -43,16 +69,16 @@ window.addEventListener('DOMContentLoaded',()=>{
             }
         }
     }
-    T1.addEventListener('click', ()=>{swap(0)});
-    T2.addEventListener('click', ()=>{swap(1)});
-    T3.addEventListener('click', ()=>{swap(2)});
-    T4.addEventListener('click', ()=>{if(obj.A1C){swap(3)}});
-    UT1.addEventListener('click', ()=>{subswap(0)});
-    UT2.addEventListener('click', ()=>{subswap(1)});
+    T1.addEventListener('click', ()=>{play(CS);swap(0)});
+    T2.addEventListener('click', ()=>{play(CS);swap(1)});
+    T3.addEventListener('click', ()=>{play(CS);swap(2)});
+    T4.addEventListener('click', ()=>{if(obj.A1C){play(CS);swap(3)}});
+    UT1.addEventListener('click', ()=>{play(CS);subswap(0)});
+    UT2.addEventListener('click', ()=>{play(CS);subswap(1)});
     swap(0);subswap(0);
     
     // OBJ AND RESOURCES
-    var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
+    var obj = {name: '', uid: -1, res: {materials: 1000}, tutorial: false, A1C: true}
     /* if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
     } */
@@ -120,11 +146,11 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
     trunk.addEventListener('click', next);
-    if(obj.tutorial){
-        displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"]);
-    }
+    if(obj.tutorial){displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"])}
     
     // C0 VAULT
+    let SB1w = false;
+    
     let GKT = document.getElementById('GKT');
     if(obj.name != ''){
         GKT.innerHTML = obj.name + ', the compelled one...';
@@ -132,22 +158,25 @@ window.addEventListener('DOMContentLoaded',()=>{
         GKT.style.color = 'orange';
         GKT.innerHTML = 'You should not be here...';
     }
-    let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to be here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?"];
-    let OrangeText = ["You should not be here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
+    let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to stay here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?", "Our time here isn't unlimited."];
+    let OrangeText = ["You should not linger around here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
     let WTI = 0;
     let OTI = 1;
     const input = document.getElementById('input');
     input.addEventListener('keyup', e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
-            if(WTI > 7){WTI = 0}
+            if(WTI > WhiteText.length-1){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
             if(Math.random() >= 0.995){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
+            if(input.value == 'Tetronimos' && !SB1w){
+                LoadFight('Tetronimos Rampage', 4444, 444, .4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, TetronimosAttacks, 0, 'SB1', ['Tetronimo'], [1], ['rgb(120,45,0)'], T99);
+            }
             input.value = ''; GKT.style.color = 'orange';
-            if(OTI > 4){OTI = 0}
+            if(OTI > OrangeText.length-1){OTI = 0}
             GKT.innerHTML = OrangeText[OTI];
             OTI++;
         }
@@ -158,6 +187,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let D1 = document.getElementById('D1');
     let AD1 = document.getElementById('AD1');
     D1.addEventListener('click',()=>{
+        play(CS);
         D1.style.borderColor = 'rgb(105,105,105)';
         D1.style.backgroundColor = 'rgb(45,45,45)';
         D1.style.color = 'white';
@@ -203,10 +233,16 @@ window.addEventListener('DOMContentLoaded',()=>{
     let ADVANCE = new EnemyAttack('ADVANCE', 25, 3, 50);
     let DELUGE = new EnemyAttack('DELUGE', 50, 3, 0, 0, 75, 75);
     let RECOVER = new EnemyAttack('RECOVER', 100, 7, 0, 0, 0, 250, 150);
-    let ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
+    const ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
-    let C0Attacks = [ATTACK];
+    const C0Attacks = [ATTACK];
+    
+    let FALL = new EnemyAttack('FALL', 70, 0.4, 4);
+    let ROTATE = new EnemyAttack('ROTATE', 90, 0.4, 14);
+    let DROP = new EnemyAttack('DROP', 95, 0.4, 44, 14, 14);
+    let LINE = new EnemyAttack('LINE', 100, 0.4, 0, 0, 0, 100, 100);
+    const TetronimosAttacks = [FALL, ROTATE, DROP, LINE];
     
     let UserHealth = 1000;
     let UserShield = 200;
@@ -228,6 +264,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const U1 = document.getElementById('U1');
     U1.addEventListener('click',()=>{
         if(obj.res.Slime >= cc1){
+            play(Upg);
             obj.res.Slime -= cc1; cc1 += 2;
             Cost1.innerHTML = 'Cost: ' + cc1 + ' Slime';
             CSlimeC.innerHTML = 'Quantity: ' + obj.res.Slime;
@@ -251,7 +288,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     });
     const U2 = document.getElementById('U2'); let uu2 = false;
     U2.addEventListener('click',()=>{
-        if(obj.res.materials >= 9){
+        if(obj.res.materials >= 9 && !uu2){
+            play(Upg);
             obj.res.materials -= 9;
             Cost2.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
@@ -282,7 +320,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     });
     const U3 = document.getElementById('U3'); let uu3 = false;
     U3.addEventListener('click',()=>{
-        if(obj.res.materials >= 15){
+        if(obj.res.materials >= 15 && !uu3){
+            play(Upg);
             obj.res.materials -= 15;
             Cost3.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
@@ -371,37 +410,45 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     // ATTACK FUNCTIONS
     let Damage = function(d, pA){
-        if(pA){
+        if(pA && d){
             if(COS > 0){
                 if(COS >= d){
+                    play(AISD);
                     COS -= d; P(pA);
                 }else{
+                    play(AISD);
                     COH += COS - d; R(pA);
                     COS -= COS; P(pA);
                 }
             }else{
+                play(AIHD);
                 COH -= d; R(pA); OSD = ODowntime;
             }
         }else{
             if(CPS > 0){
                 if(CPS >= d){
+                    play(PSDA);
                     CPS -= d; P(pA);
                 }else{
+                    play(PSDA);
                     CPH += CPS - d; R(pA);
                     CPS -= CPS; P(pA);
                 }
             }else{
+                play(PHDA);
                 CPH -= d; R(pA); PSD = PDowntime;
             }
         }
     }
     let PenetratingDamage = function(d, pA){
-        if(pA){
+        if(pA && d){
+            play(AIHD);
             COH -= d; R(pA);
             if(COS <= 0){
                 OSD = ODowntime;
             }
         }else{
+            play(PHDA);
             CPH -= d; R(pA);
             if(CPS <= 0){
                 PSD = PDowntime;
@@ -409,27 +456,32 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
     let ShieldDamage = function(d, pA){
-        if(pA){
+        if(pA && d){
+            play(AISD);
             COS -= d; P(pA);
         }else{
+            play(PSDA);
             CPS -= d; P(pA);
         }
     }
     let Heal = function(h, pA){
-        if(pA){
+        if(pA && h){
+            play(EH);
             COH += h; H(pA);
         }else{
+            play(He);
             CPH += h; H(pA);
         }
     }
     let ShieldHeal = function(h, pA){
-        if(pA){
+        if(pA && h){
             COS += h; SH(pA);
         }else{
             CPS += h; SH(pA);
         }
     }
     let Interrupt = function(){
+        play(IR);
         CurrentAttack.damage = 0;
         CurrentAttack.penetratingdamage = 0;
         CurrentAttack.shielddamage = 0;
@@ -443,10 +495,12 @@ window.addEventListener('DOMContentLoaded',()=>{
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
     const STUN=()=>{Interrupt()}
+    const HEAL=()=>{Heal(1050,false)}
     let AA1 = [SMACK]; var AA1v = 0;
     let AA2 = [CHARGE]; var AA2v = 0;
     let AA3 = [SLASH]; var AA3v = 0;
     let AA4 = [STUN]; var AA4v = 0;
+    let AA5 = [HEAL]; var AA5v = 0;
     
     let S1 = document.getElementById('S1');
     let S1C = document.getElementById('S1C');
@@ -454,6 +508,10 @@ window.addEventListener('DOMContentLoaded',()=>{
     let S2C = document.getElementById('S2C');
     let S3 = document.getElementById('S3');
     let S3C = document.getElementById('S3C');
+    let S4 = document.getElementById('S4');
+    let S4C = document.getElementById('S4C');
+    let S5 = document.getElementById('S5');
+    let S5C = document.getElementById('S5C');
     S1.addEventListener('pointerdown',()=>{
         if(this.S1A){S1A = this.S1A}
         if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
@@ -467,11 +525,12 @@ window.addEventListener('DOMContentLoaded',()=>{
         AA2[AA2v]();
     }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
     
-    // Wins -> Number of battles won | BossWins -> Wins required for bossfight.
+    // Wins -> Number of battles won | BossWins -> Wins required for bossfight
     var A1Wins = 0; const A1BossWins = 4;
     
-    // E -> Enemy, O -> Opponent, U -> User, P -> Player, H -> Health, S -> Shield
-    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[], colarr=[]){
+    // E = Enemy, O = Opponent, U = User, P = Player, H = Health, S = Shield
+    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[], colarr=[], M=November){
+        stop(November);play(SSel);
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!'; Enemy.style.animation = '0.2s ease forwards slide';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
         let body = document.getElementById('body'); body.style.display = 'flex';
@@ -481,10 +540,10 @@ window.addEventListener('DOMContentLoaded',()=>{
         let CD = document.getElementById('Countdown');
         CD.style.animation = '0.75s linear infinite fade';
         BS.style.display = 'flex';
-        ABwidth = 0;
-        setTimeout(()=>{CD.textContent = '2...'},750);
-        setTimeout(()=>{CD.textContent = '1...'},1500);
-        setTimeout(()=>{CD.textContent = 'GO!';CD.style.animation = 'none'},2250);
+        ABwidth = 0; play(CCh);
+        setTimeout(()=>{play(CCh);CD.textContent = '2...'},750);
+        setTimeout(()=>{play(CCh);CD.textContent = '1...'},1500);
+        setTimeout(()=>{play(FSt);CD.textContent = 'GO!';CD.style.animation = 'none';play(M)},2250);
         setTimeout(()=>{
             BS.style.display = 'none';
             CD.textContent = '3...';
@@ -638,9 +697,12 @@ window.addEventListener('DOMContentLoaded',()=>{
                         A1Wins = 0; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.A1C = true;
+                        setTimeout(()=>{if(obj.res['Slime Key'] >= 0){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
                     }
+                    if(area=='SB1'){SB1w = true;}
                 }
                 if(COH <= 0 || CPH <= 0){
+                    play(BE);
                     for(i=0; i < ALL.length; i++){ALL[i].style.animation = 'none'}
                     S1.style.pointerEvents = 'none';
                     S2.style.pointerEvents = 'none';
@@ -661,8 +723,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                     setSchedule(()=>{
                         op += 0.02;
                         dar.style.opacity = op + '';
-                    }, 10, 50, 500);
-                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false}, 1000);
+                    },10,50,500);
+                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["I evidently won, but at least you stroke some good hits...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     sessionStorage.setItem('user',JSON.stringify(obj));
                     clearInterval(intervalId);
@@ -674,12 +736,12 @@ window.addEventListener('DOMContentLoaded',()=>{
     E1.addEventListener('click',()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)']);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)'], SUEM);
             }else{
-                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)']);
+                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)'], SUEM);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0,127,255)', 'rgb(0,90,210)']);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0,127,255)', 'rgb(0,90,210)'], SUBM);
         }
     });
 });
