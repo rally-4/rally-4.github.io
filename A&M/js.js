@@ -232,7 +232,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const ScrapSlimeAttacks = [CRAWL, CUT, ENGULF];
     let ADVANCE = new EnemyAttack('ADVANCE', 25, 3, 50);
     let DELUGE = new EnemyAttack('DELUGE', 50, 3, 0, 0, 75, 75);
-    let RECOVER = new EnemyAttack('RECOVER', 100, 7, 0, 0, 0, 250, 150);
+    let RECOVER = new EnemyAttack('RECOVER', 100, 6, 0, 0, 0, 250, 100);
     const ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
@@ -697,7 +697,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                         A1Wins = 0; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.A1C = true;
-                        setTimeout(()=>{if(obj.res['Slime Key'] >= 0){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
+                        setTimeout(()=>{if(obj.res['Slime Key'] >= 0 && (T4.innerHTML != 'RESEARCH')){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
                     }
                     if(area=='SB1'){SB1w = true;}
                 }
