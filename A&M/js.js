@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const November = document.getElementById('November');
     const SUEM = document.getElementById('SUEM');
     const SUBM = document.getElementById('SUBM');
-    const T99 = document.getElementById('T99'); T99.volume = 0.5;
+    const T99 = document.getElementById('T99');T99.volume = 0.5;
     
     const SSel = document.getElementById('SSel');
     const FSt = document.getElementById('FSt');
@@ -115,6 +115,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             document.getElementById('C'+n[i]+'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
      }
+    // obj.res.add(['Slime'], [1000], ['rgb(0,127,255)']);
     
     // TEXTBOX
     const trunk = document.getElementById('trunk');
@@ -135,7 +136,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             trunk.style.display = 'none';
             div.style.pointerEvents = 'none';
             if((count >= txtarr.length) && obj.tutorial){
-                LoadFight('C0', 8500, 1500, 2, 0.05, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
+                LoadFight('C0', 750, 250, 2, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
                 setTimeout(()=>{obj.tutorial = false}, 4000);
             }
         }else{
@@ -163,17 +164,18 @@ window.addEventListener('DOMContentLoaded',()=>{
     let WTI = 0;
     let OTI = 1;
     const input = document.getElementById('input');
-    input.addEventListener('keyup', e=>{
+    input.addEventListener('keyup',e=>{
         if(input.value == ''){
             GKT.style.color = 'white';
             if(WTI > WhiteText.length-1){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
             if(Math.random() >= 0.995){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
+            if(Math.random() >= 0.96){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
-            if(input.value == 'Tetronimos' && !SB1w){
-                LoadFight('Tetronimos Rampage', 4444, 444, .4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, TetronimosAttacks, 0, 'SB1', ['Tetronimo'], [1], ['rgb(120,45,0)'], T99);
+            if(input.value == 'Tetrominos' && !SB1w){
+                LoadFight('Tetrominos Rampage', 4444, 444, .4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, TetrominosAttacks, 0, 'SB1', ['Tetromino'], [1], ['rgb(120,45,0)'], T99);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -235,14 +237,14 @@ window.addEventListener('DOMContentLoaded',()=>{
     let RECOVER = new EnemyAttack('RECOVER', 100, 6, 0, 0, 0, 250, 100);
     const ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
-    let ATTACK = new EnemyAttack('ATTACK', 100, 2, 150);
+    let ATTACK = new EnemyAttack('ATTACK', 100, 2, 75);
     const C0Attacks = [ATTACK];
     
     let FALL = new EnemyAttack('FALL', 70, 0.4, 4);
     let ROTATE = new EnemyAttack('ROTATE', 90, 0.4, 14);
-    let DROP = new EnemyAttack('DROP', 95, 0.4, 44, 14, 14);
+    let DROP = new EnemyAttack('DROP', 96, 0.4, 44, 14, 14);
     let LINE = new EnemyAttack('LINE', 100, 0.4, 0, 0, 0, 100, 100);
-    const TetronimosAttacks = [FALL, ROTATE, DROP, LINE];
+    const TetrominosAttacks = [FALL, ROTATE, DROP, LINE];
     
     let UserHealth = 1000;
     let UserShield = 200;
@@ -273,7 +275,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
         if(cc1 >= 40){
             U1.innerHTML = 'MAX';
-            U1.removeEventListener('click',this);
+            cc1 = Infinity;
         }
     });
     
@@ -465,7 +467,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
     let Heal = function(h, pA){
-        if(pA && h){
+        if(!pA && h){
             play(EH);
             COH += h; H(pA);
         }else{
@@ -474,7 +476,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
     let ShieldHeal = function(h, pA){
-        if(pA && h){
+        if(!pA && h){
             COS += h; SH(pA);
         }else{
             CPS += h; SH(pA);
@@ -495,7 +497,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
     const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
     const STUN=()=>{Interrupt()}
-    const HEAL=()=>{Heal(1050,false)}
+    const HEAL=()=>{Heal(1050,true)}
     let AA1 = [SMACK]; var AA1v = 0;
     let AA2 = [CHARGE]; var AA2v = 0;
     let AA3 = [SLASH]; var AA3v = 0;
@@ -639,19 +641,19 @@ window.addEventListener('DOMContentLoaded',()=>{
                     }else{
                         ABwidth = 0;
                         if(CurrentAttack.damage != 0){
-                            Damage(CurrentAttack.damage, false);
+                            Damage(CurrentAttack.damage,false);
                         }
                         if(CurrentAttack.penetratingdamage != 0){
-                            PenetratingDamage(CurrentAttack.penetratingdamage, false);
+                            PenetratingDamage(CurrentAttack.penetratingdamage,false);
                         }
                         if(CurrentAttack.shielddamage != 0){
-                            ShieldDamage(CurrentAttack.shielddamage, false);
+                            ShieldDamage(CurrentAttack.shielddamage,false);
                         }
                         if(CurrentAttack.heal != 0){
-                            Heal(CurrentAttack.heal, true);
+                            Heal(CurrentAttack.heal,false);
                         }
                         if(CurrentAttack.shieldheal != 0){
-                            ShieldHeal(CurrentAttack.shieldheal, true);
+                            ShieldHeal(CurrentAttack.shieldheal,false);
                         }
                         CurrentAttack = false;
                     }
@@ -725,7 +727,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                         dar.style.opacity = op + '';
                     },10,50,500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
-                    if(area == 'Tutorial'){setTimeout(()=>{displayText(["I evidently won, but at least you stroke some good hits...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
+                    if(area == 'Tutorial'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     sessionStorage.setItem('user',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
@@ -738,10 +740,10 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(Math.random() < .5){
                 LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)'], SUEM);
             }else{
-                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)'], SUEM);
+                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(Math.random())+3], ['rgb(0,127,255)'], SUEM);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(3*Math.random())+3, 1], ['rgb(0,127,255)', 'rgb(0,90,210)'], SUBM);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(2*Math.random())+4, 1], ['rgb(0,127,255)', 'rgb(0,90,210)'], SUBM);
         }
     });
 });

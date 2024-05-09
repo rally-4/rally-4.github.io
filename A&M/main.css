@@ -44,9 +44,10 @@ h1{
     color: gold;
 }
 #GKT{
-    position: fixed; display: flex;
-    left: 50%; transform: translateX(-50%);
-    top: 15%;
+    position: fixed; display: flex; width: 80%;
+    left: 50%; transform: translateX(-50%); top: 15%;
+    justify-content: center;
+    text-align: center;
     font-size: 28px;
 }
 #InputDiv{
@@ -660,8 +661,8 @@ input{
     background-color: rgb(165,165,165);
     color: rgb(60,60,60);
 }
-#UT1{left: 3%;}
-#UT2{left: 10%;}
+#UT1{left: 36px;}
+#UT2{left: 128px;}
 
 .row2{
     position: fixed; display: flex;
@@ -749,8 +750,8 @@ input{
 }
 .enemyInfoP{
     position: fixed; display: flex;
-    width: calc(31% + 6px); height: calc(70% - 168px);
-    top: calc(10% + 144px);
+    width: calc(31% + 6px); height: calc(68% - 168px);
+    top: calc(12% + 144px);
     color: white;
     font-size: 24px;
     text-indent: 8px;
@@ -762,7 +763,7 @@ input{
 #EIP3{right: 2%;}
 .enemyInfoL{
     position: fixed;
-    top: calc(16% + 144px);
+    top: calc(18% + 144px);
     z-index: 4;
     color: white;
     font-size: 24px;
