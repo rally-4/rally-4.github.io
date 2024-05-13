@@ -4,16 +4,16 @@ Main Menu - November
 Suburban ee - Dans la Rue  
 Suburban Boss - Vandrande Pinnar  
 &ensp;  
-Badlands ee -   
-Badlands Boss -   
+Badlands ee - Cydonian Sky  
+Badlands Boss - Krutfotboll  
 &ensp;  
 Cliffs ee -   
-Cliffs Boss -   
+Cliffs Boss - Fucked up at Dreamhack  
 &ensp;  
-Collapsed City ee -   
+Collapsed City ee - Hurry Potter!  
 Collapsed City Boss -   
 &ensp;  
-Acrid Shores ee -   
+Acrid Shores ee - Team Haze Keygen 2  
 Acrid Shores Boss - Passion Field  
 &ensp;  
 Bioswamp ee -   
@@ -22,14 +22,14 @@ Bioswamp Boss -
 Landfill ee -   
 Landfill Boss -   
 &ensp;  
-The Lab ee -   
-The Lab Boss - Afterburner  
+The Lab ee - Traverse de RN85  
+The Lab Boss - Introchip #9 (z00m^TCG AYedit)  
 &ensp;  
 Forest ee - Through the Nature  
 Forest Boss -   
 &ensp;  
 The Facility ee - BattleMuz  
-The Facility Boss -   
+The Facility Boss - Afterburner  
 &ensp;  
 Marble Mountains ee - Marble Mountain  
 Marble Mountains Boss -   
@@ -55,4 +55,3 @@ All Stars (**Final Boss**) \[AASS\] -
 Tetronimos - Tetris 99 (50 players remaining)  
 Rilaz - Deduce of a Row  
 Aure - Eclipsed  
-Box - Krutfotboll  
