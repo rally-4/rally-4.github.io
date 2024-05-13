@@ -2,15 +2,17 @@
 <html>
     <head>
         <meta name="author" content="rally4">
-        <meta name="description" content="">
+        <meta name="description" content="An offline version of the in-development game Anoxic (aka A&M 3).">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <!-- meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" -->
         <title>???</title>
         <link rel="icon" href="Anoxic.png">
         
         <audio id="November" src="assets/music/November.mp3" loop></audio>
         <audio id="SUEM" src="assets/music/DansLaRue.mp3" loop></audio>
         <audio id="SUBM" src="assets/music/VandrandePinnar.mp3" loop></audio>
+        <audio id="BLEM" src="assets/music/CydonianSky.mp3" loop></audio>
+        <audio id="BLBM" src="assets/music/Krutfotboll.mp3" loop></audio>
         <audio id="T99" src="assets/music/TETRIS99.mp3" loop></audio>
         
         <audio id="SSel" src="assets/sfx/StageSelect.wav"></audio>
@@ -38,7 +40,7 @@
     <body>
         <div id="Tabs">
             <div class="tab" id="T1">CHAMBER</div>
-            <div class="tab" id="T2">CRAFT</div>
+            <div class="tab" id="T2">STORAGE</div>
             <div class="tab" id="T3">TELEPORT</div>
             <div class="tab" id="T4">???</div>
         </div>
@@ -69,9 +71,16 @@
             <div class="row" id="A1">
                 <div class="col" id="c1"></div>
                 <p class="areaname">SUBURBAN</p>
-                <p class="adetails" id="AD1">Drops: materials, slime, slime key<br>Wins until boss: 0/4</p>
+                <p class="adetails" id="AD1">Drops: Slime, Slime Key<br>Wins until boss: 0/4</p>
                 <div class="details" id="D1">Details</div>
                 <div class="enter" id="E1">Enter</div>
+            </div>
+            <div class="row" id="A2">
+                <div class="col" id="c2"></div>
+                <p class="areaname">BADLANDS</p>
+                <p class="adetails" id="AD2">Drops: Slime, Red Fluid, Rusty Key<br>Wins until boss: 0/10</p>
+                <div class="details" id="D2">Details</div>
+                <div class="enter" id="E2">Enter</div>
             </div>
         </div>
         
@@ -116,6 +125,30 @@
                     <br>
                     &nbsp; • Interrupts the enemy attack<br>
                     &nbsp; • Cooldown: 20s
+                    <br>&nbsp;
+                </p>
+                <div class="row2" id="UG4">
+                    <p class="upgradename">Unlock Badlands</p>
+                    <p class="cost" id="Cost4">Cost: 1 Slime Key</p>
+                    <div class="details2" id="DT4">Info</div>
+                    <div class="upg" id="U4">Unlock</div>
+                </div>
+                <p class="info" id="I4">
+                    <br>
+                    &nbsp; • Unlock Badlands
+                    <br>&nbsp;
+                </p>
+                <div class="row2" id="UG6">
+                    <p class="upgradename">Unlock Heal</p>
+                    <p class="cost" id="Cost6">Cost: 40 materials</p>
+                    <div class="details2" id="DT6">Info</div>
+                    <div class="upg" id="U6">Unlock</div>
+                </div>
+                <p class="info" id="I6">
+                    <br>
+                    &nbsp; • Heal: 1050<br>
+                    &nbsp; • Cooldown: 30s<br>
+                    &nbsp; • Uses per fight: 3
                     <br>&nbsp;
                 </p>
             </div>
@@ -210,7 +243,7 @@
                 <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div></div>
                 <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
                 <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
-                <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div></div>
+                <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div><div class="blueBar" id="BB5"><div class="cyanBar" id="CB5"></div></div></div>
             </div>
             <div id="inv"></div>
             <div id="dar"></div>

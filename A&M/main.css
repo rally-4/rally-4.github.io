@@ -1,4 +1,4 @@
-*{user-select: none;}
+*{user-select:none;}
 body{
     margin: 0px; padding: 0px;
     width: 100%; height: 100%;
@@ -17,12 +17,10 @@ body{
     width: 24.5%;
     height: 15%;
     bottom: 0%;
-    
     flex-direction: column;
     justify-content: center;
     align-content: center;
     text-align: center;
-    
     font-size: 32px;
     background-color: rgb(60,60,60);
 }
@@ -56,7 +54,6 @@ h1{
     left: 50%; transform: translateX(-50%);
     top: 30%;
     justify-content: center;
-    
     border: 8px solid rgb(60,60,60);
     border-radius: 8px;
     background-color: rgb(60,60,60);
@@ -139,17 +136,15 @@ input{
     border: 2px solid rgb(60,60,60);
     background-color: rgb(30,30,30);
 }
-#A1{
-    top: 12%;
-}
+#A1{top: 12%;}
+#A2{top: 26%;display:none;}
 .col{
     width: 1%;
     height: 90%;
     transform: translateX(4px);
 }
-#c1{
-    background-color: black;
-}
+#c1{background-color: black;}
+#c2{background-color: rgb(120,105,15);}
 .areaname{
     position: fixed;
     display: flex;
@@ -209,7 +204,7 @@ input{
 }
 #Enemy{
     position: fixed;
-    left: -10%;
+    left: -128px;
     top: 5%;
     font-size: 48px;
     color: yellow;
@@ -218,7 +213,7 @@ input{
 }
 @keyframes slide{
     to{
-        transform: translateX(50%);
+        transform: translateX(256px);
     }
 }
 #BlackScreen p{
@@ -284,6 +279,7 @@ input{
     transform: translateX(-50%);
     justify-content: center;
     text-align: center;
+    white-space: nowrap;
     z-index: -1;
     background-color: rgb(96,53,185);
 }
@@ -371,29 +367,35 @@ input{
     text-align: center;
     z-index: 3;
     color: black;
-    font-size: 48px;
+    font-size: 46px;
     border: 4px solid rgb(45,45,45);
     background-color: white;
 }
-#S1{
-    left: 10%;
-    top: 67%;
+#S1{left: 10%;top: 67%;}
+#S2{align-self: center;top: 67%;}
+#S3{right: 10%;top: 67%;}
+#S4{left: 26.5%;top: 75%;}
+#S5{right: 26.5%;top: 75%;}
+
+:root{
+    --translate-x: calc(14vw - 24px);
 }
-#S2{
-    align-self: center;
-    top: 67%;
+.blueBar{
+    position: fixed; display: flex;
+    width: 24px; height: inherit;
+    left: inherit;
+    transform: translateX(var(--translate-x));
+    justify-content: center;
+    align-content: center;
+    align-items: end;
+    z-index: 4;
+    background-color: rgb(0,75,75);
 }
-#S3{
-    right: 10%;
-    top: 67%;
-}
-#S4{
-    left: 26.5%;
-    top: 75%;
-}
-#S5{
-    right: 26.5%;
-    top: 75%;
+.cyanBar{
+    width: 80%; height: 100%;
+    bottom: 4px;
+    z-index: 6;
+    background-color: rgb(0,255,255);
 }
 
 #OH p{z-index: 5;}
@@ -481,6 +483,12 @@ input{
 #S5C{
     right: 26.5%; top: 75%;
     z-index: 5;
+    
+    animation-duration: 30s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-play-state: paused;
 }
 @keyframes rotate{
     0%{
@@ -674,9 +682,12 @@ input{
     border: 4px solid rgb(30,30,30);
     background-color: black;
 }
-#UG1{top: 12%;}
-#UG2{top: 24%;}
-#UG3{top: 36%;}
+#UG1{top:12%;}
+#UG2{top:24%;}
+#UG3{top:36%;}
+#UG4{top:48%;}
+#UG5{top:60%;}
+#UG6{top:72%;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
@@ -708,8 +719,11 @@ input{
     background-color: black;
 }
 #I1{top: calc(22% - 16px);}
-#I2{top: 32%;}
-#I3{top: calc(42% + 16px);}
+#I2{top: clac(34% - 16ps);}
+#I3{top: calc(46% - 16px);}
+#I4{top: calc(58% - 16px);}
+#I5{top: calc(70% - 16px);}
+#I6{top: calc(82% - 16px);}
 .upg{
     position: fixed; display: flex;
     width: 144px; height: 80%; right: 4px;

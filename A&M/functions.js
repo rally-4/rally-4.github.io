@@ -13,7 +13,7 @@ const stopAll=()=>{
     for(i=0;i<allAudios.length;i++){allAudios[i].pause();allAudios[i].currentTime=0}
 }
 
-// BOOLEAN MANIPULATIONS
+// BOOLEAN ALGEBRA
 const Bool = {
     true: true,
     false: false
@@ -36,7 +36,7 @@ let setSchedule=(func,i,n,d=0)=>{
 }
 
 // OTHER
-var setRotateAnimation = function(e,t){
+const setRotateAnimation=(e,t)=>{
     e.style.animationName = 'rotate';
     e.style.animationDuration = t+'s';
     e.style.animationIterationCount = '1';
@@ -44,3 +44,11 @@ var setRotateAnimation = function(e,t){
     e.style.animationFillMode = 'none';
     e.style.animationPlayState = 'paused';
 }
+const getResCols=(res)=>{
+    if(res=='Slime'){return 'rgb(0,127,255)'}
+    else if(res=='Slime Key'){return 'rgb(0,90,210)'}
+    else if(res=='Red Fluid'){return 'rgb(210,0,30)'}
+    else if(res=='Rusty Key'){return 'rgb(90,45,0)'}
+    else{return 'rgb(255,255,255)'}
+}
+const rem=(arr,el)=>{for(a=0;a<el.length;a++){arr.splice(arr.indexOf(el[a]),1)}}

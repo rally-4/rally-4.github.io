@@ -6,6 +6,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     const November = document.getElementById('November');
     const SUEM = document.getElementById('SUEM');
     const SUBM = document.getElementById('SUBM');
+    const BLEM = document.getElementById('BLEM');
+    const BLBM = document.getElementById('BLBM');
     const T99 = document.getElementById('T99');T99.volume = 0.5;
     
     const SSel = document.getElementById('SSel');
@@ -78,15 +80,50 @@ window.addEventListener('DOMContentLoaded',()=>{
     swap(0);subswap(0);
     
     // OBJ AND RESOURCES
+    let C1C = document.getElementById('C1C');
     var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
-    /* if(sessionStorage.getItem('user') != undefined){
+    if(sessionStorage.getItem('user') != undefined){
         obj = JSON.parse(sessionStorage.getItem('user'));
-    } */
+        obj.res.readd = function(n,a){
+            for(i=0; i<n.length; i++){
+                obj.res[n[i]] = 0;
+                
+                var newCraft = document.createElement('div');
+                TS2.appendChild(newCraft);
+                newCraft.id = 'C' + n[i];
+                newCraft.classList.add('crafts');
+                newCraft.style.top = 'calc(16px + ' + (Object.keys(obj.res).length-2)*8 + '%)';
+                
+                var newDiv = document.createElement('div');
+                newCraft.appendChild(newDiv);
+                var rescol = getResCols(n[i]);
+                newDiv.style.backgroundColor = rescol;
+                newDiv.style.border = '2px solid ' + rescol;
+                
+                var p1 = document.createElement('p');
+                newCraft.appendChild(p1);
+                p1.innerHTML = n[i];
+                
+                var p2 = document.createElement('p');
+                newCraft.appendChild(p2);
+                p2.id = 'C' + n[i] + 'C';
+                p2.innerHTML = 'Quantity: ' + obj.res[n[i]];
+                
+                obj.res[n[i]] += a[i];
+                document.getElementById('C'+n[i]+'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+            }
+        }
+        var keys = Object.keys(obj.res); keys.shift(); rem(keys,['readd']);
+        var values = Object.values(obj.res); values.shift(); rem(values,['readd']);
+        obj.res.readd(keys,values);
+        obj.res.materials += obj.res.materials;
+        C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+    }
     if(obj.A1C){
         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';
     }
-    obj.res.add = function(n, a, col){
+    obj.res.add = function(n,a){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
@@ -99,8 +136,9 @@ window.addEventListener('DOMContentLoaded',()=>{
                 
                 var newDiv = document.createElement('div');
                 newCraft.appendChild(newDiv);
-                newDiv.style.backgroundColor = col[i];
-                newDiv.style.border = '2px solid ' + col[i];
+                var rescol = getResCols(n[i]);
+                newDiv.style.backgroundColor = rescol;
+                newDiv.style.border = '2px solid ' + rescol;
                 
                 var p1 = document.createElement('p');
                 newCraft.appendChild(p1);
@@ -115,7 +153,6 @@ window.addEventListener('DOMContentLoaded',()=>{
             document.getElementById('C'+n[i]+'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
         }
      }
-    // obj.res.add(['Slime'], [1000], ['rgb(0,127,255)']);
     
     // TEXTBOX
     const trunk = document.getElementById('trunk');
@@ -184,7 +221,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     });
     
-    // SUBURBAN DETAILS
+    // AREA DETAILS
     let e1 = false;
     let D1 = document.getElementById('D1');
     let AD1 = document.getElementById('AD1');
@@ -197,7 +234,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             D1.style.borderColor = 'rgb(150,150,150)';
             D1.style.backgroundColor = 'rgb(210,210,210)';
             D1.style.color = 'black';
-        }, 100);
+        },100);
         if(e1){
             AD1.style.display = 'none';
             e1 = false;
@@ -211,9 +248,32 @@ window.addEventListener('DOMContentLoaded',()=>{
     IB1.addEventListener('click',()=>{AI1.style.display = 'flex'});
     AI1.addEventListener('click',()=>{AI1.style.display = 'none'});
     
+    let e2 = false;
+    let D2 = document.getElementById('D2');
+    let AD2 = document.getElementById('AD2');
+    let A2 = document.getElementById('A2');
+    D2.addEventListener('click',()=>{
+        play(CS);
+        D2.style.borderColor = 'rgb(105,105,105)';
+        D2.style.backgroundColor = 'rgb(45,45,45)';
+        D2.style.color = 'white';
+        setTimeout(()=>{
+            D2.style.borderColor = 'rgb(150,150,150)';
+            D2.style.backgroundColor = 'rgb(210,210,210)';
+            D2.style.color = 'black';
+        },100);
+        if(e2){
+            AD2.style.display = 'none';
+            e2 = false;
+        }else{
+            AD2.style.display = 'flex';
+            e2 = true;
+        }
+    });
+    
     // ENEMY ATTACKS
     class EnemyAttack{
-        constructor(name, chance, casting, damage=0, penetratingdamage=0, shielddamage=0, heal=0, shieldheal=0){
+        constructor(name, chance, casting, damage=0, penetratingdamage=0, shielddamage=0, heal=0, shieldheal=0, selfdamage=0, nextattack='none'){
             this.name = name;
             this.chance = chance;
             this.casting = casting;
@@ -223,6 +283,9 @@ window.addEventListener('DOMContentLoaded',()=>{
             this.shielddamage = shielddamage;
             this.heal = heal;
             this.shieldheal = shieldheal;
+            this.selfdamage = selfdamage;
+            
+            this.nextattack = nextattack;
         }
     }
     let SLIDE = new EnemyAttack('SLIDE', 40, 2);
@@ -237,6 +300,27 @@ window.addEventListener('DOMContentLoaded',()=>{
     let RECOVER = new EnemyAttack('RECOVER', 100, 6, 0, 0, 0, 250, 100);
     const ReinforcedSlimeAttacks = [ADVANCE, DELUGE, CUT, RECOVER];
     
+    let SCRATCH = new EnemyAttack('SCRATCH', 80, 2, 90);
+    let BITE = new EnemyAttack('BITE', 100, 3, 300);
+    const MelancholicRatAttacks = [SCRATCH, BITE];
+    let NIBBLE = new EnemyAttack('NIBBLE', 80, 1, 30);
+    let BITE2 = new EnemyAttack('BITE', 100, 3, 400);
+    const EnragedRatAttacks = [NIBBLE, BITE2];
+    let RADIOACTIVE_BITE = new EnemyAttack('RADIOACTIVE BITE', 90, 4, 400);
+    let DECAY = new EnemyAttack('DECAY', 100, 2, 0, 0, 0, 0, 0, 30);
+    const RadiantRatAttacks = [NIBBLE, RADIOACTIVE_BITE, DECAY];
+    let SQUIRT = new EnemyAttack('SQUIRT', 100, 1, 0, 0, 1050);
+    let DEVOUR = new EnemyAttack('DEVOUR', 0, 2, 550);
+    let DIGEST = new EnemyAttack('DIGEST', 0, 8, 0, 0, 0, 600, 300);
+    SQUIRT.nextattack = 1;
+    DEVOUR.nextattack = 2;
+    DIGEST.nextattack = 0;
+    const VelvetWormAttacks = [SQUIRT, DEVOUR, DIGEST];
+    let CHEW = new EnemyAttack('CHEW', 40, 1, 30);
+    let ROYAL_DECREE = new EnemyAttack('ROYAL DECREE', 90, 5, 300);
+    let REPLENISH = new EnemyAttack('REPLENISH', 100, 3, 0, 0, 0, 200);
+    const RatKingAttacks = [CHEW, SCRATCH, ROYAL_DECREE, REPLENISH];
+    
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 75);
     const C0Attacks = [ATTACK];
     
@@ -250,8 +334,6 @@ window.addEventListener('DOMContentLoaded',()=>{
     let UserShield = 200;
     let ShieldDowntime = 20;
     let ShieldRegen = .02;
-    
-    let C1C = document.getElementById('C1C');
     
     // UPGRADES
     const Cost1 = document.getElementById('Cost1'); let cc1 = 8;
@@ -288,7 +370,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             I2.style.display = 'flex';
         }
     });
-    const U2 = document.getElementById('U2'); let uu2 = false;
+    const U2 = document.getElementById('U2'); let uu2 = false; var A3Use = 0;
     U2.addEventListener('click',()=>{
         if(obj.res.materials >= 9 && !uu2){
             play(Upg);
@@ -300,10 +382,13 @@ window.addEventListener('DOMContentLoaded',()=>{
             S3C.style.backgroundColor = 'rgb(105,120,150)';
             S3C.style.opacity = '0';
             S3.addEventListener('pointerdown',()=>{
-                if(this.S3A){S3A = this.S3A}
-                if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
-                S3A[0].play(); S3.style.pointerEvents = 'none';
-                AA3[AA3v]();
+                if(A3Use < AA3[AA3v].uses){
+                    if(this.S3A){S3A = this.S3A}
+                    if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
+                    S3A[0].play(); S3.style.pointerEvents = 'none';
+                    AA3[AA3v].func();
+                    A3Use++;
+                }
             }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
         }
         if(uu2){
@@ -320,7 +405,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             I3.style.display = 'flex';
         }
     });
-    const U3 = document.getElementById('U3'); let uu3 = false;
+    const U3 = document.getElementById('U3'); let uu3 = false; var A4Use = 0;
     U3.addEventListener('click',()=>{
         if(obj.res.materials >= 15 && !uu3){
             play(Upg);
@@ -332,14 +417,72 @@ window.addEventListener('DOMContentLoaded',()=>{
             S4C.style.backgroundColor = 'rgb(105,120,150)';
             S4C.style.opacity = '0';
             S4.addEventListener('pointerdown',()=>{
-                if(this.S4A){S4A = this.S4A}
-                if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
-                S4A[0].play(); S4.style.pointerEvents = 'none';
-                AA4[AA4v]();
+                if(A4Use < AA4[AA4v].uses){
+                    if(this.S4A){S4A = this.S4A}
+                    if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
+                    S4A[0].play(); S4.style.pointerEvents = 'none';
+                    AA4[AA4v].func();
+                    A4Use++;
+                }
             }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
         }
         if(uu3){
             U3.innerHTML = 'SELECTED'; AA4v = 0;
+        }
+    });
+    
+    const Cost4 = document.getElementById('Cost4');
+    const DT4 = document.getElementById('DT4'); const I4 = document.getElementById('I4');
+    DT4.addEventListener('click',()=>{
+        if(I4.style.display == 'flex'){
+            I4.style.display = 'none';
+        }else{
+            I4.style.display = 'flex';
+        }
+    });
+    const U4 = document.getElementById('U4'); let uu4 = false;
+    U4.addEventListener('click',()=>{
+        if(obj.res['Slime Key'] >= 1 && !uu4){
+            play(Upg);
+            obj.res.add(['Slime Key'], [-1]);
+            Cost4.innerHTML = '';
+            U4.innerHTML = 'UNLOCKED'; uu4 = true;
+            A2.style.display = 'flex';
+        }
+    });
+    
+    const Cost6 = document.getElementById('Cost6');
+    const DT6 = document.getElementById('DT6'); const I6 = document.getElementById('I6');
+    DT6.addEventListener('click',()=>{
+        if(I6.style.display == 'flex'){
+            I6.style.display = 'none';
+        }else{
+            I6.style.display = 'flex';
+        }
+    });
+    const U6 = document.getElementById('U6'); let uu6 = false; var A5Use = 0;
+    U6.addEventListener('click',()=>{
+        if(obj.res.materials >= 40 && !uu6){
+            play(Upg);
+            obj.res.materials -= 40;
+            Cost6.innerHTML = '';
+            C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+            U6.innerHTML = 'SELECTED'; uu6 = true;
+            S5C.classList.remove('locked'); S5C.classList.add('chargeBox');
+            S5C.style.backgroundColor = 'rgb(105,120,150)';
+            S5C.style.opacity = '0';
+            S5.addEventListener('pointerdown',()=>{
+                if(A5Use < AA5[AA5v].uses){
+                    if(this.S5A){S5A = this.S5A}
+                    if(S5A != '[object CSSAnimation]'){var S5A = S5C.getAnimations();this.S5A = S5A}
+                    S5A[0].play(); S5.style.pointerEvents = 'none';
+                    AA5[AA5v].func();
+                    A5Use++;
+                }
+            }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
+        }
+        if(uu6){
+            U6.innerHTML = 'SELECTED'; AA5v = 0;
         }
     });
     
@@ -359,6 +502,9 @@ window.addEventListener('DOMContentLoaded',()=>{
     let PHT = document.getElementById('PHT'); // Player's Health Text
     let PSS = document.getElementById('PSS'); // Player's Shield State
     let PST = document.getElementById('PST'); // Player's Shield Text
+    
+    let BB5 = document.getElementById('BB5');
+    let CB5 = document.getElementById('CB5');
     
     let ABT = document.getElementById('EnemyAttack');
     let AB = document.getElementById('AttackBar');
@@ -469,17 +615,17 @@ window.addEventListener('DOMContentLoaded',()=>{
     let Heal = function(h, pA){
         if(!pA && h){
             play(EH);
-            COH += h; H(pA);
+            COH += h; H(!pA);
         }else{
             play(He);
-            CPH += h; H(pA);
+            CPH += h; H(!pA);
         }
     }
     let ShieldHeal = function(h, pA){
         if(!pA && h){
-            COS += h; SH(pA);
+            COS += h; SH(!pA);
         }else{
-            CPS += h; SH(pA);
+            CPS += h; SH(!pA);
         }
     }
     let Interrupt = function(){
@@ -489,15 +635,32 @@ window.addEventListener('DOMContentLoaded',()=>{
         CurrentAttack.shielddamage = 0;
         CurrentAttack.heal = 0;
         CurrentAttack.shieldheal = 0;
+        CurrentAttack.selfdamage = 0;
         IB.style.display = 'flex';
     }
     
     // PLAYER ATTACKS
-    const SMACK=()=>{Damage(60,true)}
-    const CHARGE=()=>{ShieldDamage(80,true);Damage(40,true)}
-    const SLASH=()=>{Damage(40,true);PenetratingDamage(32,true)}
-    const STUN=()=>{Interrupt()}
-    const HEAL=()=>{Heal(1050,true)}
+    class PlayerAttack{
+        constructor(func, cooldown, uses='Infinity'){
+            this.func = func;
+            this.cooldown = cooldown;
+            this.uses = uses;
+        }
+    }
+    let SmackAttack = function(){Damage(60,true)}
+    const SMACK = new PlayerAttack(SmackAttack, 2);
+    
+    let ChargeAttack = function(){ShieldDamage(80,true);Damage(40,true)}
+    const CHARGE = new PlayerAttack(ChargeAttack, 2);
+    
+    let SlashAttack = function(){Damage(40,true);PenetratingDamage(32,true)}
+    const SLASH = new PlayerAttack(SlashAttack, 2);
+    
+    const STUN = new PlayerAttack(Interrupt, 20);
+    
+    let HealAttack = function(){Heal(1050,true)}
+    const HEAL = new PlayerAttack(HealAttack, 30, 3);
+    
     let AA1 = [SMACK]; var AA1v = 0;
     let AA2 = [CHARGE]; var AA2v = 0;
     let AA3 = [SLASH]; var AA3v = 0;
@@ -514,27 +677,36 @@ window.addEventListener('DOMContentLoaded',()=>{
     let S4C = document.getElementById('S4C');
     let S5 = document.getElementById('S5');
     let S5C = document.getElementById('S5C');
+    var A1Use = 0;
     S1.addEventListener('pointerdown',()=>{
-        if(this.S1A){S1A = this.S1A}
-        if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
-        S1A[0].play(); S1.style.pointerEvents = 'none';
-        AA1[AA1v]();
+        if(A1Use < AA1[AA1v].uses){
+            if(this.S1A){S1A = this.S1A}
+            if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
+            S1A[0].play(); S1.style.pointerEvents = 'none';
+            AA1[AA1v].func();
+            A1Use++;
+        }
     }); S1C.addEventListener('animationend',()=>{S1.style.pointerEvents = 'auto'});
+    var A2Use = 0;
     S2.addEventListener('pointerdown',()=>{
-        if(this.S2A){S2A = this.S2A}
-        if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations();this.S2A = S2A}
-        S2A[0].play(); S2.style.pointerEvents = 'none';
-        AA2[AA2v]();
+        if(A2Use < AA2[AA2v].uses){
+            if(this.S2A){S2A = this.S2A}
+            if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations();this.S2A = S2A}
+            S2A[0].play(); S2.style.pointerEvents = 'none';
+            AA2[AA2v].func();
+            A2Use++;
+        }
     }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
     
     // Wins -> Number of battles won | BossWins -> Wins required for bossfight
     var A1Wins = 0; const A1BossWins = 4;
+    var A2Wins = 0; const A2BossWins = 10;
     
     // E = Enemy, O = Opponent, U = User, P = Player, H = Health, S = Shield
-    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[], colarr=[], M=November){
+    let LoadFight = function(EnemyName, MaxEH, MaxES, EDowntime, ESR, MaxUH, MaxUS, UDowntime, USR, OpponentAttacks, mi, area, resnarr=[], resarr=[], M=November){
         stop(November);play(SSel);
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!'; Enemy.style.animation = '0.2s ease forwards slide';
-        let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName;
+        let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName; OS.style.display = 'flex'; if(MaxES == 0){OS.style.display = 'none'}
         let body = document.getElementById('body'); body.style.display = 'flex';
         let inv = document.getElementById('inv');
         let dar = document.getElementById('dar');
@@ -561,17 +733,17 @@ window.addEventListener('DOMContentLoaded',()=>{
                 document.body.appendChild(tutorialtext);
                 tutorialtext.id = 'TTXT';
                 tutorialtext.innerHTML = "This is your opponent. Here you can see its name, the next incoming attack, and both its health and shield.";
-                document.body.addEventListener('click', ()=>{
+                document.body.addEventListener('click',()=>{
                     EnemyInfo.style.opacity = '.2';
                     PlayerStats.style.opacity = '1';
                     tutorialtext.style.top = '21%';
                     tutorialtext.innerHTML = "These are your stats. The shield will take incoming damage and regenerate until depleted, then damage will be taken by the health bar. If your HP reaches 0 before defeating the opponent, you will lose.";
-                    document.body.addEventListener('click', ()=>{
+                    document.body.addEventListener('click',()=>{
                         PlayerStats.style.opacity = '.2';
                         Attacks.style.opacity = '1';
                         tutorialtext.style.top = '40%';
                         tutorialtext.innerHTML = "These are the abilities you have to inflict damage upon your opponent. After using them you must wait for a cooldown time which may vary depending on the ability.";
-                        document.body.addEventListener('click', ()=>{
+                        document.body.addEventListener('click',()=>{
                             tutorialtext.remove();
                             EnemyInfo.style.opacity = PlayerStats.style.opacity = '1';
                             S1.style.pointerEvents = S2.style.pointerEvents = 'auto';
@@ -620,23 +792,24 @@ window.addEventListener('DOMContentLoaded',()=>{
             PSS.style.width = PSP + '%';
             PST.textContent = CPS.toFixed(1) + ' / ' + MaxPS;
             
-            AB.style.width = ABwidth + '%';
+            AB.style.width = Math.min(100,ABwidth) + '%';
+            
+            CB5.style.height = (AA5[AA5v].uses-A5Use)/AA5[AA5v].uses*100 + '%';
         }
         
         let BEGIN = function(){
-            S1.style.pointerEvents = 'auto';
-            setRotateAnimation(S1C,2);
-            S2.style.pointerEvents = 'auto';
-            setRotateAnimation(S2C,2);
-            if(uu2){S3.style.pointerEvents = 'auto';setRotateAnimation(S3C,2)}
-            if(uu3){S4.style.pointerEvents = 'auto';setRotateAnimation(S4C,20)}
+            S1.style.pointerEvents = 'auto';setRotateAnimation(S1C,AA1[AA1v].cooldown);
+            S2.style.pointerEvents = 'auto';setRotateAnimation(S2C,AA2[AA2v].cooldown);
+            if(uu2){S3.style.pointerEvents = 'auto';setRotateAnimation(S3C,AA3[AA3v].cooldown)}
+            if(uu3){S4.style.pointerEvents = 'auto';setRotateAnimation(S4C,AA4[AA4v].cooldown)}
+            if(uu6){S5.style.pointerEvents = 'auto';setRotateAnimation(S5C,AA5[AA5v].cooldown)}
             
             t = 0;
             CurrentAttack = false;
             let intervalId = setInterval(()=>{
                 if(CurrentAttack != false){
                     if(t <= CurrentAttack.casting){
-                        ABwidth += (0.01*80/CurrentAttack.casting);
+                        ABwidth += (.8/CurrentAttack.casting);
                         t += 0.01;
                     }else{
                         ABwidth = 0;
@@ -655,7 +828,18 @@ window.addEventListener('DOMContentLoaded',()=>{
                         if(CurrentAttack.shieldheal != 0){
                             ShieldHeal(CurrentAttack.shieldheal,false);
                         }
-                        CurrentAttack = false;
+                        if(CurrentAttack.selfdamage != 0){
+                            Damage(CurrentAttack.selfdamage,true);
+                        }
+                        
+                        if(CurrentAttack.nextattack == 'none'){
+                            CurrentAttack = false;
+                        }else{
+                            CurrentAttack = window.structuredClone(OpponentAttacks[CurrentAttack.nextattack]);
+                            AB.textContent = CurrentAttack.name;
+                            IB.style.display = 'none';
+                            t = 0;
+                        }
                     }
                 }else{
                     var r = Math.random()*100;
@@ -670,13 +854,12 @@ window.addEventListener('DOMContentLoaded',()=>{
                     }
                 }
                 
-                // Opponent's Shield
                 if(COS <= 0){
                     COS = 0;if(OSD == 0){OSD = ODowntime}
                 }if(OSD <= 0){
                     COS += OSR;OSD = 0;
                 }else{OSD -= 0.01}
-                // Player's Shield
+                
                 if(CPS <= 0){
                     CPS = 0;if(PSD == 0){PSD = PDowntime}
                 }if(PSD <= 0){
@@ -691,17 +874,26 @@ window.addEventListener('DOMContentLoaded',()=>{
                 
                 if(COH <= 0){
                     obj.res.materials += mi;
-                    obj.res.add(resnarr, resarr, colarr);
+                    obj.res.add(resnarr,resarr);
                     C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                     
+                    // Enemies
                     if(area == 'A1'){A1Wins++; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4'}
+                    if(area == 'A2'){A2Wins++; AD2.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A2Wins + '/10'}
+                    
+                    // Normal Bosses
                     if(area == 'A1B'){
                         A1Wins = 0; AD1.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.A1C = true;
                         setTimeout(()=>{if(obj.res['Slime Key'] >= 0 && (T4.innerHTML != 'RESEARCH')){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
                     }
-                    if(area=='SB1'){SB1w = true;}
+                    if(area == 'A2B'){
+                        A2Wins = 0; AD2.innerText = 'Drops: materials, slime, slime key\nWins until boss: ' + A2Wins + '/10';
+                    }
+                    
+                    // Secret Bosses
+                    if(area=='SB1'){SB1w = true}
                 }
                 if(COH <= 0 || CPH <= 0){
                     play(BE);
@@ -710,14 +902,17 @@ window.addEventListener('DOMContentLoaded',()=>{
                     S2.style.pointerEvents = 'none';
                     S3.style.pointerEvents = 'none';
                     S4.style.pointerEvents = 'none';
+                    S5.style.pointerEvents = 'none';
                     S1A = S1C.getAnimations();if(S1A[0]){S1A[0].cancel()}
                     S2A = S2C.getAnimations();if(S2A[0]){S2A[0].cancel()}
                     S3A = S3C.getAnimations();if(S3A[0]){S3A[0].cancel()}
                     S4A = S4C.getAnimations();if(S4A[0]){S4A[0].cancel()}
-                    S1A=''; this.S1A='';
-                    S2A=''; this.S2A='';
-                    S3A=''; this.S3A='';
-                    S4A=''; this.S4A='';
+                    S5A = S5C.getAnimations();if(S5A[0]){S5A[0].cancel()}
+                    S1A=''; this.S1A=''; A1Use = 0;
+                    S2A=''; this.S2A=''; A2Use = 0;
+                    S3A=''; this.S3A=''; A3Use = 0;
+                    S4A=''; this.S4A=''; A4Use = 0;
+                    S5A=''; this.S5A=''; A5Use = 0;
                     inv.style.display = 'flex';
                     var op = 0;
                     setTimeout(()=>{inv.style.display = 'none'}, 250);
@@ -738,12 +933,29 @@ window.addEventListener('DOMContentLoaded',()=>{
     E1.addEventListener('click',()=>{
         if(A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], ['rgb(0,127,255)'], SUEM);
+                LoadFight('Basic Slime', 400, 180, 5, .5, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], SUEM);
             }else{
-                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(Math.random())+3], ['rgb(0,127,255)'], SUEM);
+                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(Math.random())+3], SUEM);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(2*Math.random())+4, 1], ['rgb(0,127,255)', 'rgb(0,90,210)'], SUBM);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(2*Math.random())+4, 1], SUBM);
+        }
+    });
+    let E2 = document.getElementById('E2');
+    E2.addEventListener('click',()=>{
+        if(A2Wins < A2BossWins){
+            re = Math.random();
+            if(re < .3){
+                LoadFight('Melancholic Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MelancholicRatAttacks, 3, 'A2', ['Red Fluid'], [2], BLEM);
+            }else if(re < .6){
+                LoadFight('Enraged Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, EnragedRatAttacks, 3, 'A2', ['Red Fluid'], [2], BLEM);
+            }else if(re < .7){
+                LoadFight('Velvet Worm', 900, 900, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, VelvetWormAttacks, 3, 'A2', ['Slime', 'Red Fluid'], [Math.round(2*Math.random())+8, 4], BLEM);
+            }else{
+                LoadFight('Radiant Rat', 1600, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RadiantRatAttacks, 6, 'A2', ['Red Fluid'], [2], BLEM);
+            }
+        }else{
+            LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
         }
     });
 });
