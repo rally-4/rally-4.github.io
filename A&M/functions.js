@@ -6,7 +6,7 @@ const Limit = function(e,l){
 }
 
 // AUDIO FUNCTIONS
-const play=m=>m.play();
+const play=m=>{m.play()}
 const stop=m=>{m.pause();m.currentTime=0}
 const stopAll=()=>{
     var allAudios=document.getElementsByTagName('audio');
