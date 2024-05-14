@@ -82,8 +82,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     // OBJ AND RESOURCES
     let C1C = document.getElementById('C1C');
     var obj = {name: '', uid: -1, res: {materials: 0}, tutorial: true, A1C: false}
-    if(sessionStorage.getItem('user') != undefined){
-        obj = JSON.parse(sessionStorage.getItem('user'));
+    if(localStorage.getItem('user') != undefined){
+        obj = JSON.parse(localStorage.getItem('user'));
         obj.res.readd = function(n,a){
             for(i=0; i<n.length; i++){
                 obj.res[n[i]] = 0;
@@ -923,7 +923,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     },10,50,500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
-                    sessionStorage.setItem('user',JSON.stringify(obj));
+                    localStorage.setItem('user',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
             },10);
