@@ -21,6 +21,6 @@
 12. Add damage multipliers.
 13. Allow scrolling at the 4th tab's UI (1st subtab only).
 14. Optimise code.
-15. Make the Cliffs area:
-15.1. Opponents
+15. Make the Cliffs area:  
+15.1. Opponents  
 15.2. Resources, upgrades and unlocks
