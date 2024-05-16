@@ -13,14 +13,14 @@
 7. ~~Add information about enemies.~~
 8. ~~Add music and sfx.~~
 9. Create the Badlands area. \[IN PROGRESS\]
-10. Implement ammo (limited uses of an ability per fight) and casting (time until ability use, interrupted by enemy attack and use of another ability). \[IN PROGRESS\]
+10. Implement ~~ammo (limited uses of an ability per fight) and~~ casting (time until ability use, interrupted by enemy attack and use of another ability).
 11. Implement data saving:  
 11.1. ~~Resources.~~  
 11.2. Unlocks.  
 11.3. Upgrades.
 12. Add damage multipliers.
 13. Allow scrolling at the 4th tab's UI (1st subtab only).
-14. Optimise code.
+14. Optimise code.  
 —— Implement changes to online version ——
 15. Make the Cliffs area:  
 15.1. Opponents  
