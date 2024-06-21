@@ -1,6 +1,6 @@
 const loadData = function(){
     const C1C = document.getElementById('C1C');
-    obj = {res: {materials: 0}, tutorial: true, sBossProgress: {SB1w: false, SB2w: false}, areaProgress: {A1C: false, A2C: false}, areaWins: {A1Wins: 0, A2Wins: 0}, unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false}, upgrades: {uu1: 0, uu5: 0}, muls: {ndm: 1, sdm: 1, pdm: 1}}
+    obj = {res: {materials: 0}, tutorial: true, sBossProgress: {SB1w: false, SB2w: false}, areaProgress: {A1C: false, A2C: false}, areaWins: {A1Wins: 0, A2Wins: 0}, unlocks: {uu2: false, uu3: false, uu6: false, uu7: false, uu8: false}, upgrades: {uu1: 0, uu5: 0}, muls: {ndm: 1, sdm: 1, pdm: 1}}
     
     if(localStorage.getItem('A&MData')){
         obj = JSON.parse(localStorage.getItem('A&MData'));
