@@ -567,7 +567,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     },10,50,500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
-                    sessionStorage.setItem('A&MData',JSON.stringify(obj));
+                    localStorage.setItem('A&MData',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
             },10);
