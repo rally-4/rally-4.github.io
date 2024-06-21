@@ -4,7 +4,6 @@
         <meta name="author" content="rally4">
         <meta name="description" content="An offline version of the in-development game Anoxic (aka A&M 3).">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
-        <!-- meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" -->
         <title>???</title>
         <link rel="icon" href="Anoxic.png">
         
@@ -14,6 +13,7 @@
         <audio id="BLEM" src="assets/music/CydonianSky.mp3" loop></audio>
         <audio id="BLBM" src="assets/music/Krutfotboll.mp3" loop></audio>
         <audio id="T99" src="assets/music/TETRIS99.mp3" loop></audio>
+        <audio id="DOM" src="assets/music/Dom.mp3" loop></audio>
         
         <audio id="SSel" src="assets/sfx/StageSelect.wav"></audio>
         <audio id="FSt" src="assets/sfx/FightSting.wav"></audio>
@@ -34,7 +34,14 @@
         
         <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css">
-        <script src="functions.js"></script>
+        
+        <script src="scripts/functions.js"></script>
+        <script src="scripts/audio.js"></script>
+        <script src="scripts/tabs.js"></script>
+        <script src="scripts/areas.js"></script>
+        <script src="scripts/upgrades.js"></script>
+        <script src="scripts/data.js"></script>
+        
         <script src="js.js"></script>
     </head>
     <body>
@@ -102,6 +109,7 @@
                     &nbsp; • Player Shield: 200 -> 250
                     <br>&nbsp;
                 </p>
+                
                 <div class="row2" id="UG2">
                     <p class="upgradename">Unlock Slash</p>
                     <p class="cost" id="Cost2">Cost: 9 materials</p>
@@ -112,9 +120,11 @@
                     <br>
                     &nbsp; • Damage: 40<br>
                     &nbsp; • Penetrating damage: 32<br>
-                    &nbsp; • Cooldown: 2s
+                    &nbsp; • Cooldown: 2s<br>
+                    &nbsp; • Slot 3
                     <br>&nbsp;
                 </p>
+                
                 <div class="row2" id="UG3">
                     <p class="upgradename">Unlock Stun</p>
                     <p class="cost" id="Cost3">Cost: 15 materials</p>
@@ -124,9 +134,11 @@
                 <p class="info" id="I3">
                     <br>
                     &nbsp; • Interrupts the enemy attack<br>
-                    &nbsp; • Cooldown: 20s
+                    &nbsp; • Cooldown: 20s<br>
+                    &nbsp; • Slot 4
                     <br>&nbsp;
                 </p>
+                
                 <div class="row2" id="UG4">
                     <p class="upgradename">Unlock Badlands</p>
                     <p class="cost" id="Cost4">Cost: 1 Slime Key</p>
@@ -138,6 +150,19 @@
                     &nbsp; • Unlock Badlands
                     <br>&nbsp;
                 </p>
+                
+                <div class="row2" id="UG5">
+                    <p class="upgradename">Upgrade Health</p>
+                    <p class="cost" id="Cost5">Cost: 20 Red Fluid</p>
+                    <div class="details2" id="DT5">Info</div>
+                    <div class="upg" id="U5">Upgrade</div>
+                </div>
+                <p class="info" id="I5">
+                    <br>
+                    &nbsp; • Player Health: 1000 -> 1100
+                    <br>&nbsp;
+                </p>
+                
                 <div class="row2" id="UG6">
                     <p class="upgradename">Unlock Heal</p>
                     <p class="cost" id="Cost6">Cost: 40 materials</p>
@@ -148,9 +173,41 @@
                     <br>
                     &nbsp; • Heal: 1050<br>
                     &nbsp; • Cooldown: 30s<br>
-                    &nbsp; • Uses per fight: 3
+                    &nbsp; • Uses per fight: 3<br>
+                    &nbsp; • Slot 5
                     <br>&nbsp;
                 </p>
+                
+                <div class="row2" id="UG7">
+                    <p class="upgradename">Unlock Blast</p>
+                    <p class="cost" id="Cost7">Cost: 18 materials</p>
+                    <div class="details2" id="DT7">Info</div>
+                    <div class="upg" id="U7">Unlock</div>
+                </div>
+                <p class="info" id="I7">
+                    <br>
+                    &nbsp; • Damage: 80<br>
+                    &nbsp; • Cooldown: 2s<br>
+                    &nbsp; • Slot 1
+                    <br>&nbsp;
+                </p>
+                
+                <div class="row2" id="UG8">
+                    <p class="upgradename">Unlock Flare Gun</p>
+                    <p class="cost" id="Cost8">Cost: 24 materials</p>
+                    <div class="details2" id="DT8">Info</div>
+                    <div class="upg" id="U8">Unlock</div>
+                </div>
+                <p class="info" id="I8">
+                    <br>
+                    &nbsp; • Damage: 120<br>
+                    &nbsp; • Shield damage: 60<br>
+                    &nbsp; • Cooldown: 3s<br>
+                    &nbsp; • Uses per fight: 30<br>
+                    &nbsp; • Slot 2
+                    <br>&nbsp;
+                </p>
+                
             </div>
             
             <div class="stabscreen" id="UTS2">
@@ -198,7 +255,72 @@
                             <li>Shield Downtime: 15s</li>
                             <li>Drops: </li>
                             &gt; 5 Materials<br>
-                            &gt; 4-6 Slime
+                            &gt; 4-6 Slime<br>
+                            &gt; 1 Slime Key
+                        </ul>
+                    </p>
+                </div>
+                <div class="infoBox" id="IB2"><em>Badlands<br>Data</em></div>
+                <div class="areaInfo" id="AI2">
+                    <p class="areaInfoP">
+                        A barren and dry terrain with steep slopes galore.
+                        A monarchic society of rats has established here.<br>
+                        <br>
+                        Enemies:
+                    </p>
+                    <p class="enemyInfoP" id="EIP4">
+                        <b>&gt; Melancholic Rat</b><br>
+                        <br>
+                        <ul class="enemyInfoL">
+                            <li>Health: 1200</li>
+                            <li>Drops: </li>
+                            &gt; 3 Material<br>
+                            &gt; 2 Red Fluid
+                        </ul>
+                    </p>
+                    <p class="enemyInfoP" id="EIP5">
+                        <b>&gt; Enraged Rat</b><br>
+                        <br>
+                        <ul class="enemyInfoL" style="left: 21%">
+                            <li>Health: 1200</li>
+                            <li>Drops: </li>
+                            &gt; 3 Material<br>
+                            &gt; 2 Red Fluid
+                        </ul>
+                    </p>
+                    <p class="enemyInfoP" id="EIP6">
+                        <b>&gt; Radiant Rat</b><br>
+                        <br>
+                        <ul class="enemyInfoL" style="left: 40%">
+                            <li>Health: 1600</li>
+                            <li>Drops: </li>
+                            &gt; 6 Material<br>
+                            &gt; 2 Red Fluid
+                        </ul>
+                    </p>
+                    <p class="enemyInfoP" id="EIP7">
+                        <b>&gt; Velvet Worm</b><br>
+                        <br>
+                        <ul class="enemyInfoL" style="left: 59%">
+                            <li>Health: 900</li>
+                            <li>Shield: 900</li>
+                            <li>Regen: 15/s</li>
+                            <li>Downtime: 5s</li>
+                            <li>Drops: </li>
+                            &gt; 3 Material<br>
+                            &gt; 8-10 Slime<br>
+                            &gt; 4 Red Fluid
+                        </ul>
+                    </p>
+                    <p class="enemyInfoP" id="EIP8">
+                        <b>&gt; Rat King [BOSS]</b><br>
+                        <br>
+                        <ul class="enemyInfoL" style="left: 78%">
+                            <li>Health: 4000</li>
+                            <li>Drops: </li>
+                            &gt; 6 Material<br>
+                            &gt; 8 Red Fluid<br>
+                            &gt; 1 Rusty Key
                         </ul>
                     </p>
                 </div>
@@ -240,7 +362,7 @@
             </div>
             <div class="box" id="Attacks">
                 <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div></div>
-                <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div></div>
+                <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div><div class="blueBar" id="BB2"><div class="cyanBar" id="CB2"></div></div></div>
                 <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
                 <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
                 <div class="whiteBox" id="S5">HEAL<div class="locked" id="S5C"></div><div class="blueBar" id="BB5"><div class="cyanBar" id="CB5"></div></div></div>

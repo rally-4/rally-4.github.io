@@ -5,6 +5,7 @@ body{
     color: rgb(225,225,225);
     background-color: black;
     font-family: sans-serif;
+    overflow-y: auto;
 }
 #Tabs{
     position: fixed; display: flex;
@@ -32,6 +33,7 @@ body{
     position: fixed; display: flex;
     width: 100%; height: 85%;
     top: 0%;
+    z-index: 0;
     background-color: black;
 }
 h1{
@@ -381,7 +383,7 @@ input{
     --translate-x: calc(14vw - 24px);
 }
 .blueBar{
-    position: fixed; display: flex;
+    position: fixed; display: none;
     width: 24px; height: inherit;
     left: inherit;
     transform: translateX(var(--translate-x));
@@ -391,6 +393,7 @@ input{
     z-index: 4;
     background-color: rgb(0,75,75);
 }
+#BB5{display:flex;}
 .cyanBar{
     width: 80%; height: 100%;
     bottom: 4px;
@@ -672,8 +675,12 @@ input{
 #UT1{left: 36px;}
 #UT2{left: 128px;}
 
+#UTS1{
+    overflow-y: scroll;
+}
+
 .row2{
-    position: fixed; display: flex;
+    position: absolute; display: flex;
     width: 90%; height: 10%;
     left: 50%; transform: translateX(-50%);
     flex-direction: column;
@@ -686,8 +693,10 @@ input{
 #UG2{top:24%;}
 #UG3{top:36%;}
 #UG4{top:48%;}
-#UG5{top:60%;}
-#UG6{top:72%;}
+#UG5{top:60%;display:none;}
+#UG6{top:72%;display:none;}
+#UG7{top:84%;display:none;}
+#UG8{top:96%;display:none;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
@@ -708,7 +717,7 @@ input{
     color: white;
 }
 .info{
-    position: fixed; display: none;
+    position: absolute; display: none;
     width: 90%; height: auto;
     left: 50%; transform: translateX(-50%);
     flex-direction: column;
@@ -719,11 +728,13 @@ input{
     background-color: black;
 }
 #I1{top: calc(22% - 16px);}
-#I2{top: clac(34% - 16ps);}
+#I2{top: calc(34% - 16px);}
 #I3{top: calc(46% - 16px);}
 #I4{top: calc(58% - 16px);}
 #I5{top: calc(70% - 16px);}
 #I6{top: calc(82% - 16px);}
+#I7{top: calc(94% - 16px);}
+#I8{top: calc(106% - 16px);}
 .upg{
     position: fixed; display: flex;
     width: 144px; height: 80%; right: 4px;
@@ -736,7 +747,7 @@ input{
     color: white;
 }
 .infoBox{
-    position: fixed; display: flex;
+    position: fixed; display: none;
     width: 16%; height: 18%;
     flex-direction: column;
     justify-content: center;
@@ -746,14 +757,14 @@ input{
     border: 6px solid rgb(30,30,30);
     background-color: black;
 }
-#IB1{
-    left: 2%; top: 12%;
-}
+#IB1{left:2%;top:12%;display:flex;}
+#IB2{left:20%;top:12%;}
 .areaInfo{
     position: fixed; display: none;
     width: calc(96% - 12px); height: 68%;
     left: 2%; top: 12%;
     flex-direction: column;
+    z-index: 2;
     color: white;
     font-size: 24px;
     border: 6px solid rgb(30,30,30);
@@ -764,7 +775,7 @@ input{
 }
 .enemyInfoP{
     position: fixed; display: flex;
-    width: calc(31% + 6px); height: calc(68% - 168px);
+    height: calc(68% - 168px);
     top: calc(12% + 144px);
     color: white;
     font-size: 24px;
@@ -772,9 +783,14 @@ input{
     border: 6px solid rgb(30,30,30);
     background-color: black;
 }
-#EIP1{left: 2%;}
-#EIP2{align-self: center;}
-#EIP3{right: 2%;}
+#EIP1{width: calc(31% + 6px); left: 2%;}
+#EIP2{width: calc(31% + 6px); align-self: center;}
+#EIP3{width: calc(31% + 6px); right: 2%;}
+#EIP4{width: 19%; left: 2%;}
+#EIP5{width: 19%; left: 21%;}
+#EIP6{width: 19%; left: 40%;}
+#EIP7{width: 19%; left: 59%;}
+#EIP8{width: 19%; left: 78%;}
 .enemyInfoL{
     position: fixed;
     top: calc(18% + 144px);
