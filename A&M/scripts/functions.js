@@ -61,6 +61,8 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';
         document.getElementById('A2').style.display = 'flex';
+        document.getElementById('Cost4').innerHTML = '';
+        document.getElementById('U4').innerHTML = 'UNLOCKED';
     }
     if(areaProgress['A2C']){
         document.getElementById('UG5').style.display = 'flex';
