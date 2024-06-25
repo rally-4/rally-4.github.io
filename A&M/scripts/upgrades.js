@@ -147,7 +147,7 @@ const loadUpgrades = function(){
             play(Upg);
             obj.res.add(['Slime Key'], [-1]);
             Cost4.innerHTML = '';
-            U4.innerHTML = 'UNLOCKED'; obj.unlocks.uu4 = true;
+            U4.innerHTML = 'UNLOCKED';
             A2.style.display = 'flex';
         }
     });
