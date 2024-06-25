@@ -6,7 +6,7 @@ const loadAudio = function(){
     const BLBM = document.getElementById('BLBM');
     const T99 = document.getElementById('T99');
     const DOM = document.getElementById('DOM');
-    T99.volume = 0.6;
+    T99.volume = BLBM.volume = .6;
     
     const SSel = document.getElementById('SSel');
     const FSt = document.getElementById('FSt');

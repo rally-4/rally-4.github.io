@@ -522,7 +522,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     if(area == 'A1B'){
                         obj.areaWins.A1Wins = 0; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
-                        T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH'; obj.areaProgress['A1C'] = true;
+                        T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
                         setTimeout(()=>{if(obj.res['Slime Key'] >= 0 && (T4.innerHTML != 'RESEARCH')){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
                     }
                     if(area == 'A2B'){
@@ -567,7 +567,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     },10,50,500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
                     if(area == 'Tutorial'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
-                    localStorage.setItem('A&MData',JSON.stringify(obj));
+                    sessionStorage.setItem('A&MData',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
             },10);
@@ -606,4 +606,6 @@ window.addEventListener('DOMContentLoaded',()=>{
             LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
         }
     });
+    
+    document.getElementById('LoadingScreen').style.display = 'none';
 });

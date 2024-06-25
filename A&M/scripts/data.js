@@ -2,12 +2,13 @@ const loadData = function(){
     const C1C = document.getElementById('C1C');
     obj = {res: {materials: 0}, tutorial: true, sBossProgress: {SB1w: false, SB2w: false}, areaProgress: {A1C: false, A2C: false}, areaWins: {A1Wins: 0, A2Wins: 0}, unlocks: {uu2: false, uu3: false, uu6: false, uu7: false, uu8: false}, upgrades: {uu1: 0, uu5: 0}, muls: {ndm: 1, sdm: 1, pdm: 1}}
     
-    if(localStorage.getItem('A&MData')){
-        obj = JSON.parse(localStorage.getItem('A&MData'));
+    if(sessionStorage.getItem('A&MData')){
+        obj = JSON.parse(sessionStorage.getItem('A&MData'));
         recoverAreaUnlocks(obj.areaProgress, obj.areaWins);
         recoverAbilityUnlocks(obj.unlocks);
         recoverUpgrades(obj.upgrades);
         obj.res.readd = function(n,a){
+            var rarr = [];
             for(i=0; i<n.length; i++){
                 obj.res[n[i]] = 0;
                 
@@ -15,7 +16,7 @@ const loadData = function(){
                 TS2.appendChild(newCraft);
                 newCraft.id = 'C' + n[i];
                 newCraft.classList.add('crafts');
-                newCraft.style.top = 'calc(16px + ' + n.length*8 + '%)';
+                newCraft.style.top = 'calc(16px + ' + (8+rarr.length*8) + '%)';
                 
                 var newDiv = document.createElement('div');
                 newCraft.appendChild(newDiv);
@@ -34,6 +35,7 @@ const loadData = function(){
                 
                 obj.res[n[i]] += a[i];
                 document.getElementById('C'+n[i]+'C').innerHTML = 'Quantity: ' + obj.res[n[i]];
+                rarr.push(newCraft.style.top);
             }
         }
         var keys = Object.keys(obj.res); rem(keys,['materials', 'readd']);
