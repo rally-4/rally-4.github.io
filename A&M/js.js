@@ -606,6 +606,8 @@ window.addEventListener('DOMContentLoaded',()=>{
             LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
         }
     });
-    
-    document.getElementById('LoadingScreen').style.display = 'none';
+
+    window.onload=()=>{
+        document.getElementById('LoadingScreen').style.display = 'none';
+    }
 });
