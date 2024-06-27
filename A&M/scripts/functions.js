@@ -53,7 +53,6 @@ const getResCol=(res)=>{
 const rem=(arr,el)=>{for(a=0;a<el.length;a++){arr.splice(arr.indexOf(el[a]),1)}}
 
 const recoverAreaUnlocks = function(areaProgress, areaWins){
-    window.onload=()=>{
     T4 = document.getElementById('T4');
     AD1 = document.getElementById('AD1');
     AD2 = document.getElementById('AD2');
@@ -74,7 +73,6 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     
     AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins['A1Wins'] + '/4';
     AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + areaWins['A2Wins'] + '/10';
-    }
 }
 const recoverAbilityUnlocks = function(uus){
     if(uus['uu2']){
