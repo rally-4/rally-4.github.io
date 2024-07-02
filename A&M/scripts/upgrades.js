@@ -85,18 +85,18 @@ const loadUpgrades = function(){
             S3C.style.backgroundColor = 'rgb(105,120,150)';
             S3C.style.opacity = '0';
             S3.addEventListener('pointerdown',()=>{
-                if(A3Use < AA3[AA3v].uses){
+                if(A3Use < AA3[obj.AA.AA3v].uses){
                     if(this.S3A){S3A = this.S3A}
                     if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
                     S3A[0].play(); S3.style.pointerEvents = 'none';
-                    AA3[AA3v].func();
+                    AA3[obj.AA.AA3v].func();
                     A3Use++;
                 }
             }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu2){
             U2.innerHTML = 'SELECTED';
-            AA3v = 0;
+            obj.AA.AA3v = 0;
         }
     });
     
@@ -119,18 +119,18 @@ const loadUpgrades = function(){
             S4C.style.backgroundColor = 'rgb(105,120,150)';
             S4C.style.opacity = '0';
             S4.addEventListener('pointerdown',()=>{
-                if(A4Use < AA4[AA4v].uses){
+                if(A4Use < AA4[obj.AA.AA4v].uses){
                     if(this.S4A){S4A = this.S4A}
                     if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
                     S4A[0].play(); S4.style.pointerEvents = 'none';
-                    AA4[AA4v].func();
+                    AA4[obj.AA.AA4v].func();
                     A4Use++;
                 }
             }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu3){
             U3.innerHTML = 'SELECTED';
-            AA4v = 0;
+            obj.AA.AA4v = 0;
         }
     });
     
@@ -149,6 +149,7 @@ const loadUpgrades = function(){
             Cost4.innerHTML = '';
             U4.innerHTML = 'UNLOCKED';
             A2.style.display = 'flex';
+            obj.unlocks.uu4 = true;
         }
     });
     
@@ -184,9 +185,9 @@ const loadUpgrades = function(){
         }
     });
     U6.addEventListener('click',()=>{
-        if(obj.res.materials >= 40 && !obj.unlocks.uu6){
+        if(obj.res.materials >= 50 && !obj.unlocks.uu6){
             play(Upg);
-            obj.res.materials -= 40;
+            obj.res.materials -= 50;
             Cost6.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             U6.innerHTML = 'SELECTED'; obj.unlocks.uu6 = true;
@@ -194,18 +195,18 @@ const loadUpgrades = function(){
             S5C.style.backgroundColor = 'rgb(105,120,150)';
             S5C.style.opacity = '0';
             S5.addEventListener('pointerdown',()=>{
-                if(A5Use < AA5[AA5v].uses){
+                if(A5Use < AA5[obj.AA.AA5v].uses){
                     if(this.S5A){S5A = this.S5A}
                     if(S5A != '[object CSSAnimation]'){var S5A = S5C.getAnimations();this.S5A = S5A}
                     S5A[0].play(); S5.style.pointerEvents = 'none';
-                    AA5[AA5v].func();
-                    A5Use++; CB5.style.height = (AA5[AA5v].uses-A5Use)/AA5[AA5v].uses*100 + '%';
+                    AA5[obj.AA.AA5v].func();
+                    A5Use++; CB5.style.height = (AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100 + '%';
                 }
             }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu6){
             U6.innerHTML = 'SELECTED';
-            AA5v = 0;
+            obj.AA.AA5v = 0;
         }
     });
     
@@ -229,7 +230,7 @@ const loadUpgrades = function(){
                     node.textContent = 'BLAST';
                 }
             }
-            AA1v = 1;
+            obj.AA.AA1v = 1;
         }
         if(obj.unlocks.uu7){
             U7.innerHTML = 'SELECTED';
@@ -238,7 +239,7 @@ const loadUpgrades = function(){
                     node.textContent = 'BLAST';
                 }
             }
-            AA1v = 1;
+            obj.AA.AA1v = 1;
         }
     });
     
@@ -263,7 +264,7 @@ const loadUpgrades = function(){
                 }
             }
             BB2.style.display = 'flex';
-            AA2v = 1;
+            obj.AA.AA2v = 1;
         }
         if(obj.unlocks.uu8){
             U8.innerHTML = 'SELECTED';
@@ -273,7 +274,7 @@ const loadUpgrades = function(){
                 }
             }
             BB2.style.display = 'flex';
-            AA2v = 1;
+            obj.AA.AA2v = 1;
         }
     });
 }
