@@ -12,6 +12,13 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     T4 = document.getElementById('T4');
     
+    // SETTINGS
+    let SettingsBox = document.getElementById('SettingsBox');
+    let SettingsScreen = document.getElementById('Settings');
+    let SettingsClose = document.getElementById('SettingsClose');
+    SettingsBox.addEventListener('click',()=>{SettingsScreen.style.display = 'flex'});
+    SettingsClose.addEventListener('click',()=>{SettingsScreen.style.display = 'none'})
+    
     // TEXTBOX
     const trunk = document.getElementById('trunk');
     const name = document.getElementById('name');
@@ -325,11 +332,11 @@ window.addEventListener('DOMContentLoaded',()=>{
     let HealAttack = function(){Heal(1050,true)}
     const HEAL = new PlayerAttack(HealAttack, 30, 3);
     
-    AA1 = [SMACK, BLAST]; AA1v = 0;
-    AA2 = [CHARGE, FLAREGUN]; AA2v = 0;
-    AA3 = [SLASH]; AA3v = 0;
-    AA4 = [STUN]; AA4v = 0;
-    AA5 = [HEAL]; AA5v = 0;
+    AA1 = [SMACK, BLAST];
+    AA2 = [CHARGE, FLAREGUN];
+    AA3 = [SLASH];
+    AA4 = [STUN];
+    AA5 = [HEAL];
     
     let S1 = document.getElementById('S1');
     let S1C = document.getElementById('S1C');
@@ -343,22 +350,22 @@ window.addEventListener('DOMContentLoaded',()=>{
     let S5C = document.getElementById('S5C');
     var A1Use = 0;
     S1.addEventListener('pointerdown',()=>{
-        if(A1Use < AA1[AA1v].uses){
+        if(A1Use < AA1[obj.AA.AA1v].uses){
             if(this.S1A){S1A = this.S1A}
             if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
             S1A[0].play(); S1.style.pointerEvents = 'none';
-            AA1[AA1v].func();
+            AA1[obj.AA.AA1v].func();
             A1Use++;
         }
     }); S1C.addEventListener('animationend',()=>{S1.style.pointerEvents = 'auto'});
     var A2Use = 0;
     S2.addEventListener('pointerdown',()=>{
-        if(A2Use < AA2[AA2v].uses){
+        if(A2Use < AA2[obj.AA.AA2v].uses){
             if(this.S2A){S2A = this.S2A}
             if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations();this.S2A = S2A}
             S2A[0].play(); S2.style.pointerEvents = 'none';
-            AA2[AA2v].func();
-            A2Use++; CB2.style.height = (AA2[AA2v].uses-A2Use)/AA2[AA2v].uses*100 + '%';
+            AA2[obj.AA.AA2v].func();
+            A2Use++; CB2.style.height = (AA2[obj.AA.AA2v].uses-A2Use)/AA2[obj.AA.AA2v].uses*100 + '%';
         }
     }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
     
@@ -405,7 +412,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                         PlayerStats.style.opacity = '.2';
                         Attacks.style.opacity = '1';
                         tutorialtext.style.top = '40%';
-                        tutorialtext.innerHTML = "These are the abilities you have to inflict damage upon your opponent. After using them you must wait for a cooldown time which may vary depending on the ability.";
+                        tutorialtext.innerHTML = "These are the abilities you have to inflict damage. After using them you must wait for a cooldown time which may vary depending on the ability.";
                         document.body.addEventListener('click',()=>{
                             tutorialtext.remove();
                             EnemyInfo.style.opacity = PlayerStats.style.opacity = '1';
@@ -447,11 +454,11 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
         
         let BEGIN = function(){
-            S1.style.pointerEvents = 'auto';setRotateAnimation(S1C,AA1[AA1v].cooldown);
-            S2.style.pointerEvents = 'auto';setRotateAnimation(S2C,AA2[AA2v].cooldown);
-            if(obj.unlocks.uu2){S3.style.pointerEvents = 'auto';setRotateAnimation(S3C,AA3[AA3v].cooldown)}
-            if(obj.unlocks.uu3){S4.style.pointerEvents = 'auto';setRotateAnimation(S4C,AA4[AA4v].cooldown)}
-            if(obj.unlocks.uu6){S5.style.pointerEvents = 'auto';setRotateAnimation(S5C,AA5[AA5v].cooldown)}
+            S1.style.pointerEvents = 'auto';setRotateAnimation(S1C,AA1[obj.AA.AA1v].cooldown);
+            S2.style.pointerEvents = 'auto';setRotateAnimation(S2C,AA2[obj.AA.AA2v].cooldown);
+            if(obj.unlocks.uu2){S3.style.pointerEvents = 'auto';setRotateAnimation(S3C,AA3[obj.AA.AA3v].cooldown)}
+            if(obj.unlocks.uu3){S4.style.pointerEvents = 'auto';setRotateAnimation(S4C,AA4[obj.AA.AA4v].cooldown)}
+            if(obj.unlocks.uu6){S5.style.pointerEvents = 'auto';setRotateAnimation(S5C,AA5[obj.AA.AA5v].cooldown)}
             
             t = 0;
             CurrentAttack = false;
@@ -520,14 +527,13 @@ window.addEventListener('DOMContentLoaded',()=>{
                     
                     // Normal Bosses
                     if(area == 'A1B'){
+                        if(T4.innerHTML != 'RESEARCH')){setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000)}
                         obj.areaWins.A1Wins = 0; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
-                        setTimeout(()=>{if(obj.res['Slime Key'] >= 0 && (T4.innerHTML != 'RESEARCH')){displayText(["Ah, the slime key...", "I suppose you were stronger than I had initially suspected.", "Use the newly acquired resources to become stronger at the research facility."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])}},1000);
                     }
                     if(area == 'A2B'){
                         obj.areaWins.A2Wins = 0; AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10';
-                        document.getElementById('UG5').style.display = 'flex';
                         document.getElementById('UG6').style.display = 'flex';
                         document.getElementById('UG7').style.display = 'flex';
                         document.getElementById('UG8').style.display = 'flex';
@@ -606,7 +612,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
         }
     });
-
+    
     window.onload=()=>{
         document.getElementById('LoadingScreen').style.display = 'none';
     }
