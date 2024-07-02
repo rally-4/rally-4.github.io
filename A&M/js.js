@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             div.style.pointerEvents = 'none';
             if((count >= txtarr.length) && obj.tutorial){
                 LoadFight('C0', 750, 250, 2, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
-                setTimeout(()=>{obj.tutorial = false}, 4000);
+                setTimeout(()=>{obj.tutorial = false},4000);
             }
         }else{
             txt.innerHTML = "&gt; " + txtarr[count];
