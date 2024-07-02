@@ -527,7 +527,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     
                     // Normal Bosses
                     if(area == 'A1B'){
-                        if(T4.innerHTML != 'RESEARCH')){setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000)}
+                        if(T4.innerHTML != 'RESEARCH'){setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000)}
                         obj.areaWins.A1Wins = 0; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
                         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
                         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
