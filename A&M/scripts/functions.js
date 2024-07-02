@@ -59,12 +59,8 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     if(areaProgress['A1C']){
         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';
-        document.getElementById('A2').style.display = 'flex';
-        document.getElementById('Cost4').innerHTML = '';
-        document.getElementById('U4').innerHTML = 'UNLOCKED';
     }
     if(areaProgress['A2C']){
-        document.getElementById('UG5').style.display = 'flex';
         document.getElementById('UG6').style.display = 'flex';
         document.getElementById('UG7').style.display = 'flex';
         document.getElementById('UG8').style.display = 'flex';
@@ -74,7 +70,7 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins['A1Wins'] + '/4';
     AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + areaWins['A2Wins'] + '/10';
 }
-const recoverAbilityUnlocks = function(uus){
+const recoverUnlocks = function(uus){
     if(uus['uu2']){
         Cost2.innerHTML = '';
         U2.innerHTML = 'SELECTED';
@@ -82,15 +78,20 @@ const recoverAbilityUnlocks = function(uus){
         S3C.style.backgroundColor = 'rgb(105,120,150)';
         S3C.style.opacity = '0';
         S3.addEventListener('pointerdown',()=>{
-            if(A3Use < AA3[AA3v].uses){
+            if(A3Use < AA3[obj.AA.AA3v].uses){
                 if(this.S3A){S3A = this.S3A}
                 if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
                 S3A[0].play(); S3.style.pointerEvents = 'none';
-                AA3[AA3v].func();
+                AA3[obj.AA.AA3v].func();
                 A3Use++;
             }
         }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
-        U2.innerHTML = 'SELECTED';
+        U2.innerHTML = 'SELECT';
+    }
+    if(uus['uu4']){
+        document.getElementById('A2').style.display = 'flex';
+        document.getElementById('Cost4').innerHTML = '';
+        document.getElementById('U4').innerHTML = 'UNLOCKED';
     }
     if(uus['uu3']){
         Cost3.innerHTML = '';
@@ -99,15 +100,15 @@ const recoverAbilityUnlocks = function(uus){
         S4C.style.backgroundColor = 'rgb(105,120,150)';
         S4C.style.opacity = '0';
         S4.addEventListener('pointerdown',()=>{
-            if(A4Use < AA4[AA4v].uses){
+            if(A4Use < AA4[obj.AA.AA4v].uses){
                 if(this.S4A){S4A = this.S4A}
                 if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
                 S4A[0].play(); S4.style.pointerEvents = 'none';
-                AA4[AA4v].func();
+                AA4[obj.AA.AA4v].func();
                 A4Use++;
             }
         }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
-        U3.innerHTML = 'SELECTED';
+        U3.innerHTML = 'SELECT';
     }
     if(uus['uu6']){
         Cost6.innerHTML = '';
@@ -116,36 +117,23 @@ const recoverAbilityUnlocks = function(uus){
         S5C.style.backgroundColor = 'rgb(105,120,150)';
         S5C.style.opacity = '0';
         S5.addEventListener('pointerdown',()=>{
-            if(A5Use < AA5[AA5v].uses){
+            if(A5Use < AA5[obj.AA.AA5v].uses){
                 if(this.S5A){S5A = this.S5A}
                 if(S5A != '[object CSSAnimation]'){var S5A = S5C.getAnimations();this.S5A = S5A}
                 S5A[0].play(); S5.style.pointerEvents = 'none';
-                AA5[AA5v].func();
-                A5Use++; CB5.style.height = (AA5[AA5v].uses-A5Use)/AA5[AA5v].uses*100 + '%';
+                AA5[obj.AA.AA5v].func();
+                A5Use++; CB5.style.height = (AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100 + '%';
             }
         }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
-        U6.innerHTML = 'SELECTED';
+        U6.innerHTML = 'SELECT';
     }
     if(uus['uu7']){
         Cost7.innerHTML = '';
-        U7.innerHTML = 'SELECTED';
-        for(const node of S1.childNodes){
-            if(node.nodeType === 3){
-                node.textContent = 'BLAST';
-            }
-        }
-        AA1v = 1;
+        U7.innerHTML = 'SELECT';
     }
     if(uus['uu8']){
         Cost8.innerHTML = '';
-        U8.innerHTML = 'SELECTED';
-        for(const node of S2.childNodes){
-            if(node.nodeType === 3){
-                node.textContent = 'FLARE GUN';
-            }
-        }
-        BB2.style.display = 'flex';
-        AA2v = 1;
+        U8.innerHTML = 'SELECT';
     }
 }
 const recoverUpgrades = function(uus){
@@ -168,5 +156,24 @@ const recoverUpgrades = function(uus){
         Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         UserHealth = 1000 + 100*uus['uu5'];
         document.getElementById('I5').innerHTML = '\n<br>&nbsp; • Player Health: ' + UserHealth + ' -> ' + (UserHealth+100) + '\n<br>&nbsp;';
+    }
+}
+const selectAbilities = function(AA){
+    if(AA.AA1v == 1){
+        U7.innerHTML = 'SELECTED';
+        for(const node of S1.childNodes){
+            if(node.nodeType === 3){
+                node.textContent = 'BLAST';
+            }
+        }
+    }
+    if(AA.AA2v == 1){
+        U8.innerHTML = 'SELECTED';
+        for(const node of S2.childNodes){
+            if(node.nodeType === 3){
+                node.textContent = 'FLARE GUN';
+            }
+        }
+        BB2.style.display = 'flex';
     }
 }

@@ -6,7 +6,6 @@ const loadAudio = function(){
     const BLBM = document.getElementById('BLBM');
     const T99 = document.getElementById('T99');
     const DOM = document.getElementById('DOM');
-    T99.volume = BLBM.volume = .6;
     
     const SSel = document.getElementById('SSel');
     const FSt = document.getElementById('FSt');
@@ -25,6 +24,38 @@ const loadAudio = function(){
     const EH = document.getElementById('EH');
     const He = document.getElementById('He');
     
-    const loudSFX = [SSel, FSt, TCr, CCh, Sl, BE, Upg, CS, AIHD, AISD, PHDA, PSDA, IR, EH, He];
-    for(l=0;l<loudSFX.length;l++){loudSFX[l].volume=.3}
+    const SFX = [SSel, FSt, TCr, CCh, Sl, BE, Upg, CS, AIHD, AISD, PHDA, PSDA, IR, EH, He];
+    function setDefaultSoundVolume(){
+        for(let l=0;l<SFX.length;l++){SFX[l].volume=.3}
+    }
+    function disableSound(){
+        for(let l=0;l<SFX.length;l++){SFX[l].volume=0}
+    }
+    const Music = [November, SUEM, SUBM, BLEM, BLBM, T99, DOM];
+    function setDefaultMusicVolume(){
+        for(let l=0;l<Music.length;l++){Music[l].volume=1}
+        November.volume = .9; T99.volume = BLBM.volume = .6;
+    }
+    function disableMusic(){
+        for(let l=0;l<Music.length;l++){Music[l].volume=0}
+    }
+    setDefaultSoundVolume();
+    setDefaultMusicVolume();
+    
+    const MT = document.getElementById('MusicToggle');
+    MT.addEventListener('click',()=>{
+        if(MT.checked){
+            setDefaultMusicVolume();
+        }else{
+            disableMusic();
+        }
+    });
+    const ST = document.getElementById('SoundToggle');
+    ST.addEventListener('click',()=>{
+        if(ST.checked){
+            setDefaultSoundVolume();
+        }else{
+            disableSound();
+        }
+    })
 }
