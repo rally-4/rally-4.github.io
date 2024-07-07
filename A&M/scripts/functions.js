@@ -47,7 +47,9 @@ const getResCol=(res)=>{
     if(res=='Slime'){return 'rgb(0,127,255)'}
     else if(res=='Slime Key'){return 'rgb(0,90,210)'}
     else if(res=='Red Fluid'){return 'rgb(210,0,30)'}
-    else if(res=='Rusty Key'){return 'rgb(90,45,0)'}
+    else if(res=='Rusty Key'){return 'rgb(90,60,30)'}
+    else if(res=='Chitin'){return 'rgb(120,0,255)'}
+    else if(res=='Obsidian Key'){return 'rgb(15,0,30)'}
     else{return 'rgb(255,255,255)'}
 }
 const rem=(arr,el)=>{for(a=0;a<el.length;a++){arr.splice(arr.indexOf(el[a]),1)}}
@@ -56,6 +58,7 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     T4 = document.getElementById('T4');
     AD1 = document.getElementById('AD1');
     AD2 = document.getElementById('AD2');
+    AD3 = document.getElementById('AD3');
     if(areaProgress['A1C']){
         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';
@@ -64,11 +67,13 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
         document.getElementById('UG6').style.display = 'flex';
         document.getElementById('UG7').style.display = 'flex';
         document.getElementById('UG8').style.display = 'flex';
+        document.getElementById('UG9').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
     }
     
     AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins['A1Wins'] + '/4';
     AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + areaWins['A2Wins'] + '/10';
+    AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + areaWins['A3Wins'] + '/8';
 }
 const recoverUnlocks = function(uus){
     if(uus['uu2']){
@@ -86,12 +91,6 @@ const recoverUnlocks = function(uus){
                 A3Use++;
             }
         }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
-        U2.innerHTML = 'SELECT';
-    }
-    if(uus['uu4']){
-        document.getElementById('A2').style.display = 'flex';
-        document.getElementById('Cost4').innerHTML = '';
-        document.getElementById('U4').innerHTML = 'UNLOCKED';
     }
     if(uus['uu3']){
         Cost3.innerHTML = '';
@@ -108,7 +107,11 @@ const recoverUnlocks = function(uus){
                 A4Use++;
             }
         }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
-        U3.innerHTML = 'SELECT';
+    }
+    if(uus['uu4']){
+        document.getElementById('A2').style.display = 'flex';
+        document.getElementById('Cost4').innerHTML = '';
+        document.getElementById('U4').innerHTML = 'UNLOCKED';
     }
     if(uus['uu6']){
         Cost6.innerHTML = '';
@@ -125,7 +128,6 @@ const recoverUnlocks = function(uus){
                 A5Use++; CB5.style.height = (AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100 + '%';
             }
         }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
-        U6.innerHTML = 'SELECT';
     }
     if(uus['uu7']){
         Cost7.innerHTML = '';
@@ -135,6 +137,11 @@ const recoverUnlocks = function(uus){
         Cost8.innerHTML = '';
         U8.innerHTML = 'SELECT';
     }
+    if(uus['uu9']){
+        document.getElementById('A3').style.display = 'flex';
+        document.getElementById('Cost9').innerHTML = '';
+        document.getElementById('U9').innerHTML = 'UNLOCKED';
+    }
 }
 const recoverUpgrades = function(uus){
     if(uus['uu1']){
@@ -142,6 +149,7 @@ const recoverUpgrades = function(uus){
         if(cc1 >= 40){
             U1.innerHTML = 'MAX';
             cc1 = Infinity;
+            Cost1.innerHTML = 'Cost: ' + cc1 + ' Slime';
         }
         Cost1.innerHTML = 'Cost: ' + cc1 + ' Slime';
         UserShield = 200 + 50*uus['uu1'];
@@ -152,6 +160,7 @@ const recoverUpgrades = function(uus){
         if(cc5 >= 70){
             U5.innerHTML = 'MAX';
             cc5 = Infinity;
+            Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         }
         Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         UserHealth = 1000 + 100*uus['uu5'];
