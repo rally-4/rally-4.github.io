@@ -9,8 +9,8 @@ Suburban Boss - Vandrande Pinnar
 Badlands ee - Cydonian Sky  
 Badlands Boss - Krutfotboll  
 &ensp;  
-Cliffs ee -   
-Cliffs Boss - Fucked up at Dreamhack  
+Molten Cliffs ee - NSMB Volcano Remix  
+Molten Cliffs Boss - NSMB VS: Volcano  
 &ensp;  
 Collapsed City ee - Hurry Potter!  
 Collapsed City Boss - The HER Song 7  
@@ -38,7 +38,7 @@ Marble Mountains Boss - The Realm of Battle (Conquest)
 &ensp;  
 The Cave (Phobos) - Lunar Catastrophe  
 The Cave (Deimos) - Blood Moon  
-The Cave (Anoxic) - Queso Rotado  
+The Cave (Anoxis) - A Tale of Eternity  
 &ensp;  
 All Stars (Slagel Slime) \[SU\] - Cosmic Disgust  
 All Stars (Rat Empreror) \[BL\] - Hybrid Funky Stars  
@@ -51,7 +51,7 @@ All Stars (Mechanical Tensor) \[TL\] - Kolobki Vodka Dance #3
 All Stars (Venus Mantrap) \[F\] -   
 All Stars (Astral Machine) \[TF\] - Sn°9M4 (Dvorak)  
 All Stars (**MM Boss Counterpart**) \[MM\] -   
-All Stars (Anitris) \[TC\] -   
+All Stars (Anitris) \[TC\] - Infernoplex  
 All Stars (**Final Boss**) \[AASS\] -   
 &ensp;  
 DEV4S - Dom  

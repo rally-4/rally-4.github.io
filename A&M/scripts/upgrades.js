@@ -1,5 +1,5 @@
 const loadUpgrades = function(){
-    const Cost1 = document.getElementById('Cost1'); let cc1 = 8;
+    const Cost1 = document.getElementById('Cost1'); cc1 = 8;
     const DT1 = document.getElementById('DT1');
     const I1 = document.getElementById('I1');
     const U1 = document.getElementById('U1');
@@ -21,7 +21,7 @@ const loadUpgrades = function(){
     const I4 = document.getElementById('I4');
     const U4 = document.getElementById('U4');
     
-    const Cost5 = document.getElementById('Cost5'); let cc5 = 20;
+    const Cost5 = document.getElementById('Cost5'); cc5 = 20;
     const DT5 = document.getElementById('DT5');
     const I5 = document.getElementById('I5');
     const U5 = document.getElementById('U5');
@@ -41,6 +41,11 @@ const loadUpgrades = function(){
     const DT8 = document.getElementById('DT8');
     const I8 = document.getElementById('I8');
     const U8 = document.getElementById('U8');
+    
+    const Cost9 = document.getElementById('Cost9');
+    const DT9 = document.getElementById('DT9');
+    const I9 = document.getElementById('I9');
+    const U9 = document.getElementById('U9');
     
     // SHIELD
     DT1.addEventListener('click',()=>{
@@ -63,6 +68,7 @@ const loadUpgrades = function(){
         if(cc1 >= 40){
             U1.innerHTML = 'MAX';
             cc1 = Infinity;
+            Cost1.innerHTML = 'Cost: ' + cc1 + ' Slime';
         }
     });
     
@@ -145,7 +151,7 @@ const loadUpgrades = function(){
     U4.addEventListener('click',()=>{
         if(obj.res['Slime Key'] >= 1 && !obj.unlocks.uu4){
             play(Upg);
-            obj.res.add(['Slime Key'], [-1]);
+            obj.add(['Slime Key'], [-1]);
             Cost4.innerHTML = '';
             U4.innerHTML = 'UNLOCKED';
             A2.style.display = 'flex';
@@ -165,7 +171,7 @@ const loadUpgrades = function(){
         if(obj.res['Red Fluid'] >= cc5){
             play(Upg);
             obj.upgrades.uu5++;
-            obj.res.add(['Red Fluid'], [-cc5]); cc5 += 5;
+            obj.add(['Red Fluid'], [-cc5]); cc5 += 5;
             Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
             UserHealth += 100;
             I5.innerHTML = '\n<br>&nbsp; • Player Health: ' + UserHealth + ' -> ' + (UserHealth+100) + '\n<br>&nbsp;';
@@ -173,6 +179,7 @@ const loadUpgrades = function(){
         if(cc5 >= 70){
             U5.innerHTML = 'MAX';
             cc5 = Infinity;
+            Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         }
     });
     
@@ -275,6 +282,25 @@ const loadUpgrades = function(){
             }
             BB2.style.display = 'flex';
             obj.AA.AA2v = 1;
+        }
+    });
+    
+    // MOLTEN CLIFFS
+    DT9.addEventListener('click',()=>{
+        if(I9.style.display == 'flex'){
+            I9.style.display = 'none';
+        }else{
+            I9.style.display = 'flex';
+        }
+    });
+    U9.addEventListener('click',()=>{
+        if(obj.res['Rusty Key'] >= 1 && !obj.unlocks.uu9){
+            play(Upg);
+            obj.add(['Rusty Key'], [-1]);
+            Cost9.innerHTML = '';
+            U9.innerHTML = 'UNLOCKED';
+            A3.style.display = 'flex';
+            obj.unlocks.uu9 = true;
         }
     });
 }

@@ -4,21 +4,36 @@ const loadData = function(){
         res: {materials: 0},
         tutorial: true,
         sBossProgress: {SB1w: false, SB2w: false},
-        areaProgress: {A1C: false, A2C: false},
-        areaWins: {A1Wins: 0, A2Wins: 0},
-        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false},
+        areaProgress: {A1C: false, A2C: false, A3C: false},
+        areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0},
+        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false},
         upgrades: {uu1: 0, uu5: 0},
         muls: {ndm: 1, sdm: 1, pdm: 1},
         AA: {AA1v: 0, AA2v: 0, AA3v: 0, AA4v: 0, AA5v: 0}
-        
     }
     
-    // DEBUGGING
-    /* obj.res.materials += 1000;
-    obj.tutorial = false;
-    obj.areaProgress.A1C = true;
-    obj.areaProgress.A2C = true;
-    recoverAreaUnlocks(obj.areaProgress, obj.areaWins); */
+    document.getElementById('Reset').addEventListener('click',()=>{
+        localStorage.clear();
+        obj = {
+            res: {materials: 0},
+            tutorial: true,
+            sBossProgress: {SB1w: false, SB2w: false},
+            areaProgress: {A1C: false, A2C: false, A3C: false},
+            areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0},
+            unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false},
+            upgrades: {uu1: 0, uu5: 0},
+            muls: {ndm: 1, sdm: 1, pdm: 1},
+            AA: {AA1v: 0, AA2v: 0, AA3v: 0, AA4v: 0, AA5v: 0}
+        }
+    });
+    /*document.getElementById('TTC').addEventListener('click',()=>{
+        obj.res.materials += 1000; C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+        obj.tutorial = false;
+        obj.areaProgress.A1C = true;
+        obj.areaProgress.A2C = true;
+        recoverAreaUnlocks(obj.areaProgress, obj.areaWins);
+        obj.add(['Slime','Slime Key', 'Red Fluid', 'Rusty Key'], [400,1,500,1]);
+    });*/
     
     if(localStorage.getItem('A&MData')){
         obj = JSON.parse(localStorage.getItem('A&MData'));
@@ -26,7 +41,7 @@ const loadData = function(){
         recoverUnlocks(obj.unlocks);
         recoverUpgrades(obj.upgrades);
         selectAbilities(obj.AA);
-        obj.res.readd = function(n,a){
+        obj.readd = function(n,a){
             var rarr = [];
             for(i=0; i<n.length; i++){
                 obj.res[n[i]] = 0;
@@ -57,14 +72,14 @@ const loadData = function(){
                 rarr.push(newCraft.style.top);
             }
         }
-        var keys = Object.keys(obj.res); rem(keys,['materials', 'readd']);
-        var values = Object.values(obj.res); rem(values,['materials', 'readd']);
-        obj.res.readd(keys,values);
-        obj.res.materials += obj.res.materials;
+        var keys = Object.keys(obj.res); keys.shift();
+        var values = Object.values(obj.res); values.shift();
+        obj.readd(keys,values);
+        delete obj.readd;
         C1C.innerHTML = 'Quantity: ' + obj.res.materials;
     }
     
-    obj.res.add = function(n,a){
+    obj.add = function(n,a){
         for(i=0; i<n.length; i++){
             if(obj.res[n[i]] == undefined){
                 obj.res[n[i]] = 0;
@@ -73,7 +88,7 @@ const loadData = function(){
                 TS2.appendChild(newCraft);
                 newCraft.id = 'C' + n[i];
                 newCraft.classList.add('crafts');
-                newCraft.style.top = 'calc(16px + ' + (Object.keys(obj.res).length-2)*8 + '%)';
+                newCraft.style.top = 'calc(16px + ' + (Object.keys(obj.res).length-1)*8 + '%)';
                 
                 var newDiv = document.createElement('div');
                 newCraft.appendChild(newDiv);
@@ -95,5 +110,18 @@ const loadData = function(){
         }
     }
     
-    // obj.res.add(['Slime','Slime Key', 'Red Fluid'], [120,1,200]); // DEBUGGING
+    const SaveInput = document.getElementById('SaveInput');
+    const Import = document.getElementById('Import');
+    const Export = document.getElementById('Export');
+    
+    Import.addEventListener('click',()=>{
+        if(SaveInput.value.endsWith('=')){
+            obj = JSON.parse(window.atob(SaveInput.value));
+        }else{
+            SaveInput.value = 'Invalid Save';
+        }
+    });
+    Export.addEventListener('click',()=>{
+        SaveInput.value = window.btoa(JSON.stringify(obj));
+    });
 }

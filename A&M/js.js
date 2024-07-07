@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded',()=>{
+    UserHealth = 1000;
+    UserShield = 200;
+    ShieldDowntime = 20;
+    ShieldRegen = .02;
+    
     loadAudio();
     loadTabs();
     loadAreas();
     loadUpgrades();
     loadData();
-    
-    UserHealth = 1000;
-    UserShield = 200;
-    ShieldDowntime = 20;
-    ShieldRegen = .02;
     
     T4 = document.getElementById('T4');
     
@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(WTI > WhiteText.length-1){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
             if(Math.random() >= 0.995){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
-            if(Math.random() >= 0.96){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
+            if(Math.random() >= 0.96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -132,6 +132,24 @@ window.addEventListener('DOMContentLoaded',()=>{
     let ROYAL_DECREE = new EnemyAttack('ROYAL DECREE', 90, 5, 300);
     let REPLENISH = new EnemyAttack('REPLENISH', 100, 3, 0, 0, 0, 200);
     const RatKingAttacks = [CHEW, SCRATCH, ROYAL_DECREE, REPLENISH];
+    
+    let CLAMBER = new EnemyAttack('CLAMBER', 65, 0.4, 5, 0, 5);
+    let GNAW = new EnemyAttack('GNAW', 95, 1.6, 85, 0, 15);
+    let SCAVANGE = new EnemyAttack('SCAVANGE', 100, 5, 0, 0, 0, 350, 650);
+    const LychicAntAttacks = [CLAMBER, GNAW, SCAVANGE];
+    let TANGLE = new EnemyAttack('TANGLE', 25, 2, 120);
+    let LEECH_BITE = new EnemyAttack('LEECH BITE', 100, 0.5, 25, 0, 0, 25);
+    const MagmaticTrigonotarbidAttacks = [TANGLE, LEECH_BITE];
+    let MUNCH0 = new EnemyAttack('MUNCH', 100, 0.5, 50, 0, 50, 10, 0, 0, 1);
+    let MUNCH1 = new EnemyAttack('MUNCH', 0, 0.5, 50, 0, 50, 10, 0, 0, 2);
+    let MUNCH2 = new EnemyAttack('M U N C H', 0, 1, 150, 0, 150, 50, 0, 0, 3);
+    let CONGLOBATE = new EnemyAttack('CONGLOBATE', 0, 12, 0, 0, 0, 0, 1000, 0, 0);
+    const LiquescentDiplopodAttacks = [MUNCH0, MUNCH1, MUNCH2, CONGLOBATE];
+    let ENGRAVE = new EnemyAttack('ENGRAVE', 45, 0.3, 11);
+    let DISSOLVE = new EnemyAttack('DISSOLVE', 85, 0.25, 2, 0, 45);
+    let PIERCING_BITE = new EnemyAttack('PIERCING BITE', 99.2, 0.4, 2, 13, 0, 10);
+    let TOXIC_TRANSFUSION = new EnemyAttack('TOXIC TRANSFUSION', 100, 5, 0, 250, 0, 550, 550);
+    const ScolopendraSulforaeAttacks = [ENGRAVE, DISSOLVE, PIERCING_BITE, TOXIC_TRANSFUSION];
     
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 75);
     const C0Attacks = [ATTACK];
@@ -321,8 +339,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let ChargeAttack = function(){ShieldDamage(80,true);Damage(40,true)}
     const CHARGE = new PlayerAttack(ChargeAttack, 2);
-    let FlareGunAttack = function(){ShieldDamage(60,true);Damage(120,true)}
-    const FLAREGUN = new PlayerAttack(FlareGunAttack, 3, 30);
+    let FlareGunAttack = function(){ShieldDamage(90,true);Damage(120,true)}
+    const FLAREGUN = new PlayerAttack(FlareGunAttack, 3, 40);
     
     let SlashAttack = function(){Damage(40,true);PenetratingDamage(32,true)}
     const SLASH = new PlayerAttack(SlashAttack, 2);
@@ -518,27 +536,35 @@ window.addEventListener('DOMContentLoaded',()=>{
                 
                 if(COH <= 0){
                     obj.res.materials += mi;
-                    obj.res.add(resnarr,resarr);
+                    obj.add(resnarr,resarr);
                     C1C.innerHTML = 'Quantity: ' + obj.res.materials;
                     
                     // Enemies
                     if(area == 'A1'){obj.areaWins.A1Wins++; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4'}
                     if(area == 'A2'){obj.areaWins.A2Wins++; AD2.innerText = 'Drops: Slime, Red Fuid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10'}
+                    if(area == 'A3'){obj.areaWins.A3Wins++; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8'}
                     
                     // Normal Bosses
                     if(area == 'A1B'){
-                        if(T4.innerHTML != 'RESEARCH'){setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000)}
-                        obj.areaWins.A1Wins = 0; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
-                        T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
-                        T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
+                        if(!obj.areaProgress['A1C']){
+                            setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000);
+                            T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
+                            T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
+                        }
+                        obj.areaWins.A1Wins = 0;AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
                     }
                     if(area == 'A2B'){
-                        obj.areaWins.A2Wins = 0; AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10';
+                        obj.areaWins.A2Wins = 0;AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10';
                         document.getElementById('UG6').style.display = 'flex';
                         document.getElementById('UG7').style.display = 'flex';
                         document.getElementById('UG8').style.display = 'flex';
+                        document.getElementById('UG9').style.display = 'flex';
                         document.getElementById('IB2').style.display = 'flex';
                         obj.areaProgress['A2C'] = true;
+                    }
+                    if(area == 'A3B'){
+                        obj.areaWins.A3Wins = 0; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
+                        obj.areaProgress['A3C'] = true;
                     }
                     
                     // Secret Bosses
@@ -582,8 +608,10 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     const A1BossWins = 4;
     const A2BossWins = 10;
+    const A3BossWins = 8;
     const E1 = document.getElementById('E1');
     const E2 = document.getElementById('E2');
+    const E3 = document.getElementById('E3');
     
     E1.addEventListener('click',()=>{
         if(obj.areaWins.A1Wins < A1BossWins){
@@ -610,6 +638,20 @@ window.addEventListener('DOMContentLoaded',()=>{
             }
         }else{
             LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
+        }
+    });
+    E3.addEventListener('click',()=>{
+        if(obj.areaWins.A3Wins < A3BossWins){
+            re = Math.random();
+            if(re < .35){
+                LoadFight('Lychic Ant', 840, 2200, 4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LychicAntAttacks, 10, 'A3', ['Red Fluid', 'Chitin'], [Math.round(Math.random())+1, 3], MCEM, 1.5);
+            }else if(re < .7){
+                LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, 'A3', ['Red Fluid', 'Chitin'], [2, 2], MCEM, 1.5);
+            }else{
+                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, 'A3', ['Red Fluid', 'Chitin'], [1, 5], MCEM, 2);
+            }
+        }else{
+            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, 'A3', ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 10, 1], MCBM, 2);
         }
     });
     

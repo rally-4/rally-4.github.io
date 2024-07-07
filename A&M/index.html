@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="author" content="rally4">
-        <meta name="description" content="A simple game inspired by A&M.\nVersion: 0.0.11 (beta 2)">
+        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.2 (beta 3)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
         <title>Anoxic</title>
         <link rel="icon" href="Anoxic.png">
@@ -12,6 +12,8 @@
         <audio id="SUBM" src="assets/music/VandrandePinnar.mp3" loop></audio>
         <audio id="BLEM" src="assets/music/CydonianSky.mp3" loop></audio>
         <audio id="BLBM" src="assets/music/Krutfotboll.mp3" loop></audio>
+        <audio id="MCEM" src="assets/music/VolcanoRemix.mp3"></audio>
+        <audio id="MCBM" src="assets/music/VolcanoVersus.mp3" loop></audio>
         <audio id="T99" src="assets/music/TETRIS99.mp3" loop></audio>
         <audio id="DOM" src="assets/music/Dom.mp3" loop></audio>
         
@@ -60,11 +62,19 @@
                 <div id="SettingsClose">←</div>
                 <div id="SettingsText">SETTINGS</div>
                 
+                <h2 id="AudioHeader"><u>Audio</u></h2>
                 <label for="MusicToggle" id="L1">Toggle Music:</label>
                 <input type="checkbox" id="MusicToggle" checked>
-                
                 <label for="SoundToggle" id="L2">Toggle Sound:</label>
                 <input type="checkbox" id="SoundToggle" checked>
+                
+                <h2 id="SaveHeader"><u>Save</u></h2>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="SaveInput">
+                <div id="Import">Import Data</div>
+                <div id="Export">Export Data</div>
+                
+                <div id="Reset">Reset Data</div>
+                <!--div id="TTC">Debug</div-->
             </div>
             
             <h1>C0 — The Gatekeeper</h1>
@@ -102,6 +112,13 @@
                 <p class="adetails" id="AD2">Drops: Slime, Red Fluid, Rusty Key<br>Wins until boss: 0/10</p>
                 <div class="details" id="D2">Details</div>
                 <div class="enter" id="E2">Enter</div>
+            </div>
+            <div class="row" id="A3">
+                <div class="col" id="c3"></div>
+                <p class="areaname">MOLTEN CLIFFS</p>
+                <p class="adetails" id="AD3">Drops: Red Fluid, Chitin, Obsidian Key<br>Wins until boss: 0/8</p>
+                <div class="details" id="D3">Details</div>
+                <div class="enter" id="E3">Enter</div>
             </div>
         </div>
         
@@ -179,7 +196,7 @@
                 
                 <div class="row2" id="UG6">
                     <p class="upgradename">Unlock Heal</p>
-                    <p class="cost" id="Cost6">Cost: 40 materials</p>
+                    <p class="cost" id="Cost6">Cost: 50 materials</p>
                     <div class="details2" id="DT6">Info</div>
                     <div class="upg" id="U6">Unlock</div>
                 </div>
@@ -215,13 +232,24 @@
                 <p class="info" id="I8">
                     <br>
                     &nbsp; • Damage: 120<br>
-                    &nbsp; • Shield damage: 60<br>
+                    &nbsp; • Shield damage: 90<br>
                     &nbsp; • Cooldown: 3s<br>
                     &nbsp; • Uses per fight: 30<br>
                     &nbsp; • Slot 2
                     <br>&nbsp;
                 </p>
                 
+                <div class="row2" id="UG9">
+                    <p class="upgradename">Unlock Molten Cliffs</p>
+                    <p class="cost" id="Cost9">Cost: 1 Rusty Key</p>
+                    <div class="details2" id="DT9">Info</div>
+                    <div class="upg" id="U9">Unlock</div>
+                </div>
+                <p class="info" id="I9">
+                    <br>
+                    &nbsp; • Unlock Molten Cliffs
+                    <br>&nbsp;
+                </p>
             </div>
             
             <div class="stabscreen" id="UTS2">
@@ -288,7 +316,7 @@
                         <ul class="enemyInfoL">
                             <li>Health: 1200</li>
                             <li>Drops: </li>
-                            &gt; 3 Material<br>
+                            &gt; 3 Materials<br>
                             &gt; 2 Red Fluid
                         </ul>
                     </p>
@@ -298,7 +326,7 @@
                         <ul class="enemyInfoL" style="left: 21%">
                             <li>Health: 1200</li>
                             <li>Drops: </li>
-                            &gt; 3 Material<br>
+                            &gt; 3 Materials<br>
                             &gt; 2 Red Fluid
                         </ul>
                     </p>
@@ -308,7 +336,7 @@
                         <ul class="enemyInfoL" style="left: 40%">
                             <li>Health: 1600</li>
                             <li>Drops: </li>
-                            &gt; 6 Material<br>
+                            &gt; 6 Materials<br>
                             &gt; 2 Red Fluid
                         </ul>
                     </p>
@@ -321,7 +349,7 @@
                             <li>Regen: 15/s</li>
                             <li>Downtime: 5s</li>
                             <li>Drops: </li>
-                            &gt; 3 Material<br>
+                            &gt; 3 Materials<br>
                             &gt; 8-10 Slime<br>
                             &gt; 4 Red Fluid
                         </ul>
