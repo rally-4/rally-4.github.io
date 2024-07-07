@@ -25,6 +25,7 @@ const loadData = function(){
             muls: {ndm: 1, sdm: 1, pdm: 1},
             AA: {AA1v: 0, AA2v: 0, AA3v: 0, AA4v: 0, AA5v: 0}
         }
+        location.href = location.href;
     });
     /*document.getElementById('TTC').addEventListener('click',()=>{
         obj.res.materials += 1000; C1C.innerHTML = 'Quantity: ' + obj.res.materials;
@@ -120,6 +121,8 @@ const loadData = function(){
         }else{
             SaveInput.value = 'Invalid Save';
         }
+        localStorage.setItem('A&MData',JSON.stringify(obj));
+        location.href = location.href;
     });
     Export.addEventListener('click',()=>{
         SaveInput.value = window.btoa(JSON.stringify(obj));
