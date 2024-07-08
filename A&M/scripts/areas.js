@@ -22,6 +22,11 @@ const loadAreas = function(){
     IB2.addEventListener('click',()=>{AI2.style.display = 'flex'});
     AI2.addEventListener('click',()=>{AI2.style.display = 'none'});
     
+    const IB3 = document.getElementById('IB3');
+    const AI3 = document.getElementById('AI3');
+    IB3.addEventListener('click',()=>{AI3.style.display = 'flex'});
+    AI3.addEventListener('click',()=>{AI3.style.display = 'none'});
+    
     // AREA DETAILS
     D1.addEventListener('click',()=>{
         play(CS);
