@@ -71,10 +71,10 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
             if(input.value.toLowerCase() === 'tetrominos' && !obj.sBossProgress.SB1w){
-                LoadFight('Tetrominos Rampage', 4444, 444, .4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, TetrominosAttacks, 0, 'SB1', [], [], T99);
+                LoadFight('Tetrominos Rampage', 4444, 444, .4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, TetrominosAttacks, 0, SB1V, [], [], T99);
             }
             if(input.value.toLowerCase() === 'dev4s' && !obj.sBossProgress.SB2w){
-                LoadFight('DEVAS', 170, 130, 1, .01, UserHealth, UserShield, ShieldDowntime, ShieldRegen, DevasAttacks, 0, 'SB2', [], [], DOM, 17);
+                LoadFight('DEVAS', 170, 130, 1, .01, UserHealth, UserShield, ShieldDowntime, ShieldRegen, DevasAttacks, 0, SB2V, [], [], DOM, 17);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -387,8 +387,40 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }); S2C.addEventListener('animationend',()=>{S2.style.pointerEvents = 'auto'});
     
+    // BATTLE VICTROY FUNCTIONS
+    let A1V = function(){obj.areaWins.A1Wins++; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4'}
+    let A2V = function(){obj.areaWins.A2Wins++; AD2.innerText = 'Drops: Slime, Red Fuid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10'}
+    let A3V = function(){obj.areaWins.A3Wins++; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8'}
+    
+    let A1BV = function(){
+        if(!obj.areaProgress['A1C']){
+            setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000);
+            T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
+            T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
+        }
+        obj.areaWins.A1Wins = 0;AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
+    }
+    let A2BV = function(){
+        obj.areaWins.A2Wins = 0;AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10';
+        document.getElementById('UG6').style.display = 'flex';
+        document.getElementById('UG7').style.display = 'flex';
+        document.getElementById('UG8').style.display = 'flex';
+        document.getElementById('UG9').style.display = 'flex';
+        document.getElementById('UG10').style.display = 'flex';
+        document.getElementById('IB2').style.display = 'flex';
+        obj.areaProgress['A2C'] = true;
+    }
+    let A3BV = function(){
+        obj.areaWins.A3Wins = 0;AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
+        document.getElementById('IB3').style.display = 'flex';
+        obj.areaProgress['A3C'] = true;
+    }
+    
+    let SB1V = function(){obj.sBossProgress.SB1w = true; obj.muls.ndm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'What an intense fight...'}
+    let SB2V = function(){obj.sBossProgress.SB2w = true; obj.muls.pdm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'Space is not as boundless as we think...'}
+    
     // E = Enemy, O = Opponent, U = User, P = Player, H = Health, S = Shield
-    LoadFight = function(EnemyName, MaxOH, MaxOS, ODowntime, OSR, MaxPH, MaxPS, PDowntime, PSR, OpponentAttacks, mi, area, resnarr=[], resarr=[], M=November, ODef=1){
+    LoadFight = function(EnemyName, MaxOH, MaxOS, ODowntime, OSR, MaxPH, MaxPS, PDowntime, PSR, OpponentAttacks, mi, winFunc=function(){}, resnarr=[], resarr=[], M=November, ODef=1){
         stop(November);play(SSel);
         this.ODowntime = ODowntime;
         this.PDowntime = PDowntime;
@@ -538,38 +570,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     obj.res.materials += mi;
                     obj.add(resnarr,resarr);
                     C1C.innerHTML = 'Quantity: ' + obj.res.materials;
-                    
-                    // Enemies
-                    if(area == 'A1'){obj.areaWins.A1Wins++; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4'}
-                    if(area == 'A2'){obj.areaWins.A2Wins++; AD2.innerText = 'Drops: Slime, Red Fuid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10'}
-                    if(area == 'A3'){obj.areaWins.A3Wins++; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8'}
-                    
-                    // Normal Bosses
-                    if(area == 'A1B'){
-                        if(!obj.areaProgress['A1C']){
-                            setTimeout(()=>{displayText(["Ah, the slime key...", "I suppose you were stronger than I thought.", "Use the newly acquired resources at the research facility to become stronger."], ["c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0"])},1000);
-                            T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
-                            T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';obj.areaProgress['A1C'] = true;
-                        }
-                        obj.areaWins.A1Wins = 0;AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4';
-                    }
-                    if(area == 'A2B'){
-                        obj.areaWins.A2Wins = 0;AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10';
-                        document.getElementById('UG6').style.display = 'flex';
-                        document.getElementById('UG7').style.display = 'flex';
-                        document.getElementById('UG8').style.display = 'flex';
-                        document.getElementById('UG9').style.display = 'flex';
-                        document.getElementById('IB2').style.display = 'flex';
-                        obj.areaProgress['A2C'] = true;
-                    }
-                    if(area == 'A3B'){
-                        obj.areaWins.A3Wins = 0; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
-                        obj.areaProgress['A3C'] = true;
-                    }
-                    
-                    // Secret Bosses
-                    if(area=='SB1'){obj.sBossProgress.SB1w = true; obj.muls.ndm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'What an intense fight...'}
-                    if(area=='SB2'){obj.sBossProgress.SB2w = true; obj.muls.pdm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'Space is not as boundless as we think...'}
+                    winFunc();
                 }
                 if(COH <= 0 || CPH <= 0){
                     play(BE);
@@ -598,7 +599,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                         dar.style.opacity = op + '';
                     },10,50,500);
                     setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
-                    if(area == 'Tutorial'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
+                    if(EnemyName == 'C0'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     localStorage.setItem('A&MData',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
@@ -616,42 +617,42 @@ window.addEventListener('DOMContentLoaded',()=>{
     E1.addEventListener('click',()=>{
         if(obj.areaWins.A1Wins < A1BossWins){
             if(Math.random() < .5){
-                LoadFight('Basic Slime', 400, 180, 5, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(2*Math.random())+2], SUEM);
+                LoadFight('Basic Slime', 400, 180, 5, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BasicSlimeAttacks, 1, A1V, ['Slime'], [Math.round(2*Math.random())+2], SUEM);
             }else{
-                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, 'A1', ['Slime'], [Math.round(Math.random())+3], SUEM);
+                LoadFight('Scrap Slime', 370, 550, 10, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScrapSlimeAttacks, 1, A1V, ['Slime'], [Math.round(Math.random())+3], SUEM);
             }
         }else{
-            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, 'A1B', ['Slime', 'Slime Key'], [Math.round(2*Math.random())+4, 1], SUBM);
+            LoadFight('Reinforced Slime', 1000, 750, 15, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ReinforcedSlimeAttacks, 5, A1BV, ['Slime', 'Slime Key'], [Math.round(2*Math.random())+4, 1], SUBM);
         }
     });
     E2.addEventListener('click',()=>{
         if(obj.areaWins.A2Wins < A2BossWins){
             re = Math.random();
             if(re < .3){
-                LoadFight('Melancholic Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MelancholicRatAttacks, 3, 'A2', ['Red Fluid'], [2], BLEM);
+                LoadFight('Melancholic Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MelancholicRatAttacks, 3, A2V, ['Red Fluid'], [2], BLEM);
             }else if(re < .6){
-                LoadFight('Enraged Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, EnragedRatAttacks, 3, 'A2', ['Red Fluid'], [2], BLEM);
+                LoadFight('Enraged Rat', 1200, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, EnragedRatAttacks, 3, A2V, ['Red Fluid'], [2], BLEM);
             }else if(re < .7){
-                LoadFight('Velvet Worm', 900, 900, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, VelvetWormAttacks, 3, 'A2', ['Slime', 'Red Fluid'], [Math.round(2*Math.random())+8, 4], BLEM);
+                LoadFight('Velvet Worm', 900, 900, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, VelvetWormAttacks, 3, A2V, ['Slime', 'Red Fluid'], [Math.round(2*Math.random())+8, 4], BLEM);
             }else{
-                LoadFight('Radiant Rat', 1600, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RadiantRatAttacks, 6, 'A2', ['Red Fluid'], [2], BLEM);
+                LoadFight('Radiant Rat', 1600, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RadiantRatAttacks, 6, A2V, ['Red Fluid'], [2], BLEM);
             }
         }else{
-            LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, 'A2B', ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
+            LoadFight('Rat King', 4000, 0, null, 0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, RatKingAttacks, 6, A2BV, ['Red Fluid', 'Rusty Key'], [8, 1], BLBM);
         }
     });
     E3.addEventListener('click',()=>{
         if(obj.areaWins.A3Wins < A3BossWins){
             re = Math.random();
             if(re < .35){
-                LoadFight('Lychic Ant', 840, 2200, 4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LychicAntAttacks, 10, 'A3', ['Red Fluid', 'Chitin'], [Math.round(Math.random())+1, 3], MCEM, 1.5);
+                LoadFight('Lychic Ant', 840, 2200, 4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LychicAntAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [Math.round(Math.random())+1, 3], MCEM, 1.5);
             }else if(re < .7){
-                LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, 'A3', ['Red Fluid', 'Chitin'], [2, 2], MCEM, 1.5);
+                LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [2, 2], MCEM, 1.5);
             }else{
-                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, 'A3', ['Red Fluid', 'Chitin'], [1, 5], MCEM, 2);
+                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, A3V, ['Red Fluid', 'Chitin'], [1, 5], MCEM, 2);
             }
         }else{
-            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, 'A3', ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 10, 1], MCBM, 2);
+            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 10, 1], MCBM, 2);
         }
     });
     

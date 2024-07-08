@@ -697,7 +697,7 @@ input{
 }
 
 .row2{
-    position: absolute; display: flex;
+    position: absolute; display: none;
     width: 90%; height: 10%;
     left: 50%; transform: translateX(-50%);
     flex-direction: column;
@@ -706,22 +706,23 @@ input{
     border: 4px solid rgb(30,30,30);
     background-color: black;
 }
-#UG1{top:12%;}
-#UG2{top:24%;}
-#UG3{top:36%;}
-#UG4{top:48%;}
-#UG5{top:60%;}
-#UG6{top:72%;display:none;}
-#UG7{top:84%;display:none;}
-#UG8{top:96%;display:none;}
-#UG9{top:108%;display:none;}
+#UG1{top:12%;display:flex;}
+#UG2{top:24%;display:flex;}
+#UG3{top:36%;display:flex;}
+#UG4{top:48%;display:flex;}
+#UG5{top:60%;display:flex;}
+#UG6{top:72%;}
+#UG7{top:84%;}
+#UG8{top:96%;}
+#UG9{top:108%;}
+#UG10{top:120%;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
 }
 .cost{
     position: fixed; display: flex;
-    left: 25%; font-size: 24px;
+    left: 28%; font-size: 24px;
 }
 .details2{
     position: fixed; display: flex;
@@ -754,6 +755,7 @@ input{
 #I7{top: calc(94% - 16px);}
 #I8{top: calc(106% - 16px);}
 #I9{top: calc(118% - 16px);}
+#I10{top: calc(130% - 16px);}
 .upg{
     position: fixed; display: flex;
     width: 144px; height: 80%; right: 4px;
@@ -778,6 +780,7 @@ input{
 }
 #IB1{left:2%;top:12%;display:flex;}
 #IB2{left:20%;top:12%;}
+#IB3{left:38%;top:12%;}
 .areaInfo{
     position: fixed; display: none;
     width: calc(96% - 12px); height: 68%;
@@ -810,6 +813,10 @@ input{
 #EIP6{width: 19%; left: 40%;}
 #EIP7{width: 19%; left: 59%;}
 #EIP8{width: 19%; left: 78%;}
+#EIP9{width: calc(24% - 3px); left: 2%;}
+#EIP10{width: calc(24% - 3px); left: calc(26% - 3px);}
+#EIP11{width: calc(24% - 3px); left: calc(50% - 6px);}
+#EIP12{width: calc(24% - 3px); left: calc(74% - 9px);}
 .enemyInfoL{
     position: fixed;
     top: calc(18% + 144px);

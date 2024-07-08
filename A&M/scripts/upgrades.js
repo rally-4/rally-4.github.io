@@ -47,6 +47,11 @@ const loadUpgrades = function(){
     const I9 = document.getElementById('I9');
     const U9 = document.getElementById('U9');
     
+    const Cost10 = document.getElementById('Cost10');
+    const DT10 = document.getElementById('DT10');
+    const I10 = document.getElementById('I10');
+    const U10 = document.getElementById('U10');
+    
     // SHIELD
     DT1.addEventListener('click',()=>{
         if(I1.style.display == 'flex'){
@@ -301,6 +306,25 @@ const loadUpgrades = function(){
             U9.innerHTML = 'UNLOCKED';
             A3.style.display = 'flex';
             obj.unlocks.uu9 = true;
+        }
+    });
+    
+    // COLLAPSED CITY
+    DT10.addEventListener('click',()=>{
+        if(I10.style.display == 'flex'){
+            I10.style.display = 'none';
+        }else{
+            I10.style.display = 'flex';
+        }
+    });
+    U10.addEventListener('click',()=>{
+        if(obj.res['Rusty Key'] >= 1 && !obj.unlocks.uu10){
+            /* play(Upg);
+            obj.add(['Rusty Key'], [-1]);
+            Cost10.innerHTML = '';
+            U10.innerHTML = 'UNLOCKED';
+            A4.style.display = 'flex';
+            obj.unlocks.uu10 = true; */
         }
     });
 }

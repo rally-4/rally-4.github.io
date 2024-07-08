@@ -6,7 +6,7 @@ const loadData = function(){
         sBossProgress: {SB1w: false, SB2w: false},
         areaProgress: {A1C: false, A2C: false, A3C: false},
         areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0},
-        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false},
+        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false},
         upgrades: {uu1: 0, uu5: 0},
         muls: {ndm: 1, sdm: 1, pdm: 1},
         AA: {AA1v: 0, AA2v: 0, AA3v: 0, AA4v: 0, AA5v: 0}

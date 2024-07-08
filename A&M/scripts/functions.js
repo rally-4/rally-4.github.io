@@ -68,7 +68,11 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
         document.getElementById('UG7').style.display = 'flex';
         document.getElementById('UG8').style.display = 'flex';
         document.getElementById('UG9').style.display = 'flex';
+        document.getElementById('UG10').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
+    }
+    if(areaProgress['A3C']){
+        document.getElementById('IB3').style.display = 'flex';
     }
     
     AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins['A1Wins'] + '/4';
