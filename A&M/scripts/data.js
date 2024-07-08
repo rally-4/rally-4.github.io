@@ -3,7 +3,7 @@ const loadData = function(){
     obj = {
         res: {materials: 0},
         tutorial: true,
-        sBossProgress: {SB1w: false, SB2w: false},
+        sBossProgress: {SB1w: false, SB2w: false, SB3w: false},
         areaProgress: {A1C: false, A2C: false, A3C: false},
         areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0},
         unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false},

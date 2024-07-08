@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             trunk.style.display = 'none';
             div.style.pointerEvents = 'none';
             if((count >= txtarr.length) && obj.tutorial){
-                LoadFight('C0', 750, 250, 2, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0, 'Tutorial');
+                LoadFight('C0', 750, 250, 2, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, C0Attacks, 0);
                 setTimeout(()=>{obj.tutorial = false},4000);
             }
         }else{
@@ -51,10 +51,10 @@ window.addEventListener('DOMContentLoaded',()=>{
     trunk.addEventListener('click', next);
     if(obj.tutorial){displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet following the Anoxiphandric Catastrophe.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"])}
     
-    // C0 VAULT
+    // CHAMBER
     const GKT = document.getElementById('GKT');
-    GKT.style.color = 'orange';
-    GKT.innerHTML = 'You should not be here...';
+    GKT.style.color = 'white';
+    GKT.innerHTML = '...';
     let WhiteText = ["There is nothing else in here for you.", "Leave!", "You're not supposed to stay here...", "Waiting for something to happen?", "Go fight some slimes!", "What do you want from me?", "Your presence disturbs me.", "What are you trying to accomplish?", "Our time here isn't unlimited."];
     let OrangeText = ["You should not linger around here...", "Go away!", "You're hopeless...", "Why are you still here?", "..."];
     let WTI = 0;
@@ -65,8 +65,9 @@ window.addEventListener('DOMContentLoaded',()=>{
             GKT.style.color = 'white';
             if(WTI > WhiteText.length-1){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
-            if(Math.random() >= 0.995){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
+            if(Math.random() >= 0.998){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             if(Math.random() >= 0.96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
+            if(Math.random() >= 0.98 && !obj.sBossProgress.SB3w){GKT.style.color = 'lime'; GKT.innerHTML = "It shoots missiles! MISSILES!"; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -75,6 +76,9 @@ window.addEventListener('DOMContentLoaded',()=>{
             }
             if(input.value.toLowerCase() === 'dev4s' && !obj.sBossProgress.SB2w){
                 LoadFight('DEVAS', 170, 130, 1, .01, UserHealth, UserShield, ShieldDowntime, ShieldRegen, DevasAttacks, 0, SB2V, [], [], DOM, 17);
+            }
+            if((input.value.toLowerCase() === 'mr. r' || (input.value.toLowerCase() === 'r4bot')) && !obj.sBossProgress.SB3w){
+                LoadFight('R4bot', 40000, 4000, 0.4, 4.0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, R4botAttacks, 0, SB3V, [], [], MRR, .2);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -164,6 +168,11 @@ window.addEventListener('DOMContentLoaded',()=>{
     let WEEP = new EnemyAttack('WEEP', (2/3)*100, (20/9), 50, 0, 0, 0, 0, 20);
     let SORROW = new EnemyAttack('SORROW', 100, (20/9), 75, 0, 0, 0, 0, 30);
     const DevasAttacks = [CRY, WEEP, SORROW];
+    
+    let INHALE = new EnemyAttack('INHALE', 24, 4, 140, 0, 0, 440);
+    let LASER_BEAM = new EnemyAttack('LASER BEAM', 94, 0.5, 40);
+    let HOMING_MISSILE = new EnemyAttack('HOMING MISSILE', 100, 6, 500, 100, 100);
+    const R4botAttacks = [INHALE, LASER_BEAM, HOMING_MISSILE];
     
     // FIGHT SYSTEM BARS
     const ALL = body.querySelectorAll('*');
@@ -418,6 +427,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let SB1V = function(){obj.sBossProgress.SB1w = true; obj.muls.ndm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'What an intense fight...'}
     let SB2V = function(){obj.sBossProgress.SB2w = true; obj.muls.pdm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'Space is not as boundless as we think...'}
+    let SB3V = function(){obj.sBossProgress.SB3w = true; obj.muls.pdm += .05; obj.muls.sdm += .1; GKT.style.color = 'cyan'; GKT.innerHTML = 'Bang bang!'}
     
     // E = Enemy, O = Opponent, U = User, P = Player, H = Health, S = Shield
     LoadFight = function(EnemyName, MaxOH, MaxOS, ODowntime, OSR, MaxPH, MaxPS, PDowntime, PSR, OpponentAttacks, mi, winFunc=function(){}, resnarr=[], resarr=[], M=November, ODef=1){
