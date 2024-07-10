@@ -12,8 +12,8 @@ Badlands Boss - Krutfotboll
 Molten Cliffs ee - NSMB Volcano Remix  
 Molten Cliffs Boss - NSMB VS: Volcano  
 &ensp;  
-Collapsed City ee - Hurry Potter!  
-Collapsed City Boss - The HER Song 7  
+Cursed Cathedral ee - Cursed Cathedral  
+Cursed Cathedral Boss - Cursed Cathedral (Namco C30 WSG Cover)  
 &ensp;  
 Acrid Shores ee - Team Haze Keygen 2  
 Acrid Shores Boss - Passion Field  
@@ -43,7 +43,7 @@ The Cave (Anoxis) - A Tale of Eternity
 All Stars (Slagel Slime) \[SU\] - Cosmic Disgust  
 All Stars (Rat Empreror) \[BL\] - Hybrid Funky Stars  
 All Stars (Scolopendra Massiva) \[C\] -   
-All Stars (**CC Boss Counterpart**) \[CC\] - The HER Song 10  
+All Stars (**CC Boss Counterpart**) \[CC\] -   
 All StarS (**AS Boss Counterpart**) \[AS\] -   
 All Stars (Living Terra) \[BS\] -   
 All Stars (Geodesic Behemoth) \[LF\] - Honors Geometry  
