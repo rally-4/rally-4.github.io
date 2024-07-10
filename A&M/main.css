@@ -155,6 +155,7 @@ input{
 #A1{top:12%;display:flex;}
 #A2{top:26%;}
 #A3{top:40%;}
+#A4{top:54%;}
 .col{
     width: 1%;
     height: 90%;
@@ -163,6 +164,7 @@ input{
 #c1{background-color: black;}
 #c2{background-color: rgb(120,105,15);}
 #c3{background-color: rgb(255,60,30);}
+#c4{background-color: rgb(68,45,105);}
 .areaname{
     position: fixed;
     display: flex;
@@ -176,6 +178,7 @@ input{
     font-size: 24px;
 }
 #AD3{left:288px;}
+#AD4{left:352px;}
 .details{
     position: fixed; display: flex;
     width: 10%; height: 75%; right: 256px;
@@ -207,6 +210,15 @@ input{
     color: white;
     font-family: sans-serif;
     background-color: black;
+}
+#CathedralOverlay{
+    position: fixed; display: none;
+    width: 100%; height: 100%;
+    z-index: 9;
+    opacity: 0.2;
+    mix-blend-mode: difference;
+    background: linear-gradient(to bottom, blue, magenta);
+    pointer-events: none;
 }
 #BlackScreen{
     position: fixed;
@@ -716,13 +728,14 @@ input{
 #UG8{top:96%;}
 #UG9{top:108%;}
 #UG10{top:120%;}
+#UG11{top:132%;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
 }
 .cost{
     position: fixed; display: flex;
-    left: 28%; font-size: 24px;
+    left: 30%; font-size: 24px;
 }
 .details2{
     position: fixed; display: flex;
@@ -756,6 +769,7 @@ input{
 #I8{top: calc(106% - 16px);}
 #I9{top: calc(118% - 16px);}
 #I10{top: calc(130% - 16px);}
+#I11{top: calc(142% - 16px);}
 .upg{
     position: fixed; display: flex;
     width: 144px; height: 80%; right: 4px;

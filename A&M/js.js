@@ -77,8 +77,8 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(input.value.toLowerCase() === 'dev4s' && !obj.sBossProgress.SB2w){
                 LoadFight('DEVAS', 170, 130, 1, .01, UserHealth, UserShield, ShieldDowntime, ShieldRegen, DevasAttacks, 0, SB2V, [], [], DOM, 17);
             }
-            if((input.value.toLowerCase() === 'mr. r' || (input.value.toLowerCase() === 'r4bot')) && !obj.sBossProgress.SB3w){
-                LoadFight('R4bot', 40000, 4000, 0.4, 4.0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, R4botAttacks, 0, SB3V, [], [], MRR, .2);
+            if((input.value.toLowerCase() === 'mr. l' || (input.value.toLowerCase() === 'brobot')) && !obj.sBossProgress.SB3w){
+                LoadFight('Brobot', 40000, 4000, 0.4, 4.0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BrobotAttacks, 0, SB3V, [], [], MLR, .2);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -155,6 +155,23 @@ window.addEventListener('DOMContentLoaded',()=>{
     let TOXIC_TRANSFUSION = new EnemyAttack('TOXIC TRANSFUSION', 100, 5, 0, 250, 0, 550, 550);
     const ScolopendraSulforaeAttacks = [ENGRAVE, DISSOLVE, PIERCING_BITE, TOXIC_TRANSFUSION];
     
+    let HUM = new EnemyAttack('HUM', 40, 3, 50, 0, 50, 0, 350);
+    let CHANT = new EnemyAttack('CHANT', 95, 2, 150);
+    let HIDE = new EnemyAttack('HIDE', 100, 0.1);
+    let FAKE_CHANT = new EnemyAttack('CHANT', 0, 2, 950);
+    HIDE.nextattack = 3;
+    const HymnalChanterAttacks = [HUM, CHANT, HIDE, FAKE_CHANT];
+    let RESONATE = new EnemyAttack('RESONATE', 40, 7, 700, 0, 0, 100);
+    let HARMONISE = new EnemyAttack('HARMONISE', 80, 6, 500, 0, 0, 0, 550);
+    let GEOMANCE = new EnemyAttack('GEOMANCE', 100, 14, 1400, 100, 500);
+    const CrystalStatueAttacks = [RESONATE, HARMONISE, GEOMANCE];
+    let GAZE = new EnemyAttack('GAZE', 10, (15/22));
+    let CRYSTAL_CASCADE = new EnemyAttack('CRYSTAL CASCADE', 55, 5, 270, 0, 0, 0, 0, 170);
+    let PRISMATIC_WAVE = new EnemyAttack('PRISMATIC WAVE', 97, 3, 110, 0, 0, 100, 780);
+    let REALITY_FRACTURE = new EnemyAttack('REALITY FRACTURE', 100, 15, 0, 1);
+    GAZE.nextattack = 1;
+    const RefractedAbbotAttacks = [GAZE, CRYSTAL_CASCADE, PRISMATIC_WAVE, REALITY_FRACTURE];
+    
     let ATTACK = new EnemyAttack('ATTACK', 100, 2, 75);
     const C0Attacks = [ATTACK];
     
@@ -172,7 +189,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let INHALE = new EnemyAttack('INHALE', 24, 4, 140, 0, 0, 440);
     let LASER_BEAM = new EnemyAttack('LASER BEAM', 94, 0.5, 40);
     let HOMING_MISSILE = new EnemyAttack('HOMING MISSILE', 100, 6, 500, 100, 100);
-    const R4botAttacks = [INHALE, LASER_BEAM, HOMING_MISSILE];
+    const BrobotAttacks = [INHALE, LASER_BEAM, HOMING_MISSILE];
     
     // FIGHT SYSTEM BARS
     const ALL = body.querySelectorAll('*');
@@ -400,6 +417,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let A1V = function(){obj.areaWins.A1Wins++; AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + obj.areaWins.A1Wins + '/4'}
     let A2V = function(){obj.areaWins.A2Wins++; AD2.innerText = 'Drops: Slime, Red Fuid, Rusty Key\nWins until boss: ' + obj.areaWins.A2Wins + '/10'}
     let A3V = function(){obj.areaWins.A3Wins++; AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8'}
+    let A4V = function(){obj.areaWins.A4Wins++; AD4.innerText = 'Drops: Red Fluid, Chitin, Orichalcum\nWins until boss: ' + obj.areaWins.A4Wins + '/5'}
     
     let A1BV = function(){
         if(!obj.areaProgress['A1C']){
@@ -416,6 +434,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         document.getElementById('UG8').style.display = 'flex';
         document.getElementById('UG9').style.display = 'flex';
         document.getElementById('UG10').style.display = 'flex';
+        document.getElementById('UG11').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
         obj.areaProgress['A2C'] = true;
     }
@@ -423,6 +442,10 @@ window.addEventListener('DOMContentLoaded',()=>{
         obj.areaWins.A3Wins = 0;AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
         document.getElementById('IB3').style.display = 'flex';
         obj.areaProgress['A3C'] = true;
+    }
+    let A4BV = function(){
+        obj.areaWins.A4Wins = 0;AD4.innerText = 'Drops: Red Fluid, Chitin, Orichalcum\nWins until boss: ' + obj.areaWins.A4Wins + '/5';
+        obj.areaProgress['A4C'] = true;
     }
     
     let SB1V = function(){obj.sBossProgress.SB1w = true; obj.muls.ndm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'What an intense fight...'}
@@ -447,8 +470,9 @@ window.addEventListener('DOMContentLoaded',()=>{
         ABwidth = 0; play(CCh);
         setTimeout(()=>{play(CCh);CD.textContent = '2...'},750);
         setTimeout(()=>{play(CCh);CD.textContent = '1...'},1500);
-        setTimeout(()=>{play(FSt);CD.textContent = 'GO!';CD.style.animation = 'none';play(M)},2250);
+        setTimeout(()=>{play(FSt);CD.textContent = 'GO!';CD.style.animation = 'none'},2250);
         setTimeout(()=>{
+            play(M);
             BS.style.display = 'none';
             CD.textContent = '3...';
             if(!obj.tutorial){
@@ -608,7 +632,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                         op += 0.02;
                         dar.style.opacity = op + '';
                     },10,50,500);
-                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); play(November)}, 1000);
+                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); document.getElementById('CathedralOverlay').style.display = 'none'; play(November)}, 1000);
                     if(EnemyName == 'C0'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
                     localStorage.setItem('A&MData',JSON.stringify(obj));
                     clearInterval(intervalId);
@@ -620,9 +644,11 @@ window.addEventListener('DOMContentLoaded',()=>{
     const A1BossWins = 4;
     const A2BossWins = 10;
     const A3BossWins = 8;
+    const A4BossWins = 5;
     const E1 = document.getElementById('E1');
     const E2 = document.getElementById('E2');
     const E3 = document.getElementById('E3');
+    const E4 = document.getElementById('E4');
     
     E1.addEventListener('click',()=>{
         if(obj.areaWins.A1Wins < A1BossWins){
@@ -663,6 +689,18 @@ window.addEventListener('DOMContentLoaded',()=>{
             }
         }else{
             LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 10, 1], MCBM, 2);
+        }
+    });
+    E4.addEventListener('click',()=>{
+        document.getElementById('CathedralOverlay').style.display = 'flex';
+        if(obj.areaWins.A4Wins < A4BossWins){
+            if(Math.random() < .65){
+                LoadFight('Hymnal Chanter', 2700, 650, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, HymnalChanterAttacks, 10, A4V, ['Red Fluid', 'Orichalcum'], [5, 9], CCEM, 1);
+            }else{
+                LoadFight('Crystal Statue', 3000, 750, 60, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, CrystalStatueAttacks, 15, A4V, ['Chitin', 'Orichalcum'], [7, 14], CCEM, 1);
+            }
+        }else{
+            LoadFight('Refracted Abbot', 5000, 9500, 7, .2, 1, UserShield, ShieldDowntime, ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
         }
     });
     
