@@ -52,6 +52,11 @@ const loadUpgrades = function(){
     const I10 = document.getElementById('I10');
     const U10 = document.getElementById('U10');
     
+    const Cost11 = document.getElementById('Cost11'); cc11 = 5;
+    const DT11 = document.getElementById('DT11');
+    const I11 = document.getElementById('I11');
+    const U11 = document.getElementById('U11');
+    
     // SHIELD
     DT1.addEventListener('click',()=>{
         if(I1.style.display == 'flex'){
@@ -319,12 +324,37 @@ const loadUpgrades = function(){
     });
     U10.addEventListener('click',()=>{
         if(obj.res['Rusty Key'] >= 1 && !obj.unlocks.uu10){
-            /* play(Upg);
+            play(Upg);
             obj.add(['Rusty Key'], [-1]);
             Cost10.innerHTML = '';
             U10.innerHTML = 'UNLOCKED';
             A4.style.display = 'flex';
-            obj.unlocks.uu10 = true; */
+            obj.unlocks.uu10 = true;
+        }
+    });
+    
+    // SHIELD REGENERATION
+    DT11.addEventListener('click',()=>{
+        if(I11.style.display == 'flex'){
+            I11.style.display = 'none';
+        }else{
+            I11.style.display = 'flex';
+        }
+    });
+    U11.addEventListener('click',()=>{
+        if(obj.res['Chitin'] >= cc11){
+            play(Upg);
+            obj.upgrades.uu11++;
+            obj.add(['Chitin'], [-cc11]); cc11 += 3;
+            Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
+            ShieldRegen += .005;
+            ShieldRegen = Number(ShieldRegen.toFixed(3));
+            I11.innerHTML = '\n<br>&nbsp; • Shield Regeneration: ' + Number((100*ShieldRegen).toFixed(3)) + ' -> ' + Number((100*(ShieldRegen+.005)).toFixed(3)) + '\n<br>&nbsp;';
+        }
+        if(cc11 >= 53){
+            U11.innerHTML = 'MAX';
+            cc11 = Infinity;
+            Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
         }
     });
 }
