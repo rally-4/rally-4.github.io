@@ -6,9 +6,11 @@ const loadAudio = function(){
     const BLBM = document.getElementById('BLBM');
     const MCEM = document.getElementById('MCEM');
     const MCBM = document.getElementById('MCBM');
+    const CCEM = document.getElementById('CCEM');
+    const CCBM = document.getElementById('CCBM');
     const T99 = document.getElementById('T99');
     const DOM = document.getElementById('DOM');
-    const MRR = document.getElementById('MRR');
+    const MLR = document.getElementById('MLR');
     
     const SSel = document.getElementById('SSel');
     const FSt = document.getElementById('FSt');
@@ -34,7 +36,7 @@ const loadAudio = function(){
     function disableSound(){
         for(let l=0;l<SFX.length;l++){SFX[l].volume=0}
     }
-    const Music = [November, SUEM, SUBM, BLEM, BLBM, MCEM, MCBM, T99, DOM, MRR];
+    const Music = [November, SUEM, SUBM, BLEM, BLBM, MCEM, MCBM, CCEM, CCBM, T99, DOM, MLR];
     function setDefaultMusicVolume(){
         for(let l=0;l<Music.length;l++){Music[l].volume=1}
         T99.volume = BLBM.volume = .6; MCEM.volume = MCBM.volume = .8;

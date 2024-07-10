@@ -2,14 +2,17 @@ const loadAreas = function(){
     const AD1 = document.getElementById('AD1');
     const AD2 = document.getElementById('AD2');
     const AD3 = document.getElementById('AD3');
+    const AD4 = document.getElementById('AD4');
     
     const D1 = document.getElementById('D1'); let e1 = false;
     const D2 = document.getElementById('D2'); let e2 = false;
     const D3 = document.getElementById('D3'); let e3 = false;
+    const D4 = document.getElementById('D4'); let e4 = false;
     
     const A1 = document.getElementById('A1');
     const A2 = document.getElementById('A2');
     const A3 = document.getElementById('A3');
+    const A4 = document.getElementById('A4');
     
     // AREA INFO
     const IB1 = document.getElementById('IB1');
@@ -80,6 +83,24 @@ const loadAreas = function(){
         }else{
             AD3.style.display = 'flex';
             e3 = true;
+        }
+    });
+    D4.addEventListener('click',()=>{
+        play(CS);
+        D4.style.borderColor = 'rgb(105,105,105)';
+        D4.style.backgroundColor = 'rgb(45,45,45)';
+        D4.style.color = 'white';
+        setTimeout(()=>{
+            D4.style.borderColor = 'rgb(150,150,150)';
+            D4.style.backgroundColor = 'rgb(210,210,210)';
+            D4.style.color = 'black';
+        },100);
+        if(e4){
+            AD4.style.display = 'none';
+            e4 = false;
+        }else{
+            AD4.style.display = 'flex';
+            e4 = true;
         }
     });
 }

@@ -50,6 +50,7 @@ const getResCol=(res)=>{
     else if(res=='Rusty Key'){return 'rgb(90,60,30)'}
     else if(res=='Chitin'){return 'rgb(120,0,255)'}
     else if(res=='Obsidian Key'){return 'rgb(15,0,30)'}
+    else if(res=='Orichalcum'){return 'rgb(210,140,80)'}
     else{return 'rgb(255,255,255)'}
 }
 const rem=(arr,el)=>{for(a=0;a<el.length;a++){arr.splice(arr.indexOf(el[a]),1)}}
@@ -59,6 +60,7 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     AD1 = document.getElementById('AD1');
     AD2 = document.getElementById('AD2');
     AD3 = document.getElementById('AD3');
+    AD4 = document.getElementById('AD4');
     if(areaProgress['A1C']){
         T4.id = '';T4.style.backgroundColor = 'rgb(60,60,60)';T4.style.color = 'white';
         T4.style.left = '76.5%';T4.innerHTML = 'RESEARCH';
@@ -69,15 +71,20 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
         document.getElementById('UG8').style.display = 'flex';
         document.getElementById('UG9').style.display = 'flex';
         document.getElementById('UG10').style.display = 'flex';
+        document.getElementById('UG11').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
     }
     if(areaProgress['A3C']){
         document.getElementById('IB3').style.display = 'flex';
     }
+    if(areaProgress['A4C']){
+        
+    }
     
-    AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins['A1Wins'] + '/4';
-    AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + areaWins['A2Wins'] + '/10';
-    AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + areaWins['A3Wins'] + '/8';
+    AD1.innerText = 'Drops: Slime, Slime Key\nWins until boss: ' + areaWins.A1Wins + '/4';
+    AD2.innerText = 'Drops: Slime, Red Fluid, Rusty Key\nWins until boss: ' + areaWins.A2Wins + '/10';
+    AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + areaWins.A3Wins + '/8';
+    AD4.innerText = 'Drops: Red Fluid, Chitin, Orichalcum\nWins until boss: ' + areaWins.A4Wins + '/5';
 }
 const recoverUnlocks = function(uus){
     if(uus['uu2']){
@@ -146,6 +153,11 @@ const recoverUnlocks = function(uus){
         document.getElementById('Cost9').innerHTML = '';
         document.getElementById('U9').innerHTML = 'UNLOCKED';
     }
+    if(uus['uu10']){
+        document.getElementById('A4').style.display = 'flex';
+        document.getElementById('Cost10').innerHTML = '';
+        document.getElementById('U10').innerHTML = 'UNLOCKED';
+    }
 }
 const recoverUpgrades = function(uus){
     if(uus['uu1']){
@@ -169,6 +181,17 @@ const recoverUpgrades = function(uus){
         Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         UserHealth = 1000 + 100*uus['uu5'];
         document.getElementById('I5').innerHTML = '\n<br>&nbsp; • Player Health: ' + UserHealth + ' -> ' + (UserHealth+100) + '\n<br>&nbsp;';
+    }
+    if(uus['uu11']){
+        cc11 = 5 + 3*uus['uu11'];
+        if(cc11 >= 53){
+            U11.innerHTML = 'MAX';
+            cc11 = Infinity;
+            Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
+        }
+        Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
+        ShieldRegen = .02 + .005*uus['uu11'];
+        document.getElementById('I11').innerHTML = '\n<br>&nbsp; • Shield Regeneration: ' + Number((100*ShieldRegen).toFixed(3)) + ' -> ' + Number((100*(ShieldRegen+.005)).toFixed(3)) + '\n<br>&nbsp;';
     }
 }
 const selectAbilities = function(AA){

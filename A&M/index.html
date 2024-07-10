@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="author" content="rally4">
-        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.211 (beta 5)">
+        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.3 (beta 6)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
         <title>Anoxic</title>
         <link rel="icon" href="Anoxic.png">
@@ -14,9 +14,11 @@
         <audio id="BLBM" src="assets/music/Krutfotboll.mp3" loop></audio>
         <audio id="MCEM" src="assets/music/VolcanoRemix.mp3"></audio>
         <audio id="MCBM" src="assets/music/VolcanoVersus.mp3" loop></audio>
+        <audio id="CCEM" src="assets/music/CursedCathedral.mp3" loop></audio>
+        <audio id="CCBM" src="assets/music/CursedCathedralCover.mp3"></audio>
         <audio id="T99" src="assets/music/TETRIS99.mp3" loop></audio>
         <audio id="DOM" src="assets/music/Dom.mp3" loop></audio>
-        <audio id="MRR" src="assets/music/MrLRemix.mp3" loop></audio>
+        <audio id="MLR" src="assets/music/MrLRemix.mp3" loop></audio>
         
         <audio id="SSel" src="assets/sfx/StageSelect.wav"></audio>
         <audio id="FSt" src="assets/sfx/FightSting.wav"></audio>
@@ -120,6 +122,13 @@
                 <p class="adetails" id="AD3">Drops: Red Fluid, Chitin, Obsidian Key<br>Wins until boss: 0/8</p>
                 <div class="details" id="D3">Details</div>
                 <div class="enter" id="E3">Enter</div>
+            </div>
+            <div class="row" id="A4">
+                <div class="col" id="c4"></div>
+                <p class="areaname">CURSED CATHEDRAL</p>
+                <p class="adetails" id="AD4">Drops: Red Fluid, Chitin, Orichalcum<br>Wins until boss: 0/5</p>
+                <div class="details" id="D4">Details</div>
+                <div class="enter" id="E4">Enter</div>
             </div>
         </div>
         
@@ -253,15 +262,27 @@
                 </p>
                 
                 <div class="row2" id="UG10">
-                    <p class="upgradename">Unlock Collapsed City</p>
+                    <p class="upgradename">Unlock Cursed Cathedral</p>
                     <p class="cost" id="Cost10">Cost: 1 Rusty Key</p>
                     <div class="details2" id="DT10">Info</div>
-                    <div class="upg" id="U10">WIP</div>
+                    <div class="upg" id="U10">Unlock</div>
                 </div>
                 <p class="info" id="I10">
                     <br>
-                    &nbsp; • Unlocks the fourth area, Collapsed City.
-                    <br>&nbsp; &gt; COMING SOON
+                    &nbsp; • Unlocks the fourth area, Cursed Cathedral.
+                    <br>&nbsp;
+                </p>
+                
+                <div class="row2" id="UG11">
+                    <p class="upgradename">Upgrade Shield Regen</p>
+                    <p class="cost" id="Cost11">Cost: 5 Chitin</p>
+                    <div class="details2" id="DT11">Info</div>
+                    <div class="upg" id="U11">Upgrade</div>
+                </div>
+                <p class="info" id="I11">
+                    <br>
+                    &nbsp; • Shield Regeneration: 2 -> 2.5
+                    <br>&nbsp;
                 </p>
             </div>
             
@@ -454,6 +475,7 @@
         </div>
         
         <div id="body">
+            <div id="CathedralOverlay"></div>
             <div id="BlackScreen">
                 <span id="Enemy"></span>
                 <p id="Countdown">3...</p>
