@@ -54,7 +54,6 @@ const getResCol=(res)=>{
     else{return 'rgb(255,255,255)'}
 }
 const rem=(arr,el)=>{for(a=0;a<el.length;a++){arr.splice(arr.indexOf(el[a]),1)}}
-
 const recoverAreaUnlocks = function(areaProgress, areaWins){
     T4 = document.getElementById('T4');
     AD1 = document.getElementById('AD1');
@@ -72,9 +71,11 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
         document.getElementById('UG9').style.display = 'flex';
         document.getElementById('UG10').style.display = 'flex';
         document.getElementById('UG11').style.display = 'flex';
+        document.getElementById('UG12').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
     }
     if(areaProgress['A3C']){
+        document.getElementById('UG13').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
     }
     if(areaProgress['A4C']){
@@ -158,6 +159,10 @@ const recoverUnlocks = function(uus){
         document.getElementById('Cost10').innerHTML = '';
         document.getElementById('U10').innerHTML = 'UNLOCKED';
     }
+    if(uus['uu13']){
+        Cost13.innerHTML = '';
+        U13.innerHTML = 'SELECT';
+    }
 }
 const recoverUpgrades = function(uus){
     if(uus['uu1']){
@@ -176,7 +181,6 @@ const recoverUpgrades = function(uus){
         if(cc5 >= 70){
             U5.innerHTML = 'MAX';
             cc5 = Infinity;
-            Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         }
         Cost5.innerHTML = 'Cost: ' + cc5 + ' Red Fluid';
         UserHealth = 1000 + 100*uus['uu5'];
@@ -187,11 +191,21 @@ const recoverUpgrades = function(uus){
         if(cc11 >= 53){
             U11.innerHTML = 'MAX';
             cc11 = Infinity;
-            Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
         }
         Cost11.innerHTML = 'Cost: ' + cc11 + ' Chitin';
         ShieldRegen = .02 + .005*uus['uu11'];
+        ShieldRegen = Number(ShieldRegen.toFixed(3));
         document.getElementById('I11').innerHTML = '\n<br>&nbsp; • Shield Regeneration: ' + Number((100*ShieldRegen).toFixed(3)) + ' -> ' + Number((100*(ShieldRegen+.005)).toFixed(3)) + '\n<br>&nbsp;';
+    }
+    if(uus['uu12']){
+        cc12 = 7+Math.ceil(4*Math.sqrt(uus['uu12']));
+        if(obj.upgrades.uu12 >= 10){
+            U12.innerHTML = 'MAX';
+            cc12 = Infinity;
+        }
+        Cost12.innerHTML = 'Cost: ' + cc12 + ' Orichalcum';
+        ShieldDowntime = 20/Math.pow(1.1,uus['uu12']);
+        document.getElementById('I12').innerHTML = '\n<br>&nbsp; • Shield Downtime: ' + ShieldDowntime.toFixed(2) + ' -> ' + (ShieldDowntime/1.1).toFixed(2) + '\n<br>&nbsp;';
     }
 }
 const selectAbilities = function(AA){
@@ -212,4 +226,16 @@ const selectAbilities = function(AA){
         }
         BB2.style.display = 'flex';
     }
+    if(AA.AA3v == 1){
+        U13.innerHTML = 'SELECTED';
+        U2.innerHTML = 'SELECT';
+        for(const node of S3.childNodes){
+            if(node.nodeType === 3){
+                node.textContent = 'STAB';
+            }
+        }
+    }
+}
+setStats=()=>{
+    document.getElementById('Stats').innerHTML = 'Health: ' + UserHealth + '<br>Shield: ' + UserShield + '<br>Shield Regeneration: ' + 100*ShieldRegen.toFixed(3) + '/s<br>Shield Downtime: ' + ShieldDowntime.toFixed(2) + 's<br><br>Normal Damage Multiplier: ' + obj.muls.ndm.toFixed(2) + '<br>Penetrating Damage Multiplier: ' + obj.muls.pdm.toFixed(2) + '<br>Shield Damage Multiplier: ' + obj.muls.sdm.toFixed(2) + '<br><br>Battles won: ' + obj.stats.wins + '<br>Battles lost: ' + obj.stats.losses;
 }

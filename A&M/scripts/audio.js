@@ -11,6 +11,7 @@ const loadAudio = function(){
     const T99 = document.getElementById('T99');
     const DOM = document.getElementById('DOM');
     const MLR = document.getElementById('MLR');
+    const SLD = document.getElementById('SLD');
     
     const SSel = document.getElementById('SSel');
     const FSt = document.getElementById('FSt');
@@ -36,10 +37,10 @@ const loadAudio = function(){
     function disableSound(){
         for(let l=0;l<SFX.length;l++){SFX[l].volume=0}
     }
-    const Music = [November, SUEM, SUBM, BLEM, BLBM, MCEM, MCBM, CCEM, CCBM, T99, DOM, MLR];
+    const Music = [November, SUEM, SUBM, BLEM, BLBM, MCEM, MCBM, CCEM, CCBM, T99, DOM, MLR, SLD];
     function setDefaultMusicVolume(){
         for(let l=0;l<Music.length;l++){Music[l].volume=1}
-        T99.volume = BLBM.volume = .6; MCEM.volume = MCBM.volume = .8;
+        SLD.volume = T99.volume = BLBM.volume = .6; MCEM.volume = MCBM.volume = .8;
     }
     function disableMusic(){
         for(let l=0;l<Music.length;l++){Music[l].volume=0}
