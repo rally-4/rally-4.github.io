@@ -13,8 +13,10 @@ const loadTabs = function(){
     const UTS1 = document.getElementById('UTS1');
     const UT2 = document.getElementById('UT2');
     const UTS2 = document.getElementById('UTS2');
-    let UTSArr = [UTS1, UTS2];
-    let UTArr = [UT1, UT2];
+    const UTs = document.getElementById('UTs');
+    const UTSs = document.getElementById('UTSs');
+    let UTSArr = [UTS1, UTS2, UTSs];
+    let UTArr = [UT1, UT2, UTs];
     let swap = function(tab){
         for(i=0; i < TSArr.length; i++){
             if(i != tab){
@@ -45,5 +47,6 @@ const loadTabs = function(){
     T4.addEventListener('click',()=>{if(obj.areaProgress['A1C']){play(CS);swap(3)}});
     UT1.addEventListener('click',()=>{play(CS);subswap(0)});
     UT2.addEventListener('click',()=>{play(CS);subswap(1)});
+    UTs.addEventListener('click',()=>{play(CS);setStats();subswap(UTSArr.length-1)});
     swap(0);subswap(0);
 }

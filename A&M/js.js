@@ -65,9 +65,10 @@ window.addEventListener('DOMContentLoaded',()=>{
             GKT.style.color = 'white';
             if(WTI > WhiteText.length-1){WTI = 0}
             GKT.innerHTML = WhiteText[WTI];
-            if(Math.random() >= 0.998){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
-            if(Math.random() >= 0.96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
-            if(Math.random() >= 0.98 && !obj.sBossProgress.SB3w){GKT.style.color = 'lime'; GKT.innerHTML = "It shoots missiles! MISSILES!"; WTI--}
+            if(Math.random() >= .998){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
+            else if(Math.random() >= .98 && !obj.sBossProgress.SB3w){GKT.style.color = 'lime'; GKT.innerHTML = "It shoots missiles! MISSILES!"; WTI--}
+            else if(Math.random() >= .96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
+            else if(Math.random() >= .94 && !obj.sBossProgress.SB4w){GKT.style.color = 'lime'; GKT.innerHTML = "A mysterious alien force, known as &quot;Purple Erosion&quot; has taken over the Moon!"; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -77,8 +78,11 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(input.value.toLowerCase() === 'dev4s' && !obj.sBossProgress.SB2w){
                 LoadFight('DEVAS', 170, 130, 1, .01, UserHealth, UserShield, ShieldDowntime, ShieldRegen, DevasAttacks, 0, SB2V, [], [], DOM, 17);
             }
-            if((input.value.toLowerCase() === 'mr. l' || (input.value.toLowerCase() === 'brobot')) && !obj.sBossProgress.SB3w){
-                LoadFight('Brobot', 40000, 4000, 0.4, 4.0, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BrobotAttacks, 0, SB3V, [], [], MLR, .2);
+            if((input.value.toLowerCase() === 'mr. l' || input.value.toLowerCase() === 'brobot') && !obj.sBossProgress.SB3w){
+                LoadFight('Brobot', 40000, 4000, 0.4, 4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BrobotAttacks, 0, SB3V, [], [], MLR, .5);
+            }
+            if(input.value.toLowerCase() === 'eschatos' && !obj.sBossProgress.SB4w){
+                LoadFight('Purple Erosion', 75000, 13000, 5, 1, UserHealth, 100*UserShield, ShieldDowntime, ShieldRegen, PurpleErosionAttacks, 0, SB4V, [], [], SLD, 3, [()=>{OpponentAttacks[0] = SHOOT2;t+=60},52500]);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -138,7 +142,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const RatKingAttacks = [CHEW, SCRATCH, ROYAL_DECREE, REPLENISH];
     
     let CLAMBER = new EnemyAttack('CLAMBER', 65, 0.4, 5, 0, 5);
-    let GNAW = new EnemyAttack('GNAW', 95, 1.6, 85, 0, 15);
+    let GNAW = new EnemyAttack('GNAW', 96, 1.6, 85, 0, 15);
     let SCAVANGE = new EnemyAttack('SCAVANGE', 100, 5, 0, 0, 0, 350, 650);
     const LychicAntAttacks = [CLAMBER, GNAW, SCAVANGE];
     let TANGLE = new EnemyAttack('TANGLE', 25, 2, 120);
@@ -191,6 +195,12 @@ window.addEventListener('DOMContentLoaded',()=>{
     let HOMING_MISSILE = new EnemyAttack('HOMING MISSILE', 100, 6, 500, 100, 100);
     const BrobotAttacks = [INHALE, LASER_BEAM, HOMING_MISSILE];
     
+    let SHOOT = new EnemyAttack('SHOOT', 80, 2, 1500);
+    let SHOOT2 = new EnemyAttack('SHOOT', 95, .05, 150);
+    let REPLICATE = new EnemyAttack('REPLICATE', 99.5, .5, 0, 0, 0, 150);
+    let ERODE = new EnemyAttack('ERODE', 100, 5, 900, 100, 0, 0, 150);
+    let PurpleErosionAttacks = [SHOOT, REPLICATE, ERODE];
+    
     // FIGHT SYSTEM BARS
     const ALL = body.querySelectorAll('*');
     const IB = document.getElementById('InterruptBar');
@@ -215,7 +225,6 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let ABT = document.getElementById('EnemyAttack');
     let AB = document.getElementById('AttackBar');
-    let ABwidth = 0;
     
     // COLOR ANIMATIONS
     let R=(pA)=>{
@@ -370,6 +379,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let SlashAttack = function(){Damage(40,true);PenetratingDamage(32,true)}
     const SLASH = new PlayerAttack(SlashAttack, 2);
+    let StabAttack = function(){PenetratingDamage(50+150*COH/MaxOH,true)}
+    const STAB = new PlayerAttack(StabAttack, 3);
     
     const STUN = new PlayerAttack(Interrupt, 20);
     
@@ -378,7 +389,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     AA1 = [SMACK, BLAST];
     AA2 = [CHARGE, FLAREGUN];
-    AA3 = [SLASH];
+    AA3 = [SLASH, STAB];
     AA4 = [STUN];
     AA5 = [HEAL];
     
@@ -435,11 +446,13 @@ window.addEventListener('DOMContentLoaded',()=>{
         document.getElementById('UG9').style.display = 'flex';
         document.getElementById('UG10').style.display = 'flex';
         document.getElementById('UG11').style.display = 'flex';
+        document.getElementById('UG12').style.display = 'flex';
         document.getElementById('IB2').style.display = 'flex';
         obj.areaProgress['A2C'] = true;
     }
     let A3BV = function(){
         obj.areaWins.A3Wins = 0;AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
+        document.getElementById('UG13').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
         obj.areaProgress['A3C'] = true;
     }
@@ -451,12 +464,14 @@ window.addEventListener('DOMContentLoaded',()=>{
     let SB1V = function(){obj.sBossProgress.SB1w = true; obj.muls.ndm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'What an intense fight...'}
     let SB2V = function(){obj.sBossProgress.SB2w = true; obj.muls.pdm += .05; GKT.style.color = 'cyan'; GKT.innerHTML = 'Space is not as boundless as we think...'}
     let SB3V = function(){obj.sBossProgress.SB3w = true; obj.muls.pdm += .05; obj.muls.sdm += .1; GKT.style.color = 'cyan'; GKT.innerHTML = 'Bang bang!'}
+    let SB4V = function(){obj.sBossProgress.SB4w = true; obj.muls.ndm += .15; GKT.style.color = 'cyan'; GKT.innerHTML = 'There was no point of return.'}
     
     // E = Enemy, O = Opponent, U = User, P = Player, H = Health, S = Shield
-    LoadFight = function(EnemyName, MaxOH, MaxOS, ODowntime, OSR, MaxPH, MaxPS, PDowntime, PSR, OpponentAttacks, mi, winFunc=function(){}, resnarr=[], resarr=[], M=November, ODef=1){
+    LoadFight = function(EnemyName, MaxOH, MaxOS, ODowntime, OSR, MaxPH, MaxPS, PDowntime, PSR, OpponentAttacks, mi, winFunc=function(){}, resnarr=[], resarr=[], M=November, ODef=1, espFunc=[()=>{},0]){
         stop(November);play(SSel);
         this.ODowntime = ODowntime;
         this.PDowntime = PDowntime;
+        this.MaxOH = MaxOH;
         this.ODef = ODef;
         let Enemy = document.getElementById('Enemy'); Enemy.innerHTML = 'Incoming: ' + EnemyName + '!'; Enemy.style.animation = '0.2s ease forwards slide';
         let EnemyN = document.getElementById('EnemyName'); EnemyN.innerHTML = EnemyName; OS.style.display = 'flex'; if(MaxOS == 0){OS.style.display = 'none'}
@@ -468,9 +483,9 @@ window.addEventListener('DOMContentLoaded',()=>{
         CD.style.animation = '0.75s linear infinite fade';
         BS.style.display = 'flex';
         ABwidth = 0; play(CCh);
-        setTimeout(()=>{play(CCh);CD.textContent = '2...'},750);
-        setTimeout(()=>{play(CCh);CD.textContent = '1...'},1500);
-        setTimeout(()=>{play(FSt);CD.textContent = 'GO!';CD.style.animation = 'none'},2250);
+        setTimeout(()=>{play(CCh);CD.textContent='2...'},750);
+        setTimeout(()=>{play(CCh);CD.textContent='1...'},1500);
+        setTimeout(()=>{play(FSt);CD.textContent='GO!';CD.style.animation='none'},2250);
         setTimeout(()=>{
             play(M);
             BS.style.display = 'none';
@@ -518,23 +533,23 @@ window.addEventListener('DOMContentLoaded',()=>{
         
         // Display
         let display = function(){
-            var OHP = width - (COH * width / MaxOH);
-            OHS.style.width = OHP + '%';
+            var OHP = width * (1 - COH / MaxOH);
+            OHS.style.width = OHP+'%';
             OHT.textContent = COH.toFixed(1) + ' / ' + MaxOH;
             
-            var OSP = width - (COS * width / MaxOS);
-            OSS.style.width = OSP + '%';
+            var OSP = width * (1 - COS / MaxOS);
+            OSS.style.width = OSP+'%';
             OST.textContent = COS.toFixed(1) + ' / ' + MaxOS;
             
-            var PHP = width - (CPH * width / MaxPH);
-            PHS.style.width = PHP + '%';
+            var PHP = width * (1 - CPH / MaxPH);
+            PHS.style.width = PHP+'%';
             PHT.textContent = CPH.toFixed(1) + ' / ' + MaxPH;
             
-            var PSP = width - (CPS * width / MaxPS);
-            PSS.style.width = PSP + '%';
+            var PSP = width * (1 - CPS / MaxPS);
+            PSS.style.width = PSP+'%';
             PST.textContent = CPS.toFixed(1) + ' / ' + MaxPS;
             
-            AB.style.width = Math.min(100,ABwidth) + '%';
+            AB.style.width = Math.min(80,ABwidth)+'%';
         }
         
         let BEGIN = function(){
@@ -545,12 +560,16 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(obj.unlocks.uu6){S5.style.pointerEvents = 'auto';setRotateAnimation(S5C,AA5[obj.AA.AA5v].cooldown)}
             
             t = 0;
+            timer = 0;
             CurrentAttack = false;
+            this.OpponentAttacks = OpponentAttacks;
+            let espTim = setTimeout(espFunc[0],espFunc[1]);
             let intervalId = setInterval(()=>{
-                if(CurrentAttack != false){
+                timer += .01;
+                if(CurrentAttack){
                     if(t <= CurrentAttack.casting){
                         ABwidth += (.8/CurrentAttack.casting);
-                        t += 0.01;
+                        t += .01;
                     }else{
                         ABwidth = 0;
                         if(CurrentAttack.damage){Damage(CurrentAttack.damage,false)}
@@ -559,7 +578,6 @@ window.addEventListener('DOMContentLoaded',()=>{
                         if(CurrentAttack.heal){Heal(CurrentAttack.heal,false)}
                         if(CurrentAttack.shieldheal){ShieldHeal(CurrentAttack.shieldheal,false)}
                         if(CurrentAttack.selfdamage){Damage(CurrentAttack.selfdamage,true)}
-                        
                         if(CurrentAttack.nextattack == 'none'){
                             CurrentAttack = false;
                         }else{
@@ -571,7 +589,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     }
                 }else{
                     var r = Math.random()*100;
-                    for(i=0; i < OpponentAttacks.length; i++){
+                    for(i=0;i < OpponentAttacks.length;i++){
                         if(r <= OpponentAttacks[i].chance){
                             CurrentAttack = window.structuredClone(OpponentAttacks[i]);
                             AB.textContent = CurrentAttack.name;
@@ -600,14 +618,16 @@ window.addEventListener('DOMContentLoaded',()=>{
                 if(CPS>MaxPS){CPS=MaxPS}
                 display();
                 
-                if(COH <= 0){
+                if(COH<=0){
                     obj.res.materials += mi;
                     obj.add(resnarr,resarr);
                     C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+                    obj.stats.wins += 1; obj.stats.losses -= 1;
                     winFunc();
                 }
-                if(COH <= 0 || CPH <= 0){
-                    play(BE);
+                if(COH<=0 || CPH<=0){
+                    clearTimeout(espTim);
+                    play(BE); obj.stats.losses += 1;
                     for(i=0; i < ALL.length; i++){ALL[i].style.animation = 'none'}
                     S1.style.pointerEvents = 'none';
                     S2.style.pointerEvents = 'none';
@@ -632,8 +652,8 @@ window.addEventListener('DOMContentLoaded',()=>{
                         op += 0.02;
                         dar.style.opacity = op + '';
                     },10,50,500);
-                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); document.getElementById('CathedralOverlay').style.display = 'none'; play(November)}, 1000);
-                    if(EnemyName == 'C0'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])}, 1000)}
+                    setTimeout(()=>{dar.style.display = 'none'; dar.style.opacity = '0'; body.style.display = 'none'; o = false; stopAll(); document.getElementById('Overlay').style.display = 'none'; play(November)},1000);
+                    if(EnemyName=='C0'){setTimeout(()=>{displayText(["Not a bad fight...", "The teleporters should be enabled now, good luck against whichever foes you encounter."], ["c01.png", "c01.png"], ["C0", "C0"])},1000)}
                     localStorage.setItem('A&MData',JSON.stringify(obj));
                     clearInterval(intervalId);
                 }
@@ -678,6 +698,9 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     });
     E3.addEventListener('click',()=>{
+        document.getElementById('Overlay').style.display = 'flex';
+        document.getElementById('Overlay').style.background = 'linear-gradient(to bottom, rgb(255,60,30), red)';
+        document.getElementById('Overlay').style.mixBlendMode = 'soft-light';
         if(obj.areaWins.A3Wins < A3BossWins){
             re = Math.random();
             if(re < .35){
@@ -692,7 +715,9 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     });
     E4.addEventListener('click',()=>{
-        document.getElementById('CathedralOverlay').style.display = 'flex';
+        document.getElementById('Overlay').style.display = 'flex';
+        document.getElementById('Overlay').style.background = 'linear-gradient(to bottom, blue, magenta)';
+        document.getElementById('Overlay').style.mixBlendMode = 'difference';
         if(obj.areaWins.A4Wins < A4BossWins){
             if(Math.random() < .65){
                 LoadFight('Hymnal Chanter', 2700, 650, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, HymnalChanterAttacks, 10, A4V, ['Red Fluid', 'Orichalcum'], [5, 9], CCEM, 1);
@@ -700,7 +725,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 LoadFight('Crystal Statue', 3000, 750, 60, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, CrystalStatueAttacks, 15, A4V, ['Chitin', 'Orichalcum'], [7, 14], CCEM, 1);
             }
         }else{
-            LoadFight('Refracted Abbot', 5000, 9500, 7, .2, 1, UserShield, ShieldDowntime, ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
+            LoadFight('Refracted Abbot', 5000, 8500, 7, .2, 1, UserShield, ShieldDowntime, ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
         }
     });
     

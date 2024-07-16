@@ -211,7 +211,7 @@ input{
     font-family: sans-serif;
     background-color: black;
 }
-#CathedralOverlay{
+#Overlay{
     position: fixed; display: none;
     width: 100%; height: 100%;
     z-index: 9;
@@ -703,6 +703,7 @@ input{
 }
 #UT1{left: 36px;}
 #UT2{left: 128px;}
+#UTs{right: 36px;}
 
 #UTS1{
     overflow-y: scroll;
@@ -729,6 +730,8 @@ input{
 #UG9{top:108%;}
 #UG10{top:120%;}
 #UG11{top:132%;}
+#UG12{top:144%;}
+#UG13{top:156%;}
 .upgradename{
     position: fixed; display: flex;
     left: 12px; font-size: 28px;
@@ -770,6 +773,8 @@ input{
 #I9{top: calc(118% - 16px);}
 #I10{top: calc(130% - 16px);}
 #I11{top: calc(142% - 16px);}
+#I12{top: calc(154% - 16px);}
+#I13{top: calc(166% - 16px);}
 .upg{
     position: fixed; display: flex;
     width: 144px; height: 80%; right: 4px;
@@ -840,6 +845,28 @@ input{
     text-indent: 8px;
 }
 
+#StatsBox{
+    position: fixed; display: flex;
+    width: 96%; height: 70%;
+    left: 2%; top: 12%;
+    border: 4px solid rgb(30,30,30);
+}
+#StatsText{
+    position: absolute; display: flex;
+    width: 100%; height: 32px;
+    left: 32px; top: -8px;
+}
+#Stats{
+    position: absolute; display: flex;
+    left: 16px; top: 32px;
+    font-size: 24px;
+    color: white;
+}
+
+#SettingsClose, #SettingsText, #SaveInput, #Import, #Export{
+    position: absolute; display: flex;
+    border: 4px solid rgb(30,30,30);
+}
 #SettingsBox{
     position: fixed; display: flex;
     width: 8%; height: 6%;
@@ -861,7 +888,6 @@ input{
     background-color: black;
 }
 #SettingsClose{
-    position: absolute; display: flex;
     width: 64px; height: 32px;
     left: -4px; top: -4px;
     flex-direction: column;
@@ -869,18 +895,15 @@ input{
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    border: 4px solid rgb(30,30,30);
     color: rgb(210,210,210);
 }
 #SettingsText{
-    position: absolute; display: flex;
     width: calc(100% - 64px); height: 32px;
     right: -4px; top: -4px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-size: 24px;
-    border: 4px solid rgb(30,30,30);
     color: rgb(210,210,210);
 }
 #AudioHeader{
@@ -927,32 +950,26 @@ label{
 }
 #SaveInput{
     user-select: auto !important;
-    position: absolute; display: flex;
     width: 20%; height: 32px;
     right: 16px; top: 80px;
     font-size: 24px;
     font-weight: normal;
-    border: 4px solid rgb(30,30,30);
 }
 #Import{
-    position: absolute; display: flex;
     width: 96px; height: 48px;
     left: calc(80% - 16px); top: 144px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-size: 20px;
-    border: 4px solid rgb(30,30,30);
 }
 #Export{
-    position: absolute; display: flex;
     width: 96px; height: 48px;
     right: 16px; top: 144px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     font-size: 20px;
-    border: 4px solid rgb(30,30,30);
 }
 #Reset{
     position: absolute; display: flex;

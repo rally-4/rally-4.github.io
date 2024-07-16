@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="author" content="rally4">
-        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.3 (beta 6)">
+        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.31 (beta 7)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
         <title>Anoxic</title>
         <link rel="icon" href="Anoxic.png">
@@ -19,6 +19,7 @@
         <audio id="T99" src="assets/music/TETRIS99.mp3" loop></audio>
         <audio id="DOM" src="assets/music/Dom.mp3" loop></audio>
         <audio id="MLR" src="assets/music/MrLRemix.mp3" loop></audio>
+        <audio id="SLD" src="assets/music/StellarLight.mp3" loop></audio>
         
         <audio id="SSel" src="assets/sfx/StageSelect.wav"></audio>
         <audio id="FSt" src="assets/sfx/FightSting.wav"></audio>
@@ -92,7 +93,7 @@
         
         <div class="tabscreen" id="TS2">
             <div class="crafts" id="C1">
-                <div style="background-color: rgb(127, 0, 255)"></div>
+                <div style="background-color:rgb(127,0,255)"></div>
                 <p>Materials</p>
                 <p id="C1C">Quantity: 0</p>
             </div>
@@ -136,6 +137,7 @@
             <div id="SubTabs">
                 <div class="uppertab" id="UT1">Upgrades</div>
                 <div class="uppertab" id="UT2">Info</div>
+                <div class="uppertab" id="UTs">Stats</div>
             </div>
             
             <div class="stabscreen" id="UTS1">
@@ -282,6 +284,34 @@
                 <p class="info" id="I11">
                     <br>
                     &nbsp; • Shield Regeneration: 2 -> 2.5
+                    <br>&nbsp;
+                </p>
+                
+                <div class="row2" id="UG12">
+                    <p class="upgradename">Upgrade Shield Downtime</p>
+                    <p class="cost" id="Cost12">Cost: 7 Orichalcum</p>
+                    <div class="details2" id="DT12">Info</div>
+                    <div class="upg" id="U12">Upgrade</div>
+                </div>
+                <p class="info" id="I12">
+                    <br>
+                    &nbsp; • Shield Downtime: 20.00 -> 18.18
+                    <br>&nbsp;
+                </p>
+                
+                <div class="row2" id="UG13">
+                    <p class="upgradename">Unlock Stab</p>
+                    <p class="cost" id="Cost13">Cost: 35 materials</p>
+                    <div class="details2" id="DT13">Info</div>
+                    <div class="upg" id="U13">Unlock</div>
+                </div>
+                <p class="info" id="I13">
+                    <br>
+                    &nbsp; • Penetrating damage: 50<br>
+                    &nbsp; • Cooldown: 3s<br>
+                    &nbsp; • Special: Deals extra penetrating damage based on the opponent&apos;s health<br>
+                    &nbsp; • Slot 3<br>
+                    &nbsp; • Requires Slash to be unlocked
                     <br>&nbsp;
                 </p>
             </div>
@@ -472,10 +502,17 @@
                     </p>
                 </div>
             </div>
+            
+            <div class="stabscreen" id="UTSs">
+                <div id="StatsBox">
+                    <h2 id="StatsText">&nbsp;<u>Stats</u>&nbsp;</h2>
+                    <p id="Stats"></p>
+                </div>
+            </div>
         </div>
         
         <div id="body">
-            <div id="CathedralOverlay"></div>
+            <div id="Overlay"></div>
             <div id="BlackScreen">
                 <span id="Enemy"></span>
                 <p id="Countdown">3...</p>
