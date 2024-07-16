@@ -22,4 +22,4 @@
 14. Optimise code.  
 15. Make the Cliffs area:  
 15.1. ~~Opponents~~  
-15.2. ~~Resources~~, upgrades and unlocks
+15.2. ~~Resources, upgrades and~~ unlocks
