@@ -56,5 +56,6 @@ All Stars (**Final Boss**) \[AASS\]:
 &ensp;  
 Tetronimos: Tetris 99 (50 players remaining) - Teruo Taniguchi  
 DEV4S: Dom - Lamb  
-Brobot: Mr. L Remix -   
+Brobot: Mr. L Remix - NoteBlock  
+Purple Erosion: Stellar Light (Dual mix) - OmiGCN  
 Aure: Eclipsed - Bzl  
