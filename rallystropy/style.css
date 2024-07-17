@@ -1,4 +1,5 @@
 *{user-select:none;}
+#B{position:fixed;width:100%;height:100%;flex-direction:column;justify-content:center;align-content:center;text-align:center;z-index:3;font-size:64px;font-family:serif;background-color:#000;color:white;}
 body{
     margin: 0px;
     overflow: hidden;
@@ -16,7 +17,7 @@ canvas{display:block;}
 #Effect{
     position: fixed; display: block;
     width: 100%; height: 100%;
-    z-index: 99;
+    z-index: 2;
     opacity: .1;
     mix-blend-mode: difference;
     /* background: radial-gradient(circle at center, red, rgba(255,0,0,0)); */

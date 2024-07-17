@@ -7,7 +7,7 @@ animate();
 function init(){
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,.01,1000);
-    camera.position.set(0,0,230);
+    camera.position.set(0,0,400);
     
     const directionalLight = new THREE.DirectionalLight("#fff", 2);
     directionalLight.position.set(0,50,0);
@@ -15,7 +15,7 @@ function init(){
     
     let ambientLight = new THREE.AmbientLight("#ff0000",1);
     ambientLight.position.set(0, 20, 20); scene.add(ambientLight);
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
@@ -166,3 +166,6 @@ function onWindowResize(){
 //     }
 // });
 });
+window.onload=()=>{
+    document.getElementById('B').style.display = 'none';
+}
