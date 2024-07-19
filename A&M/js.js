@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
     trunk.addEventListener('click', next);
-    if(obj.tutorial){displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't perish like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"])}
+    if(obj.tutorial){displayText(["Ah, another individual has awakened from its slumber!", "Hopefully you don't die like all the others...", "The objective is simple: you are to vanquish the vermin which have overtaken our planet.", "Since you might require some basic knowledge on how to fight, I will briefly demonstrate the way we battle around here...", "Very well then, let's begin."], ["c01.png", "c02.png", "c01.png", "c01.png", "c01.png"], ["C0", "C0", "C0", "C0", "C0"])}
     
     // CHAMBER
     const GKT = document.getElementById('GKT');
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 LoadFight('Brobot', 40000, 4000, 0.4, 4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, BrobotAttacks, 0, SB3V, [], [], MLR, .5);
             }
             if(input.value.toLowerCase() === 'eschatos' && !obj.sBossProgress.SB4w){
-                LoadFight('Purple Erosion', 75000, 13000, 5, 1, UserHealth, 100*UserShield, ShieldDowntime, ShieldRegen, PurpleErosionAttacks, 0, SB4V, [], [], SLD, 3, [()=>{OpponentAttacks[0] = SHOOT2;t+=60},52500]);
+                LoadFight('Purple Erosion', 75000, 13000, 5, 1, 50*UserHealth, UserShield, 0*ShieldDowntime, 200*ShieldRegen, PurpleErosionAttacks, 0, SB4V, [], [], SLD, 3, [()=>{OpponentAttacks[0]=SHOOT2;t+=60},52600]);
             }
             input.value = ''; GKT.style.color = 'orange';
             if(OTI > OrangeText.length-1){OTI = 0}
@@ -170,8 +170,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     let GEOMANCE = new EnemyAttack('GEOMANCE', 100, 14, 1400, 100, 500);
     const CrystalStatueAttacks = [RESONATE, HARMONISE, GEOMANCE];
     let GAZE = new EnemyAttack('GAZE', 10, (15/22));
-    let CRYSTAL_CASCADE = new EnemyAttack('CRYSTAL CASCADE', 55, 5, 270, 0, 0, 0, 0, 170);
-    let PRISMATIC_WAVE = new EnemyAttack('PRISMATIC WAVE', 97, 3, 110, 0, 0, 100, 780);
+    let CRYSTAL_CASCADE = new EnemyAttack('CRYSTAL CASCADE', 55, 5, 210, 0, 0, 0, 0, 210);
+    let PRISMATIC_WAVE = new EnemyAttack('PRISMATIC WAVE', 97, 3, 50, 0, 0, 100, 410);
     let REALITY_FRACTURE = new EnemyAttack('REALITY FRACTURE', 100, 15, 0, 1);
     GAZE.nextattack = 1;
     const RefractedAbbotAttacks = [GAZE, CRYSTAL_CASCADE, PRISMATIC_WAVE, REALITY_FRACTURE];
@@ -196,8 +196,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     const BrobotAttacks = [INHALE, LASER_BEAM, HOMING_MISSILE];
     
     let SHOOT = new EnemyAttack('SHOOT', 80, 2, 1500);
-    let SHOOT2 = new EnemyAttack('SHOOT', 95, .05, 150);
-    let REPLICATE = new EnemyAttack('REPLICATE', 99.5, .5, 0, 0, 0, 150);
+    let SHOOT2 = new EnemyAttack('SHOOT', 100, .05, 150);
+    let REPLICATE = new EnemyAttack('REPLICATE', 95, .5, 0, 0, 0, 150);
     let ERODE = new EnemyAttack('ERODE', 100, 5, 900, 100, 0, 0, 150);
     let PurpleErosionAttacks = [SHOOT, REPLICATE, ERODE];
     
@@ -218,6 +218,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     let PSS = document.getElementById('PSS'); // Player's Shield State
     let PST = document.getElementById('PST'); // Player's Shield Text
     
+    let BB1 = document.getElementById('BB1');
+    let CB1 = document.getElementById('CB1');
     let BB2 = document.getElementById('BB2');
     let CB2 = document.getElementById('CB2');
     let BB5 = document.getElementById('BB5');
@@ -371,6 +373,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     const SMACK = new PlayerAttack(SmackAttack, 2);
     let BlastAttack = function(){Damage(80,true)}
     const BLAST = new PlayerAttack(BlastAttack, 2);
+    let FragGrenadeAttack = function(){Damage(500+50*A1Use,true)}; // impl dmg increase
+    const FRAGGRENADE = new PlayerAttack(FragGrenadeAttack, 10, 6);
     
     let ChargeAttack = function(){ShieldDamage(80,true);Damage(40,true)}
     const CHARGE = new PlayerAttack(ChargeAttack, 2);
@@ -379,7 +383,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let SlashAttack = function(){Damage(40,true);PenetratingDamage(32,true)}
     const SLASH = new PlayerAttack(SlashAttack, 2);
-    let StabAttack = function(){PenetratingDamage(50+150*COH/MaxOH,true)}
+    let StabAttack = function(){PenetratingDamage(50+.05*Math.pow(COH,2)/MaxOH,true)}
     const STAB = new PlayerAttack(StabAttack, 3);
     
     const STUN = new PlayerAttack(Interrupt, 20);
@@ -387,7 +391,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let HealAttack = function(){Heal(1050,true)}
     const HEAL = new PlayerAttack(HealAttack, 30, 3);
     
-    AA1 = [SMACK, BLAST];
+    AA1 = [SMACK, BLAST, FRAGGRENADE];
     AA2 = [CHARGE, FLAREGUN];
     AA3 = [SLASH, STAB];
     AA4 = [STUN];
@@ -410,7 +414,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
             S1A[0].play(); S1.style.pointerEvents = 'none';
             AA1[obj.AA.AA1v].func();
-            A1Use++;
+            A1Use++; CB1.style.height = (AA1[obj.AA.AA1v].uses-A1Use)/AA1[obj.AA.AA1v].uses*100 + '%';
         }
     }); S1C.addEventListener('animationend',()=>{S1.style.pointerEvents = 'auto'});
     var A2Use = 0;
@@ -453,6 +457,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let A3BV = function(){
         obj.areaWins.A3Wins = 0;AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
         document.getElementById('UG13').style.display = 'flex';
+        document.getElementById('UG14').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
         obj.areaProgress['A3C'] = true;
     }
@@ -704,14 +709,14 @@ window.addEventListener('DOMContentLoaded',()=>{
         if(obj.areaWins.A3Wins < A3BossWins){
             re = Math.random();
             if(re < .35){
-                LoadFight('Lychic Ant', 840, 2200, 4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LychicAntAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [Math.round(Math.random())+1, 3], MCEM, 1.5);
+                LoadFight('Lychic Ant', 840, 2200, 4, .4, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LychicAntAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [Math.round(Math.random())+1, 6], MCEM, 1.5);
             }else if(re < .7){
-                LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [2, 2], MCEM, 1.5);
+                LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [2, 4], MCEM, 1.5);
             }else{
-                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, A3V, ['Red Fluid', 'Chitin'], [1, 5], MCEM, 2);
+                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, A3V, ['Red Fluid', 'Chitin'], [1, 7], MCEM, 2);
             }
         }else{
-            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 10, 1], MCBM, 2);
+            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 15, 1], MCBM, 2);
         }
     });
     E4.addEventListener('click',()=>{
@@ -722,7 +727,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(Math.random() < .65){
                 LoadFight('Hymnal Chanter', 2700, 650, 5, .15, UserHealth, UserShield, ShieldDowntime, ShieldRegen, HymnalChanterAttacks, 10, A4V, ['Red Fluid', 'Orichalcum'], [5, 9], CCEM, 1);
             }else{
-                LoadFight('Crystal Statue', 3000, 750, 60, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, CrystalStatueAttacks, 15, A4V, ['Chitin', 'Orichalcum'], [7, 14], CCEM, 1);
+                LoadFight('Crystal Statue', 3000, 750, 60, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, CrystalStatueAttacks, 15, A4V, ['Chitin', 'Orichalcum'], [9, 14], CCEM, 1);
             }
         }else{
             LoadFight('Refracted Abbot', 5000, 8500, 7, .2, 1, UserShield, ShieldDowntime, ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
