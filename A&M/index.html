@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="author" content="rally4">
-        <meta name="description" content="A simple game inspired by A&M.&#10;Version: 0.0.31 (beta 7)">
+        <meta name="description" content="A web game inspired by A&M.&#10;Version: 0.0.32 (beta 8)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
         <title>Anoxic</title>
         <link rel="icon" href="Anoxic.png">
@@ -309,9 +309,25 @@
                     <br>
                     &nbsp; • Penetrating damage: 50<br>
                     &nbsp; • Cooldown: 3s<br>
-                    &nbsp; • Special: Deals extra penetrating damage based on the opponent&apos;s health<br>
+                    &nbsp; • Special: Deals up to 5% of the opponent&apos;s health as penetrating damage<br>
                     &nbsp; • Slot 3<br>
                     &nbsp; • Requires Slash to be unlocked
+                    <br>&nbsp;
+                </p>
+                <div class="row2" id="UG14">
+                    <p class="upgradename">Unlock Frag Grenade</p>
+                    <p class="cost" id="Cost14">Cost: 50 materials</p>
+                    <div class="details2" id="DT14">Info</div>
+                    <div class="upg" id="U14">Unlock</div>
+                </div>
+                <p class="info" id="I14">
+                    <br>
+                    &nbsp; • Damage: 500<br>
+                    &nbsp; • Cooldown: 10s<br>
+                    &nbsp; • Uses per fight: 6<br>
+                    &nbsp; • Special: Deals +50 more damage for every use<br>
+                    &nbsp; • Slot 1<br>
+                    &nbsp; • Requires Blast to be unlocked
                     <br>&nbsp;
                 </p>
             </div>
@@ -546,7 +562,7 @@
                 </div>
             </div>
             <div class="box" id="Attacks">
-                <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div></div>
+                <div class="whiteBox" id="S1">SMACK<div class="chargeBox" id="S1C"></div><div class="blueBar" id="BB1"><div class="cyanBar" id="CB1"></div></div></div>
                 <div class="whiteBox" id="S2">CHARGE<div class="chargeBox" id="S2C"></div><div class="blueBar" id="BB2"><div class="cyanBar" id="CB2"></div></div></div>
                 <div class="whiteBox" id="S3">SLASH<div class="locked" id="S3C"></div></div>
                 <div class="whiteBox" id="S4">STUN<div class="locked" id="S4C"></div></div>
