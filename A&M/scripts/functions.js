@@ -76,6 +76,7 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     }
     if(areaProgress['A3C']){
         document.getElementById('UG13').style.display = 'flex';
+        document.getElementById('UG14').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
     }
     if(areaProgress['A4C']){
@@ -163,6 +164,10 @@ const recoverUnlocks = function(uus){
         Cost13.innerHTML = '';
         U13.innerHTML = 'SELECT';
     }
+    if(uus['uu14']){
+        Cost14.innerHTML = '';
+        U14.innerHTML = 'SELECT';
+    }
 }
 const recoverUpgrades = function(uus){
     if(uus['uu1']){
@@ -209,6 +214,7 @@ const recoverUpgrades = function(uus){
     }
 }
 const selectAbilities = function(AA){
+    // S1
     if(AA.AA1v == 1){
         U7.innerHTML = 'SELECTED';
         for(const node of S1.childNodes){
@@ -217,6 +223,18 @@ const selectAbilities = function(AA){
             }
         }
     }
+    if(AA.AA1v == 2){
+        S1.style.fontSize = '30px';
+        U14.innerHTML = 'SELECTED';
+        for(const node of S1.childNodes){
+            if(node.nodeType === 3){
+                node.textContent = 'FRAG GRENADE';
+            }
+        }
+        BB1.style.display = 'flex';
+    }
+    
+    // S2
     if(AA.AA2v == 1){
         U8.innerHTML = 'SELECTED';
         for(const node of S2.childNodes){
@@ -226,6 +244,8 @@ const selectAbilities = function(AA){
         }
         BB2.style.display = 'flex';
     }
+    
+    // S3
     if(AA.AA3v == 1){
         U13.innerHTML = 'SELECTED';
         U2.innerHTML = 'SELECT';

@@ -67,6 +67,17 @@ const loadUpgrades = function(){
     const I13 = document.getElementById('I13');
     const U13 = document.getElementById('U13');
     
+    const Cost14 = document.getElementById('Cost14');
+    const DT14 = document.getElementById('DT14');
+    const I14 = document.getElementById('I14');
+    const U14 = document.getElementById('U14');
+    
+    S1AA = [U7, U14];
+    S2AA = [U8];
+    S3AA = [U2, U13];
+    S4AA = [U3];
+    S5AA = [U6];
+    
     // SHIELD
     DT1.addEventListener('click',()=>{
         if(I1.style.display == 'flex'){
@@ -122,8 +133,15 @@ const loadUpgrades = function(){
             }); S3C.addEventListener('animationend',()=>{S3.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu2){
+            for(a of S3AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U2.innerHTML = 'SELECTED';
-            if(obj.unlocks.uu13){U13.innerHTML = 'SELECT'}
             for(const node of S3.childNodes){
                 if(node.nodeType === 3){
                     node.textContent = 'SLASH';
@@ -162,6 +180,14 @@ const loadUpgrades = function(){
             }); S4C.addEventListener('animationend',()=>{S4.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu3){
+            for(a of S4AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U3.innerHTML = 'SELECTED';
             obj.AA.AA4v = 0;
         }
@@ -239,6 +265,14 @@ const loadUpgrades = function(){
             }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu6){
+            for(a of S5AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U6.innerHTML = 'SELECTED';
             obj.AA.AA5v = 0;
         }
@@ -262,12 +296,22 @@ const loadUpgrades = function(){
             obj.AA.AA1v = 1;
         }
         if(obj.unlocks.uu7){
+            S1.style.fontSize = '46px';
+            for(a of S1AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U7.innerHTML = 'SELECTED';
             for(const node of S1.childNodes){
                 if(node.nodeType === 3){
                     node.textContent = 'BLAST';
                 }
             }
+            BB1.style.display = 'none';
             obj.AA.AA1v = 1;
         }
     });
@@ -287,10 +331,17 @@ const loadUpgrades = function(){
             Cost8.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             obj.unlocks.uu8 = true;
-            BB2.style.display = 'flex';
             obj.AA.AA2v = 1;
         }
         if(obj.unlocks.uu8){
+            for(a of S2AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U8.innerHTML = 'SELECTED';
             for(const node of S2.childNodes){
                 if(node.nodeType === 3){
@@ -406,14 +457,59 @@ const loadUpgrades = function(){
             obj.unlocks.uu13 = true;
         }
         if(obj.unlocks.uu13){
+            for(a of S3AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
             U13.innerHTML = 'SELECTED';
-            U2.innerHTML = 'SELECT';
             for(const node of S3.childNodes){
                 if(node.nodeType === 3){
                     node.textContent = 'STAB';
                 }
             }
             obj.AA.AA3v = 1;
+        }
+    });
+    
+    // FRAG GRENADE
+    DT14.addEventListener('click',()=>{
+        if(I14.style.display == 'flex'){
+            I14.style.display = 'none';
+        }else{
+            I14.style.display = 'flex';
+        }
+    });
+    U14.addEventListener('click',()=>{
+        if(obj.res.materials >= 50 && !obj.unlocks.uu14 && obj.unlocks.uu7){
+            play(Upg);
+            obj.res.materials -= 50;
+            Cost14.innerHTML = '';
+            C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+            obj.unlocks.uu14 = true;
+            obj.AA.AA1v = 2;
+        }
+        if(obj.unlocks.uu14){
+            S1.style.fontSize = '30px';
+            for(a of S1AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
+            U14.innerHTML = 'SELECTED';
+            for(const node of S1.childNodes){
+                if(node.nodeType === 3){
+                    node.textContent = 'FRAG GRENADE';
+                }
+            }
+            BB1.style.display = 'flex';
+            obj.AA.AA1v = 2;
         }
     });
 }
