@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(Math.random() >= .998){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             else if(Math.random() >= .98 && !obj.sBossProgress.SB3w){GKT.style.color = 'lime'; GKT.innerHTML = "It shoots missiles! MISSILES!"; WTI--}
             else if(Math.random() >= .96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
-            else if(Math.random() >= .94 && !obj.sBossProgress.SB4w){GKT.style.color = 'lime'; GKT.innerHTML = "A mysterious alien force, known as &quot;Purple Erosion&quot; has taken over the Moon!"; WTI--}
+            else if(Math.random() >= .94 && !obj.sBossProgress.SB4w){GKT.style.color = 'lime'; GKT.innerHTML = "A mysterious alien force, known as &quot;Purple Erosion&quot; has taken over the Moon!<br>Uhh- wrong game."; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -225,8 +225,12 @@ window.addEventListener('DOMContentLoaded',()=>{
     let BB5 = document.getElementById('BB5');
     let CB5 = document.getElementById('CB5');
     
+    CTB = document.getElementById('CastingBar');
+    
     let ABT = document.getElementById('EnemyAttack');
     let AB = document.getElementById('AttackBar');
+    
+    Casting=undefined;
     
     // COLOR ANIMATIONS
     let R=(pA)=>{
@@ -277,8 +281,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     // ATTACK FUNCTIONS
     
     let Damage = function(d, pA){
-        d *= obj.muls.ndm;
-        if(pA && d){
+        d *= obj.muls.ndm * (1+5*MFE);
+        if(pA){
             if(COS > 0){
                 if(COS >= d){
                     play(AISD);
@@ -306,11 +310,12 @@ window.addEventListener('DOMContentLoaded',()=>{
                 play(PHDA);
                 CPH -= d; R(pA); PSD = PDowntime;
             }
+            clearTimeout(Casting);clearSchedule();
         }
     }
     let PenetratingDamage = function(d, pA){
         d *= obj.muls.pdm;
-        if(pA && d){
+        if(pA){
             play(AIHD);
             COH -= d / ODef; R(pA);
             if(COS <= 0){
@@ -322,16 +327,18 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(CPS <= 0){
                 PSD = PDowntime;
             }
+            clearTimeout(Casting);clearSchedule();
         }
     }
     let ShieldDamage = function(d, pA){
         d *= obj.muls.sdm;
-        if(pA && d){
+        if(pA){
             play(AISD);
             COS -= d / ODef; P(pA);
         }else{
             play(PSDA);
             CPS -= d; P(pA);
+            clearTimeout(Casting);clearSchedule();
         }
     }
     let Heal = function(h, pA){
@@ -352,28 +359,26 @@ window.addEventListener('DOMContentLoaded',()=>{
     }
     let Interrupt = function(){
         play(IR);
-        CurrentAttack.damage = 0;
-        CurrentAttack.penetratingdamage = 0;
-        CurrentAttack.shielddamage = 0;
-        CurrentAttack.heal = 0;
-        CurrentAttack.shieldheal = 0;
+        CurrentAttack.damage = CurrentAttack.penetratingdamage = CurrentAttack.shielddamage = CurrentAttack.heal = CurrentAttack.shieldheal = 0;
         CurrentAttack.selfdamage = 0;
         IB.style.display = 'flex';
     }
+    let MFE = 0;
     
     // PLAYER ATTACKS
     class PlayerAttack{
-        constructor(func, cooldown, uses='Infinity'){
+        constructor(func, cooldown, uses='Infinity', casting=0){
             this.func = func;
             this.cooldown = cooldown;
             this.uses = uses;
+            this.casting = casting;
         }
     }
     let SmackAttack = function(){Damage(60,true)}
     const SMACK = new PlayerAttack(SmackAttack, 2);
     let BlastAttack = function(){Damage(80,true)}
     const BLAST = new PlayerAttack(BlastAttack, 2);
-    let FragGrenadeAttack = function(){Damage(500+50*A1Use,true)}; // impl dmg increase
+    let FragGrenadeAttack = function(){Damage(500+50*A1Use,true)};
     const FRAGGRENADE = new PlayerAttack(FragGrenadeAttack, 10, 6);
     
     let ChargeAttack = function(){ShieldDamage(80,true);Damage(40,true)}
@@ -390,12 +395,16 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let HealAttack = function(){Heal(1050,true)}
     const HEAL = new PlayerAttack(HealAttack, 30, 3);
+    let MagmaFlowerAttack = function(){
+        play(He);MFE+=.01;
+    }
+    const MAGMAFLOWER = new PlayerAttack(MagmaFlowerAttack, 12, 5, 200);
     
     AA1 = [SMACK, BLAST, FRAGGRENADE];
     AA2 = [CHARGE, FLAREGUN];
     AA3 = [SLASH, STAB];
     AA4 = [STUN];
-    AA5 = [HEAL];
+    AA5 = [HEAL, MAGMAFLOWER];
     
     let S1 = document.getElementById('S1');
     let S1C = document.getElementById('S1C');
@@ -410,6 +419,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     var A1Use = 0;
     S1.addEventListener('pointerdown',()=>{
         if(A1Use < AA1[obj.AA.AA1v].uses){
+            clearTimeout(Casting);clearSchedule();
             if(this.S1A){S1A = this.S1A}
             if(S1A != '[object CSSAnimation]'){var S1A = S1C.getAnimations();this.S1A = S1A}
             S1A[0].play(); S1.style.pointerEvents = 'none';
@@ -420,6 +430,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     var A2Use = 0;
     S2.addEventListener('pointerdown',()=>{
         if(A2Use < AA2[obj.AA.AA2v].uses){
+            clearTimeout(Casting);clearSchedule();
             if(this.S2A){S2A = this.S2A}
             if(S2A != '[object CSSAnimation]'){var S2A = S2C.getAnimations();this.S2A = S2A}
             S2A[0].play(); S2.style.pointerEvents = 'none';
@@ -458,6 +469,7 @@ window.addEventListener('DOMContentLoaded',()=>{
         obj.areaWins.A3Wins = 0;AD3.innerText = 'Drops: Red Fluid, Chitin, Obsidian Key\nWins until boss: ' + obj.areaWins.A3Wins + '/8';
         document.getElementById('UG13').style.display = 'flex';
         document.getElementById('UG14').style.display = 'flex';
+        document.getElementById('UG15').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
         obj.areaProgress['A3C'] = true;
     }
@@ -605,6 +617,9 @@ window.addEventListener('DOMContentLoaded',()=>{
                     }
                 }
                 
+                COS -= MFE;
+                CPH += 2*MFE;
+                
                 if(COS<=0){
                     COS=0;if(!OSD){OSD=ODowntime}
                 }if(OSD<=0){
@@ -651,6 +666,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                     S5A=''; this.S5A=''; A5Use = 0; CB5.style.height = '100%';
                     inv.style.display = 'flex';
                     var op = 0;
+                    MFE = 0;
                     setTimeout(()=>{inv.style.display = 'none'}, 250);
                     setTimeout(()=>{dar.style.display = 'flex'}, 500);
                     setSchedule(()=>{
@@ -730,7 +746,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 LoadFight('Crystal Statue', 3000, 750, 60, .1, UserHealth, UserShield, ShieldDowntime, ShieldRegen, CrystalStatueAttacks, 15, A4V, ['Chitin', 'Orichalcum'], [9, 14], CCEM, 1);
             }
         }else{
-            LoadFight('Refracted Abbot', 5000, 8500, 7, .2, 1, UserShield, ShieldDowntime, ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
+            LoadFight('Refracted Abbot', 5000, 8500, 7, .2, 1, UserHealth+UserShield, ShieldDowntime, 2*ShieldRegen, RefractedAbbotAttacks, 30, A4BV, ['Red Fluid', 'Chitin', 'Orichalcum'], [28, 17, 25], CCBM, 1);
         }
     });
     
