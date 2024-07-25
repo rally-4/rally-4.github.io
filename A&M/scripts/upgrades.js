@@ -72,11 +72,16 @@ const loadUpgrades = function(){
     const I14 = document.getElementById('I14');
     const U14 = document.getElementById('U14');
     
+    const Cost15 = document.getElementById('Cost15');
+    const DT15 = document.getElementById('DT15');
+    const I15 = document.getElementById('I15');
+    const U15 = document.getElementById('U15');
+    
     S1AA = [U7, U14];
     S2AA = [U8];
     S3AA = [U2, U13];
     S4AA = [U3];
-    S5AA = [U6];
+    S5AA = [U6, U15];
     
     // SHIELD
     DT1.addEventListener('click',()=>{
@@ -256,13 +261,21 @@ const loadUpgrades = function(){
             S5C.style.opacity = '0';
             S5.addEventListener('pointerdown',()=>{
                 if(A5Use < AA5[obj.AA.AA5v].uses){
-                    if(this.S5A){S5A = this.S5A}
-                    if(S5A != '[object CSSAnimation]'){var S5A = S5C.getAnimations();this.S5A = S5A}
-                    S5A[0].play(); S5.style.pointerEvents = 'none';
-                    AA5[obj.AA.AA5v].func();
-                    A5Use++; CB5.style.height = (AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100 + '%';
+                    clearTimeout(Casting);clearSchedule();
+                    setSchedule((j)=>{
+                        CTB.style.width=84/AA5[obj.AA.AA5v].casting*j+'%';
+                        CTB.style.opacity=.4*j/AA5[obj.AA.AA5v].casting;
+                    },10,AA5[obj.AA.AA5v].casting);
+                    Casting=setTimeout(()=>{
+                        if(this.S5A){S5A=this.S5A}
+                        if(S5A!='[object CSSAnimation]'){var S5A=S5C.getAnimations();this.S5A=S5A}
+                        S5A[0].play();S5.style.pointerEvents='none';
+                        AA5[obj.AA.AA5v].func();
+                        A5Use++;CB5.style.height=(AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100+'%';
+                        CTB.style.width=0;
+                    },AA5[obj.AA.AA5v].casting*10);
                 }
-            }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
+            });S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
         }
         if(obj.unlocks.uu6){
             for(a of S5AA){
@@ -274,6 +287,11 @@ const loadUpgrades = function(){
                 }
             }
             U6.innerHTML = 'SELECTED';
+            for(const node of S5.childNodes){
+                if(node.nodeType === 3){
+                    node.textContent = 'HEAL';
+                }
+            }
             obj.AA.AA5v = 0;
         }
     });
@@ -490,7 +508,6 @@ const loadUpgrades = function(){
             Cost14.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             obj.unlocks.uu14 = true;
-            obj.AA.AA1v = 2;
         }
         if(obj.unlocks.uu14){
             S1.style.fontSize = '30px';
@@ -510,6 +527,42 @@ const loadUpgrades = function(){
             }
             BB1.style.display = 'flex';
             obj.AA.AA1v = 2;
+        }
+    });
+    
+    // MAGMA FLOWER
+    DT15.addEventListener('click',()=>{
+        if(I15.style.display == 'flex'){
+            I15.style.display = 'none';
+        }else{
+            I15.style.display = 'flex';
+        }
+    });
+    U15.addEventListener('click',()=>{
+        if(obj.res.materials >= 65 && !obj.unlocks.uu15 && obj.unlocks.uu6){
+            play(Upg);
+            obj.res.materials -= 65;
+            Cost15.innerHTML = '';
+            C1C.innerHTML = 'Quantity: ' + obj.res.materials;
+            obj.unlocks.uu15 = true;
+        }
+        if(obj.unlocks.uu15){
+            S5.style.fontSize = '46px';
+            for(a of S5AA){
+                let unum = Number(a.id.slice(1));
+                if(obj.unlocks[`uu${unum}`]){
+                    a.innerHTML = 'SELECT';
+                }else{
+                    a.innerHTML = 'Unlock';
+                }
+            }
+            U15.innerHTML = 'SELECTED';
+            for(const node of S5.childNodes){
+                if(node.nodeType === 3){
+                    node.textContent = 'MAGMA FLOWER';
+                }
+            }
+            obj.AA.AA5v = 1;
         }
     });
 }

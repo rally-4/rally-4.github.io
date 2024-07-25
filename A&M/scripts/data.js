@@ -6,7 +6,7 @@ const loadData = function(){
         sBossProgress: {SB1w: false, SB2w: false, SB3w: false, SB4w: false},
         areaProgress: {A1C: false, A2C: false, A3C: false, A4C: false},
         areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0, A4Wins: 0},
-        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false, uu13: false, uu14: false},
+        unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false, uu13: false, uu14: false, uu15: false},
         upgrades: {uu1: 0, uu5: 0, uu11: 0, uu12: 0},
         muls: {ndm: 1, sdm: 1, pdm: 1},
         stats: {wins: 0, losses: 0},
@@ -20,7 +20,7 @@ const loadData = function(){
             sBossProgress: {SB1w: false, SB2w: false, SB3w: false, SB4w: false},
             areaProgress: {A1C: false, A2C: false, A3C: false, A4C: false},
             areaWins: {A1Wins: 0, A2Wins: 0, A3Wins: 0, A4Wins: 0},
-            unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false, uu13: false, uu14: false},
+            unlocks: {uu2: false, uu3: false, uu4: false, uu6: false, uu7: false, uu8: false, uu9: false, uu10: false, uu13: false, uu14: false, uu15: false},
             upgrades: {uu1: 0, uu5: 0, uu11: 0, uu12: 0},
             muls: {ndm: 1, sdm: 1, pdm: 1},
             stats: {wins: 0, losses: 0},
@@ -137,4 +137,5 @@ const loadData = function(){
     if(obj.unlocks.uu13 === undefined){obj.unlocks.uu13 = false}
     if(obj.sBossProgress.SB4w === undefined){obj.sBossProgress.SB4w = false}
     if(obj.unlocks.uu14 === undefined){obj.unlocks.uu14 = false}
+    if(obj.unlocks.uu15 === undefined){obj.unlocks,uu15 = false}
 }
