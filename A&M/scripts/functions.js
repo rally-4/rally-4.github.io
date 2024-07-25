@@ -26,12 +26,21 @@ Bool.imply=(p,q)=>1!=p||0!=q;
 Bool.nonimply=(p,q)=>1==p&&0==q;
 
 // TIMER FUNCTIONS
+let TOIDL = [];
+let ITID;
+
 const setSchedule=(func,i,n,d=0)=>{
+    clearSchedule();
     setTimeout(()=>{
         for(let j=0;j<n;j++){
-            setTimeout(func,j*i);
+            ITID=setTimeout(()=>{func(j)},j*i);
+            TOIDL.push(ITID);
         }
-    },d)
+    },d);
+}
+const clearSchedule=()=>{
+    for(var id of TOIDL){clearTimeout(id)}
+    TOIDL=[];CTB.style.width='0';
 }
 
 // OTHER
@@ -77,6 +86,7 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
     if(areaProgress['A3C']){
         document.getElementById('UG13').style.display = 'flex';
         document.getElementById('UG14').style.display = 'flex';
+        document.getElementById('UG15').style.display = 'flex';
         document.getElementById('IB3').style.display = 'flex';
     }
     if(areaProgress['A4C']){
@@ -91,12 +101,13 @@ const recoverAreaUnlocks = function(areaProgress, areaWins){
 const recoverUnlocks = function(uus){
     if(uus['uu2']){
         Cost2.innerHTML = '';
-        U2.innerHTML = 'SELECTED';
+        U2.innerHTML = 'SELECT';
         S3C.classList.remove('locked'); S3C.classList.add('chargeBox');
         S3C.style.backgroundColor = 'rgb(105,120,150)';
         S3C.style.opacity = '0';
         S3.addEventListener('pointerdown',()=>{
             if(A3Use < AA3[obj.AA.AA3v].uses){
+                clearTimeout(Casting);clearSchedule();
                 if(this.S3A){S3A = this.S3A}
                 if(S3A != '[object CSSAnimation]'){var S3A = S3C.getAnimations();this.S3A = S3A}
                 S3A[0].play(); S3.style.pointerEvents = 'none';
@@ -107,12 +118,13 @@ const recoverUnlocks = function(uus){
     }
     if(uus['uu3']){
         Cost3.innerHTML = '';
-        U3.innerHTML = 'SELECTED';
+        U3.innerHTML = 'SELECT';
         S4C.classList.remove('locked'); S4C.classList.add('chargeBox');
         S4C.style.backgroundColor = 'rgb(105,120,150)';
         S4C.style.opacity = '0';
         S4.addEventListener('pointerdown',()=>{
             if(A4Use < AA4[obj.AA.AA4v].uses){
+                clearTimeout(Casting);clearSchedule();
                 if(this.S4A){S4A = this.S4A}
                 if(S4A != '[object CSSAnimation]'){var S4A = S4C.getAnimations();this.S4A = S4A}
                 S4A[0].play(); S4.style.pointerEvents = 'none';
@@ -128,19 +140,27 @@ const recoverUnlocks = function(uus){
     }
     if(uus['uu6']){
         Cost6.innerHTML = '';
-        U6.innerHTML = 'SELECTED';
+        U6.innerHTML = 'SELECT';
         S5C.classList.remove('locked'); S5C.classList.add('chargeBox');
         S5C.style.backgroundColor = 'rgb(105,120,150)';
         S5C.style.opacity = '0';
         S5.addEventListener('pointerdown',()=>{
             if(A5Use < AA5[obj.AA.AA5v].uses){
-                if(this.S5A){S5A = this.S5A}
-                if(S5A != '[object CSSAnimation]'){var S5A = S5C.getAnimations();this.S5A = S5A}
-                S5A[0].play(); S5.style.pointerEvents = 'none';
-                AA5[obj.AA.AA5v].func();
-                A5Use++; CB5.style.height = (AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100 + '%';
+                clearTimeout(Casting);clearSchedule();
+                setSchedule((j)=>{
+                    CTB.style.width=84/AA5[obj.AA.AA5v].casting*j+'%';
+                    CTB.style.opacity=.4*j/AA5[obj.AA.AA5v].casting;
+                },10,AA5[obj.AA.AA5v].casting);
+                Casting=setTimeout(()=>{
+                    if(this.S5A){S5A=this.S5A}
+                    if(S5A!='[object CSSAnimation]'){var S5A=S5C.getAnimations();this.S5A=S5A}
+                    S5A[0].play();S5.style.pointerEvents='none';
+                    AA5[obj.AA.AA5v].func();
+                    A5Use++;CB5.style.height=(AA5[obj.AA.AA5v].uses-A5Use)/AA5[obj.AA.AA5v].uses*100+'%';
+                    CTB.style.width=0;
+                },AA5[obj.AA.AA5v].casting*10);
             }
-        }); S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
+        });S5C.addEventListener('animationend',()=>{S5.style.pointerEvents = 'auto'});
     }
     if(uus['uu7']){
         Cost7.innerHTML = '';
@@ -167,6 +187,10 @@ const recoverUnlocks = function(uus){
     if(uus['uu14']){
         Cost14.innerHTML = '';
         U14.innerHTML = 'SELECT';
+    }
+    if(uus['uu15']){
+        Cost15.innerHTML = '';
+        U15.innerHTML = 'SELECT';
     }
 }
 const recoverUpgrades = function(uus){
@@ -246,12 +270,32 @@ const selectAbilities = function(AA){
     }
     
     // S3
+    if(AA.AA3v == 0){
+        U2.innerHTML = 'SELECTED';
+    }
     if(AA.AA3v == 1){
         U13.innerHTML = 'SELECTED';
-        U2.innerHTML = 'SELECT';
         for(const node of S3.childNodes){
             if(node.nodeType === 3){
                 node.textContent = 'STAB';
+            }
+        }
+    }
+    
+    // S4
+    if(AA.AA4v == 0){
+        U3.innerHTML = 'SELECTED';
+    }
+    
+    // S5
+    if(AA.AA5v == 0){
+        U6.innerHTML = 'SELECTED';
+    }
+    if(AA.AA5v == 1){
+        U15.innerHTML = 'SELECTED';
+        for(const node of S5.childNodes){
+            if(node.nodeType === 3){
+                node.textContent = 'MAGMA FLOWER';
             }
         }
     }
