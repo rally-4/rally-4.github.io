@@ -216,7 +216,7 @@ input{
     z-index: 9;
     opacity: 0.2;
     mix-blend-mode: difference;
-    background: linear-gradient(to bottom, blue, magenta);
+    background: linear-gradient(to bottom,blue,magenta);
     pointer-events: none;
 }
 #BlackScreen{

@@ -1,8 +1,5 @@
 window.addEventListener('DOMContentLoaded',()=>{
-    UserHealth = 1000;
-    UserShield = 200;
-    ShieldDowntime = 20;
-    ShieldRegen = .02;
+    UserHealth=1000,UserShield=200,ShieldDowntime=20,ShieldRegen=.02;
     
     loadAudio();
     loadTabs();
