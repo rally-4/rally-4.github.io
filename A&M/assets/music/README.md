@@ -37,7 +37,7 @@ Marble Mountains ee: Marble Mountain - Flashygoodness
 Marble Mountains Boss: The Realm of Battle (Conquest) - Murray Atkinson  
 &ensp;  
 The Cave (Phobos): Lunar Catastrophe - Stickfin  
-The Cave (Deimos): Blood Moon - Evan King; Context Sensitive  
+The Cave (Deimos): Blood Moon - Evan King/Context Sensitive  
 The Cave (Anoxis): A Tale of Eternity -   
 &ensp;  
 All Stars (Slagel Slime) \[SU\]: Cosmic Disgust - DMDokuro  
