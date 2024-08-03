@@ -25,16 +25,10 @@ This repository is currently unfinished and mostly used for testing purposes.
     * False...
 2. temA tiS roloD muspI eroL
     * True...
-    * * This is illegal, you know?
+    * * True?
       * False...  
-&nbsp;  
+&nbsp;
 
-
-
-‏Help me, I have fallen, and I can't get up
-&nbsp;  
-
-No Mario, you're just moving on the ground, moving on the ground.  
 &nbsp;
 
 &nbsp;
@@ -45,4 +39,3 @@ No Mario, you're just moving on the ground, moving on the ground.
 **A**  
 A  
 ᴬ  
-
