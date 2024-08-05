@@ -11,18 +11,15 @@
             background-color: #000;
             padding: none;
         }
-        
         .emscripten{
             padding-right: 0;
             margin-left: auto;
             margin-right: auto;
             display: block;
         }
-        
         div.emscripten{
             text-align: center;
         }
-        
         canvas.emscripten{
             position: absolute;
             top: 0px;
@@ -33,7 +30,6 @@
             overflow: hidden;
             display: block;
         }
-        
         .spinner{
             height: 30px;
             width: 30px;
@@ -53,7 +49,6 @@
             border-radius: 100%;
             background-color: rgb(189, 215, 46);
         }
-        
         @-webkit-keyframes rotation{
             from{
                 -webkit-transform: rotate(0deg);
@@ -62,7 +57,6 @@
                 -webkit-transform: rotate(360deg);
             }
         }
-        
         @-moz-keyframes rotation{
             from{
                 -moz-transform: rotate(0deg);
@@ -71,7 +65,6 @@
                 -moz-transform: rotate(360deg);
             }
         }
-        
         @-o-keyframes rotation{
             from{
                 -o-transform: rotate(0deg);
@@ -80,7 +73,6 @@
                 -o-transform: rotate(360deg);
             }
         }
-        
         @keyframes rotation{
             from{
                 transform: rotate(0deg);
@@ -89,7 +81,6 @@
                 transform: rotate(360deg);
             }
         }
-        
         #floatingRectangle{
             z-index: 1;
             position: absolute;
@@ -99,7 +90,6 @@
             bottom: 100px;
             background-color: #000;
         }
-        
         #status{
             display: inline-block;
             vertical-align: top;
@@ -108,7 +98,6 @@
             font-weight: bold;
             color: rgb(120, 120, 120);
         }
-        
         #progress{
             height: 20px;
             width: 30px;
@@ -136,7 +125,6 @@
       b.preserveDrawingBuffer = false;
       return this.savedGetContext(a,b);
     }
-
     var statusElement = document.getElementById('status');
     var progressElement = document.getElementById('progress');
     var spinnerElement = document.getElementById('spinner');
@@ -149,7 +137,7 @@
           if(arguments.length > 1)
             text = Array.prototype.slice.call(arguments).join(' ');
           console.log(text);
-        };
+        }
       })(),
       printErr: function(text){
         if(arguments.length > 1)
@@ -158,21 +146,17 @@
       },
       canvas: (function(){
         var canvas = document.getElementById('canvas');
-        // As a default initial behavior, pop up an alert when webgl context is lost. To make your
-        // application robust, you may want to override this behavior before shipping!
-        // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
         canvas.addEventListener("webglcontextlost", function(e){
           alert('WebGL context lost. You will need to reload the page.');
           e.preventDefault();
         }, false);
-
         return canvas;
       })(),
       setStatus: function(text){
         if(!Module.setStatus.last) Module.setStatus.last = {
           time: Date.now(),
           text: ''
-        };
+        }
         if(text === Module.setStatus.text)return;
         var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
         var now = Date.now();
@@ -183,11 +167,11 @@
           progressElement.max = parseInt(m[4]) * 100;
           progressElement.hidden = false;
           spinnerElement.hidden = false;
-        } else {
+        }else{
           progressElement.value = null;
           progressElement.max = null;
           progressElement.hidden = true;
-          if(!text) spinnerElement.style.display = 'none';
+          if(!text)spinnerElement.style.display = 'none';
         }
         statusElement.innerHTML = text;
       },
@@ -196,17 +180,16 @@
         this.totalDependencies = Math.max(this.totalDependencies, left);
         Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
       }
-    };
+    }
     Module['arguments'] = ["--stand-alone"];
     Module.setStatus('Downloading...');
     window.onerror = function(event){
-      // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
       Module.setStatus('Exception thrown, see JavaScript console');
       spinnerElement.style.display = 'none';
       Module.setStatus = function(text){
-        if(text) Module.printErr('[post-exception status] ' + text);
-      };
-    };
+        if(text)Module.printErr('[post-exception status] ' + text);
+      }
+    }
         </script>
         
         <script>
@@ -220,18 +203,16 @@
         var script = document.createElement('script');
         script.src = "pewengine.js";
         document.body.appendChild(script);
-      };
+      }
       xhr.send(null);
     }catch(e){
       alert("Failed to load webasm.");
     }
-
     const element_that_makes_sound_on_click = document.querySelector('canvas');
     let AudioContext = window.AudioContext || window.webkitAudioContext;
     let tempAudioContext;
     function init(){
       tempAudioContext = new AudioContext();
-      // Safari needs an audio context created in onclick.
       Module.audioContext = tempAudioContext;
     }
     element_that_makes_sound_on_click.onclick = function(){
