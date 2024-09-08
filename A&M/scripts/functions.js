@@ -57,7 +57,7 @@ const getResCol=(res)=>{
     else if(res=='Slime Key'){return 'rgb(0,90,210)'}
     else if(res=='Red Fluid'){return 'rgb(210,0,30)'}
     else if(res=='Rusty Key'){return 'rgb(90,60,30)'}
-    else if(res=='Chitin'){return 'rgb(120,0,255)'}
+    else if(res=='Chitin'){return 'rgb(90,0,150)'}
     else if(res=='Obsidian Key'){return 'rgb(15,0,30)'}
     else if(res=='Orichalcum'){return 'rgb(210,140,80)'}
     else{return 'rgb(255,255,255)'}

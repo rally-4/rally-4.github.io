@@ -40,7 +40,7 @@ const loadAudio = function(){
     const Music = [November, SUEM, SUBM, BLEM, BLBM, MCEM, MCBM, CCEM, CCBM, T99, DOM, MLR, SLD];
     function setDefaultMusicVolume(){
         for(let l=0;l<Music.length;l++){Music[l].volume=1}
-        SLD.volume = T99.volume = BLBM.volume = .6; MCEM.volume = MCBM.volume = .8;
+        SLD.volume = T99.volume = BLBM.volume = MCBM.volume = .6; MCEM.volume = .8;
     }
     function disableMusic(){
         for(let l=0;l<Music.length;l++){Music[l].volume=0}
