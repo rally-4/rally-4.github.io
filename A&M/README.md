@@ -1,5 +1,3 @@
-**Dark mode is not supported.**  
-
 ### Roadmap:
 1. ~~Implement several lines for the vault when there is text input.~~
 2. ~~Add textbox dialog and a function to display it.~~
@@ -19,7 +17,7 @@
 11.3. ~~Upgrades.~~
 12. ~~Add damage multipliers.~~
 13. ~~Allow scrolling at the 4th tab's UI (1st subtab only).~~
-14. Optimise code.  
+14. ~~Optimise code.~~  
 15. ~~Make the Cliffs area:~~  
 15.1. ~~Opponents~~  
 15.2. ~~Resources, upgrades and unlocks~~
