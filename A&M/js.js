@@ -65,7 +65,7 @@ window.addEventListener('DOMContentLoaded',()=>{
             if(Math.random() >= .998){GKT.style.color = 'red'; GKT.innerHTML = "Anoxis will one day pay for what he did..."; WTI--}
             else if(Math.random() >= .98 && !obj.sBossProgress.SB3w){GKT.style.color = 'lime'; GKT.innerHTML = "It shoots missiles! MISSILES!"; WTI--}
             else if(Math.random() >= .96 && !obj.sBossProgress.SB1w){GKT.style.color = 'lime'; GKT.innerHTML = "The endlessly falling blocks... how were they called?"; WTI--}
-            else if(Math.random() >= .94 && !obj.sBossProgress.SB4w){GKT.style.color = 'lime'; GKT.innerHTML = "A mysterious alien force, known as &quot;Purple Erosion&quot; has taken over the Moon!<br>Uhh- wrong game."; WTI--}
+            else if(Math.random() >= .94 && !obj.sBossProgress.SB4w){GKT.style.color = 'lime'; GKT.innerHTML = "A mysterious alien force, known as &quot;Purple Erosion&quot;, has taken over the Moon!<br>Uhh- wrong game."; WTI--}
             WTI++;
         }
         if((e.key == 'Enter' || e.keyCode == 13) && input.value != ''){
@@ -152,8 +152,8 @@ window.addEventListener('DOMContentLoaded',()=>{
     const LiquescentDiplopodAttacks = [MUNCH0, MUNCH1, MUNCH2, CONGLOBATE];
     let ENGRAVE = new EnemyAttack('ENGRAVE', 45, 0.3, 11);
     let DISSOLVE = new EnemyAttack('DISSOLVE', 85, 0.25, 2, 0, 45);
-    let PIERCING_BITE = new EnemyAttack('PIERCING BITE', 99.2, 0.4, 2, 13, 0, 10);
-    let TOXIC_TRANSFUSION = new EnemyAttack('TOXIC TRANSFUSION', 100, 5, 0, 250, 0, 550, 550);
+    let PIERCING_BITE = new EnemyAttack('PIERCING BITE', 99.4, 0.4, 2, 13, 0, 10);
+    let TOXIC_TRANSFUSION = new EnemyAttack('TOXIC TRANSFUSION', 100, 5, 0, 250, 0, 250, 250);
     const ScolopendraSulforaeAttacks = [ENGRAVE, DISSOLVE, PIERCING_BITE, TOXIC_TRANSFUSION];
     
     let HUM = new EnemyAttack('HUM', 40, 3, 50, 0, 50, 0, 350);
@@ -376,7 +376,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let BlastAttack = function(){Damage(80,true)}
     const BLAST = new PlayerAttack(BlastAttack, 2);
     let FragGrenadeAttack = function(){Damage(500+50*A1Use,true)};
-    const FRAGGRENADE = new PlayerAttack(FragGrenadeAttack, 10, 6);
+    const FRAGGRENADE = new PlayerAttack(FragGrenadeAttack, 10, 8);
     
     let ChargeAttack = function(){ShieldDamage(80,true);Damage(40,true)}
     const CHARGE = new PlayerAttack(ChargeAttack, 2);
@@ -385,7 +385,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     
     let SlashAttack = function(){Damage(40,true);PenetratingDamage(32,true)}
     const SLASH = new PlayerAttack(SlashAttack, 2);
-    let StabAttack = function(){PenetratingDamage(50+.05*Math.pow(COH,2)/MaxOH,true)}
+    let StabAttack = function(){PenetratingDamage(70+.05*Math.pow(COH,2)/MaxOH,true)}
     const STAB = new PlayerAttack(StabAttack, 3);
     
     const STUN = new PlayerAttack(Interrupt, 20);
@@ -726,10 +726,10 @@ window.addEventListener('DOMContentLoaded',()=>{
             }else if(re < .7){
                 LoadFight('Magmatic Trigonotarbid', 1100, 2300, 2, .2, UserHealth, UserShield, ShieldDowntime, ShieldRegen, MagmaticTrigonotarbidAttacks, 10, A3V, ['Red Fluid', 'Chitin'], [2, 4], MCEM, 1.5);
             }else{
-                LoadFight('Liquescent Diplopod', 590, 5000, 5, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, A3V, ['Red Fluid', 'Chitin'], [1, 7], MCEM, 2);
+                LoadFight('Liquescent Diplopod', 590, 5000, 5, .24, UserHealth, UserShield, ShieldDowntime, ShieldRegen, LiquescentDiplopodAttacks, 15, A3V, ['Red Fluid', 'Chitin'], [1, 7], MCEM, 2);
             }
         }else{
-            LoadFight('Scolopendra Sulforae', 1800, 4100, 4, .26, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 15, 1], MCBM, 2);
+            LoadFight('Scolopendra Sulforae', 1800, 4100, 6, .25, UserHealth, UserShield, ShieldDowntime, ShieldRegen, ScolopendraSulforaeAttacks, 20, A3BV, ['Red Fluid', 'Chitin', 'Obsidian Key'], [5, 15, 1], MCBM, 2);
         }
     });
     E4.addEventListener('click',()=>{
