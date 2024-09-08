@@ -467,9 +467,9 @@ const loadUpgrades = function(){
         }
     });
     U13.addEventListener('click',()=>{
-        if(obj.res.materials >= 35 && !obj.unlocks.uu13 && obj.unlocks.uu2){
+        if(obj.res.materials >= 48 && !obj.unlocks.uu13 && obj.unlocks.uu2){
             play(Upg);
-            obj.res.materials -= 35;
+            obj.res.materials -= 48;
             Cost13.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             obj.unlocks.uu13 = true;
@@ -502,9 +502,9 @@ const loadUpgrades = function(){
         }
     });
     U14.addEventListener('click',()=>{
-        if(obj.res.materials >= 50 && !obj.unlocks.uu14 && obj.unlocks.uu7){
+        if(obj.res.materials >= 60 && !obj.unlocks.uu14 && obj.unlocks.uu7){
             play(Upg);
-            obj.res.materials -= 50;
+            obj.res.materials -= 60;
             Cost14.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             obj.unlocks.uu14 = true;
@@ -539,9 +539,9 @@ const loadUpgrades = function(){
         }
     });
     U15.addEventListener('click',()=>{
-        if(obj.res.materials >= 65 && !obj.unlocks.uu15 && obj.unlocks.uu6){
+        if(obj.res.materials >= 75 && !obj.unlocks.uu15 && obj.unlocks.uu6){
             play(Upg);
-            obj.res.materials -= 65;
+            obj.res.materials -= 75;
             Cost15.innerHTML = '';
             C1C.innerHTML = 'Quantity: ' + obj.res.materials;
             obj.unlocks.uu15 = true;
