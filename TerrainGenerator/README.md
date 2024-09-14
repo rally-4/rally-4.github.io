@@ -12,4 +12,4 @@ Magnitude — Divides `x`, `y`, and `z` by this value. Doesn't affect worley noi
 Octaves — Amount of octaves applied to the heightmap.  
 Base height — Default value of `h`.  
 Max height — Maximum height possible.
-Worley map — Enables/disables worley noise.  
+Worley map — Configures the worley noise.  
