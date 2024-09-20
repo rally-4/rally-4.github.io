@@ -1,0 +1,177 @@
+body{
+    margin: 0px; padding: 0px;
+    width: 100%; height: 100%;
+    background-color: black;
+}
+#Start{
+    position: fixed; display: flex;
+    width: 100%; height: 100%;
+    z-index: 5;
+    background-color: black;
+}
+#Base{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0px;
+    transform: translateY(8%);
+    opacity: .8;
+}
+#PsiCounter{
+    position: fixed; display: flex;
+    width: 100%; top: 32px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-family: serif;
+    color: grey;
+}
+em{
+    transform: translateY(-16px);
+    font-style: normal;
+    font-size: 32px;
+    color: rgb(30,90,255);
+}
+
+.tabscreen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+#TS1{display:flex;}
+#TS2{
+    display: none;
+    z-index: 6;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-color: black;
+}
+#END{
+    position: fixed;
+    width: 50%;
+    left: 25%;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-size: 48px;
+    color: white;
+}
+i{
+    color: red;
+}
+
+.upgrow{
+    position: fixed;
+    display: flex;
+    width: 80%;
+    height: 40px;
+    left: 10%;
+    flex-direction: column;
+    justify-content: center;
+    
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(60,30,180), inset 0 0 2px 2px rgb(60,30,180);
+    background-color: black;
+}
+#U1{top:128px;}
+#U2{top:168px;display:none;}
+#U3{top:208px;display:none;}
+#U4{top:248px;display:none;}
+.upgname{
+    position: fixed;
+    display: flex;
+    left: 11%;
+    color: lightskyblue;
+}
+.dimcount{
+    position: fixed;
+    display: flex;
+    align-self: center;
+    color: lightskyblue;
+}
+.upg{
+    position: fixed;
+    display: flex;
+    width: 20%;
+    height: inherit;
+    right: 10%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 4;
+    
+    white-space: nowrap;
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(60,30,180), inset 0 0 2px 2px rgb(60,30,180);
+    font-size: 24px;
+    color: lightskyblue;
+}
+
+.dimrow{
+    position: fixed;
+    display: none;
+    width: 60%;
+    height: 80px;
+    left: 20%;
+    flex-direction: column;
+    justify-content: center;
+    
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(60,90,210), inset 0 0 2px 2px rgb(60,90,210);
+    background-color: black;
+}
+#DimU{bottom:192px;}
+#DimC{transform:translateX(-128px);}
+.dimupg{
+    position: fixed;
+    display: flex;
+    width: 25%;
+    height: inherit;
+    right: 20%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 4;
+    
+    white-space: normal;
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(60,90,210), inset 0 0 2px 2px rgb(60,90,210);
+    font-size: 24px;
+    color: lightskyblue;
+}
+
+#RedRow{
+    position: fixed;
+    display: none;
+    width: 80%;
+    height: 40px;
+    left: 10%;
+    top: 308px;
+    flex-direction: column;
+    justify-content: center;
+    
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(150,0,30), inset 0 0 2px 2px rgb(150,0,30);
+    background-color: black;
+}
+#TSC{color:red;}
+.tsupg{
+    position: fixed;
+    display: flex;
+    width: 20%;
+    height: inherit;
+    right: 10%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 4;
+    
+    white-space: nowrap;
+    border: 0px solid;
+    box-shadow: 0 0 2px 2px rgb(150,0,30), inset 0 0 2px 2px rgb(150,0,30);
+    font-size: 24px;
+    color: red;
+}
