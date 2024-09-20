@@ -1,13 +1,13 @@
 let renderer, scene, camera, controls;
-
 function main(){
     const Ada = document.getElementById('Ada'); Ada.borderColor = 'rgb(180,60,45)';
     const Desper = document.getElementById('Desper'); Desper.borderColor = 'rgb(85,69,80)';
+    const Aroy = document.getElementById('Aroy'); Aroy.borderColor = 'rgb(25,102,255)';
     const Heie = document.getElementById('Heie'); Heie.borderColor = 'rgb(102,204,255)';
     const Weia = document.getElementById('Weia'); Weia.borderColor = 'rgb(32,161,129)';
     const Trichotus = document.getElementById('Trichotus'); Trichotus.borderColor = 'rgb(210,255,255)';
     const Xi = document.getElementById('Xi'); Xi.borderColor = 'rgb(60,160,255)';
-    const DOMPs = [Ada, Desper, Heie, Weia, Trichotus, Xi];
+    const DOMPs = [Ada, Desper, Aroy, Heie, Weia, Trichotus, Xi];
     function swap(p){
         for(let j=0;j<DOMPs.length;j++){
             if(Planets[j].name == p.name){
@@ -20,10 +20,11 @@ function main(){
     }
     Ada.addEventListener('click',()=>{swap(Planets[0])});
     Desper.addEventListener('click',()=>{swap(Planets[1])});
-    Heie.addEventListener('click',()=>{swap(Planets[2])});
-    Weia.addEventListener('click',()=>{swap(Planets[3])});
-    Trichotus.addEventListener('click',()=>{swap(Planets[4])});
-    Xi.addEventListener('click',()=>{swap(Planets[5])});
+    Aroy.addEventListener('click',()=>{swap(Planets[2])});
+    Heie.addEventListener('click',()=>{swap(Planets[3])});
+    Weia.addEventListener('click',()=>{swap(Planets[4])});
+    Trichotus.addEventListener('click',()=>{swap(Planets[5])});
+    Xi.addEventListener('click',()=>{swap(Planets[6])});
     
     function VecSubstr(e1,e2){
         return new THREE.Vector3(
@@ -308,11 +309,12 @@ function main(){
     }
     AddPlanet('Ada', .8, .002, 80, [0,0,80], 0, 60, 0xff8000, true);
     AddPlanet('Desper', .7, -.0005, 175, [0,0,-175], Math.PI, 10, 0x000000, true);
+    AddPlanet('Aroy', 1, -.001, 250, [0,0,250], 0, 15, 0x000000, true, true, .15, .5, new THREE.Vector3(.1,.4,1), false);
     AddPlanet('Heie', 1, -.0015, 500, [-500,0,0], 3*Math.PI/2, 15, 0x000000, false, true, -.01, .1, new THREE.Vector3(.2,.75,1), true, .001);
-    AddPlanet('Weia', 1.4, -.001, 500, [500,0,0], Math.PI/2, 45, 0x000000, false, false, 0, .1, new THREE.Vector3(1,1,1), true, .002);
-    AddPlanet('Trichotus', 1.5, -.0002, 1150, [1150,0,0], Math.PI/2, 75, 0x000000, true, true, .21, .4, new THREE.Vector3(.5,1,1));
+    AddPlanet('Weia', 1.4, -.001, 500, [500,0,0], Math.PI/2, 30, 0x000000, false, false, 0, .1, new THREE.Vector3(1,1,1), true, .002);
+    AddPlanet('Trichotus', 1.5, -.0002, 1150, [1150,0,0], Math.PI/2, 45, 0x000000, true, true, .21, .4, new THREE.Vector3(.4,.8,.8));
     AddPlanet('Xi', 1.1, .0011, 1300, [0,0,-1300], Math.PI, 0, 0x000000, true);
-    let Target = Planets[2];
+    let Target = Planets[3];
     
     const animate=()=>{
         requestAnimationFrame(animate);
