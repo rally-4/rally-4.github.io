@@ -1,25 +1,25 @@
-# Under Construction
-This repository is currently unfinished and mostly used for testing purposes.  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
 &nbsp;
-
+  
+&nbsp;
+  
 1. Lore Ipsum Dolor Sit Amet
     * True...
     * False...
@@ -28,11 +28,9 @@ This repository is currently unfinished and mostly used for testing purposes.
     * * True?
       * False...  
 &nbsp;
-
+  
 &nbsp;
-
-&nbsp;
-
+  
 # A
 ## A
 ### A

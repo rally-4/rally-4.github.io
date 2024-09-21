@@ -43,13 +43,13 @@ Worley.map3 = function(width, height, depth, scale, density, distancing){
     }}}
     return points;
 }
-Worley.noise2 = function(map, x, y){
-    let dst = [1024];
+Worley.noise2 = function(map, min, x, y){
+    let dst = [min];
     for(let i=0; i<map.length; i++){dst.push(Math.hypot(x-map[i][0],y-map[i][1]))}
     return Math.min(...dst);
 }
-Worley.noise3 = function(map, x, y, z){
-    let dst = [1024];
+Worley.noise3 = function(map, min, x, y, z){
+    let dst = [min];
     for(let i=0; i<map.length; i++){dst.push(Math.hypot(x-map[i][0],y-map[i][1],z-map[i][2]))}
     return Math.min(...dst);
 }

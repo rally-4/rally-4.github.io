@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     const sclE=document.getElementById('sclE'); sclE.value='4';
     const magE=document.getElementById('magE'); magE.value='256';
     const octE=document.getElementById('octE'); octE.value='5';
+    const addE=document.getElementById('addE'); addE.value='-120';
     const obj = {}
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -52,7 +53,7 @@ window.addEventListener('DOMContentLoaded',()=>{
     let scl = 4;
     let mag = 256;
     let oct = 5;
-    let add = -240;
+    let add = -120;
     let rand = true;
     let maxHeight = 510;
     let map = Worley.map3(r,r,r,2,.000002,0);
@@ -80,7 +81,7 @@ window.addEventListener('DOMContentLoaded',()=>{
                 // h+=Math.abs(ry)/2
                 const PO=PL(obj,hseed);
                 for(let i=0;i<oct;i++){h+=(255-30*i)*PO.perlin3(i*x,i*y,i*z)}
-                h+=1.5*(255-Worley.noise3(map,x*mag,y*mag,z*mag));
+                h+=255-Worley.noise3(map,8192,x*mag,y*mag,z*mag);
                 h=Math.min(h,maxHeight);
                 mois=PL(obj,moiseed).perlin3(x,y,z);
                 temp=.4*Math.abs(PL(obj,tmpseed).perlin3(x,y,z))+1.6*(rh-Math.abs(ry))/rh-1;
@@ -115,19 +116,16 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     });
     sclE.addEventListener('keyup',e=>{
-        if((e.key == 'Enter' || e.keyCode == 13) && sclE.value && !isNaN(sclE.value)){
-            scl = Number(sclE.value);
-        }
+        if(sclE.value && !isNaN(sclE.value)){scl = Number(sclE.value)}
     });
     magE.addEventListener('keyup',e=>{
-        if((e.key == 'Enter' || e.keyCode == 13) && magE.value && !isNaN(magE.value)){
-            mag = Number(magE.value);
-        }
+        if(magE.value && !isNaN(magE.value)){mag = Number(magE.value)}
     });
     octE.addEventListener('keyup',e=>{
-        if((e.key == 'Enter' || e.keyCode == 13) && octE.value && !isNaN(octE.value)){
-            oct = Number(octE.value);
-        }
+        if(octE.value && !isNaN(octE.value)){oct = Number(octE.value)}
+    });
+    addE.addEventListener('keyup',e=>{
+        if(addE.value && !isNaN(addE.value)){add = Number(addE.value)}
     });
     
     window.addEventListener('resize',()=>{

@@ -1,0 +1,22 @@
+List of non-minimised terrain functions:
+
+const Terrestrial = function(){
+    if(h<60){
+        ctx.fillStyle=`rgb(0,${redn(h)+60},${1.5*redn(h)+120})`
+    }else if(h<210){
+        if(mois<0){
+            ctx.fillStyle=`rgb(${h/2+15},${h/3},10)`
+        }else{
+            if(temp<-.2){
+                ctx.fillStyle=`rgb(${30-5*temp},${h/4+60},60)`
+            }else{
+               ctx.fillStyle=`rgb(${h/2+150*temp-60},${h/3+60},5)`
+            }
+        }
+    }else{
+        ctx.fillStyle=`rgb(${h/2},${h/2},${h/2})`
+    }
+    if(temp<-.6){
+        ctx.fillStyle=`rgb(${-30*temp+195},${-30*temp+210},${-30*temp+225})`
+    }
+}

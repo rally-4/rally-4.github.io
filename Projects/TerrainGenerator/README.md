@@ -11,5 +11,5 @@ Scale — Size of each pixel. Values lower than 3 will result in long loading ti
 Magnitude — Divides `x`, `y`, and `z` by this value. Doesn't affect worley noise.  
 Octaves — Amount of octaves applied to the heightmap.  
 Base height — Default value of `h`.  
-Max height — Maximum height possible.
+Max height — Maximum height possible.  
 Worley map — Configures the worley noise.  
