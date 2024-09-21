@@ -18,6 +18,8 @@
   
 &nbsp;
   
+&nbsp;
+  
 1. Lore Ipsum Dolor Sit Amet
     * True...
     * False...
@@ -25,8 +27,6 @@
     * True...
     * * True?
       * False...  
-&nbsp;
-  
 &nbsp;
   
 &nbsp;
