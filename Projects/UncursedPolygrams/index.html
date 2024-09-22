@@ -1,1 +1,48 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="rally4">
+        <meta name="description" content="
+            A tool for creating images of polygons and polygrams with some degree of symmetry.
+            &#10;Supports regular polygons with any number of sides, with stellated variants and truncations.
+            &#10;v0.1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=1">
+        
+        <meta property="og:title" content="Uncursed Polygrams" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="https://rally-4.github.io/Projects/UncursedPolygrams/preview.png" />
+        <meta property="og:url" content="https://rally-4.github.io/Projects/UncursedPolygrams/index.html" />
+        <meta property="og:type" content="website" />
+        <title>Uncursed Polygrams</title>
+        
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="Noise/perlin.min.js"></script>
+        <script src="index.js" defer></script>
+    </head>
+    <body>
+        <a id="a" style="display:none"></a>
+        <button id="download">Download</button>
+        <button id="reload">Reload</button>
+        <div id="Settings">
+            <div class="s" id="SettingsText">&nbsp; Settings</div>
+            <div class="s" id="Coloration">
+                <b style="top:38px">&nbsp; Coloration</b>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p1">
+            </div>
+            <div class="s" id="Params">
+                <b style="top:102px">&nbsp; Parameters</b>
+                <code style="top:124px">&nbsp;sides</code>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p2">
+                <code style="top:176px">&nbsp;skips</code>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p3">
+                <code style="top:228px">&nbsp;starting angle (rad)</code>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p4">
+                <code style="top:280px">&nbsp;truncation factor</code>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p5">
+                <code style="top:332px">&nbsp;margin</code>
+                <input type="text" autocapitalize="off" autocomplete="off" enterkeyhint="done" id="p6">
+            </div>
+        </div>
+        <canvas id="canvas"></canvas>
+    </body>
+</html>
